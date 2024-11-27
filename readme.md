@@ -1,37 +1,15 @@
-# The official Cinema 4D Python examples
+# Cinema 4D Python API Examples 
 
-## Introduction
+Contains the official code examples for the Cinema 4D Python API.
 
-This repository contains plugins, scripts and scene files which demonstrates the use of Python in different contexts of Cinema 4D.
+The provided code examples are identical to the ones shipped with the [Cinema 4D Python SDK](https://developers.maxon.net/downloads/). See our [Cinema 4D Python API Documentation](https://developers.maxon.net/docs/py) for written manuals and an API index.
 
-## Versioning
+To get started with the Cinema 4D Python API, we recommend reading the [Getting Started](https://developers.maxon.net/docs/py/2025_0_0/manuals/manual_py_in_c4d.html) manual. We also recommend visiting and registering at [developers.maxon.net](https://developers.maxon.net/) to be able to generate plugin identifiers and to participate in our [developer forum](https://developers.maxon.net/forum/).
 
-The version marked in the filename/folder, describe the minimal version needed e.g. file_r17.py means the script/plugin/scene work from R17 (included) to the current available Cinema 4D version.
+## Content
 
-To retrieve a Python SDK example sets matching a Cinema 4D release, use [Github Releases](https://github.com/PluginCafe/cinema4d_py_sdk_extended/releases).
-
-## Plugins
-
-This folder contains plugins that should be placed in the plugin folder.
-
-## Scenes
-
-This folder contains scenes which embed Python usage in a different context.
-
-## Scripts
-
-This folder contains scripts that should be used in the Script Manager.
-
-## Support
-
-Plugin developers find all resources on the [Development Support blog](https://developers.maxon.net).
-
-Additional developer support is provided on the [Plugin Café support forum](https://plugincafe.maxon.net/). This forum is also used to report feedbacks and issues about the documentation.
-
-For more information about developer support see [How to get Support](https://developers.maxon.net/?page_id=3001).
-
-If your project is under NDA, or you need to address the support team directly, please email sdk_support@maxon.net for further assistance.
-
-## License
-
-Codes provided in this github repository is under the Apache 2.0 License. See [License](LICENSE).
+| Directory | Description |
+| :- | :- |
+| plugins | Provides examples for the plugin hooks of the Python API such as implementing an object or tag plugin. This approach requires the most work but also provides the most freedoms. |
+| scenes | Provides examples for the so called scripting elements (see *Getting Started* guide from above). Scripting elements are miniature versions of the plugin hooks which can be directly implemented within a seen. They offer less freedoms but are less work intensive and a great way to learn the Python API. |
+| scripts | Provides examples for scripts that can be executed in the Script Manager of Cinema 4D. This is the least complex way to write Python code in Cinema 4D and comparable to a traditional Python script. But Script Manager scripts can make use of the full depth of the Python API and these examples cover therefore a wide range of generic subjects. When you want to 'get to know' the API, these scripts are a great learning source. |
