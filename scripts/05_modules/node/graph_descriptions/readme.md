@@ -1,6 +1,6 @@
 # Graph Descriptions
 
-Provides examples creating and modifying material graphs with graph descriptions.
+Provides examples for creating and modifying material graphs with graph descriptions.
 
 ## Examples
 
