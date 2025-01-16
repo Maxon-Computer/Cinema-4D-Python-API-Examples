@@ -24,6 +24,7 @@ import os
 import c4d
 import maxon
 
+c4d.DRAW_TEXTUREFLAGS_USE_PROFILE_COLOR = 16 # Temporary 2025.1 fix for botched symbol export.
 
 class OcioNode2025(c4d.plugins.ObjectData):
     """Realizes a NodeData plugin that is meant to operate in OCIO enabled scenes.
