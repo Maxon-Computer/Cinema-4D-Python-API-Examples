@@ -38,11 +38,12 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     """Demonstrates how to generate UVW data for polygon objects.
     """
     def MapVector(value: c4d.Vector, inMin: c4d.Vector, inMax: c4d.Vector) -> c4d.Vector:
-        """Maps a vector from a given range to the positive unit quadrant.
+        """Maps a vector from a given range to the values 0 to 1.
         """
-        # We swizzle the vector to only consider the x and z components, as u and v are the relevant
-        # components in UVW data for us and the x and z of points components happened to be the 
-        # relevant ones for this example.
+        # Put the z component of our input into the x component of the output, because UV are the
+        # relevant components for a 2D UV(W) vector, and because the points in the planes in this
+        # example lie in the x/z plane, so we move z to y(v) and then leave z(w) empty as we are
+        # not generating 3D texture mapping data.
         return c4d.Vector(
             c4d.utils.RangeMap(value.x, inMin.x, inMax.x, 0, 1, True),
             c4d.utils.RangeMap(value.z, inMin.z, inMax.z, 0, 1, True), 0)
@@ -52,11 +53,11 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
         """
         # The distance from the point #p to its orthogonal projection #p' on the plane. Or, in short,
         # the length of the shortest path (in Euclidean space) from #p to the plane.
-        distance = (p - q) * normal
+        distance: float = (p - q) * normal
         # Calculate #p' by moving #p #distance units along the inverse plane normal.
         return p - normal * distance
 
-    # Check our inputs for being what we think they are, at least two PolygonObjects.
+    # Check our inputs for being what we think they are, at least three PolygonObjects.
     mxutils.CheckIterable(geometries, c4d.PolygonObject, minCount=3)
 
     # Give the three inputs meaningful names.
@@ -66,11 +67,11 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
 
     # A simple way to generate UVW data is a planar layout which can be directly derived from point 
     # or construction data. An example is of course a plane object, but similar techniques can also 
-    # be applied when extruding or lofting a line, as we then can also associate each point with a 
-    # percentage of the total length of the line, and a percentage of the total extrusion height or 
-    # lofting rotation, the uv coordinates of that point.
+    # be applied when extruding or lathing/rotating a line, as we then can also associate each point 
+    # with a percentage of the total length of the line (u), and a percentage of the total extrusion 
+    # height or lathing rotation (v), the uv coordinates of that point.
 
-    # Create a UVW tag for the plane object and get the points of the plane object.
+    # Create a UVW tag for the plane object and get all the points of the plane object.
     uvwTag: c4d.UVWTag = plane.MakeVariableTag(c4d.Tuvw, plane.GetPolygonCount())
     points: typing.List[c4d.Vector] = plane.GetAllPoints()
 
@@ -88,8 +89,8 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
         c: c4d.Vector = MapVector(points[poly.c], -radius, radius)
         d: c4d.Vector = MapVector(points[poly.d], -radius, radius)
 
-        # Set the uvw data for the polygon, nothing special here, just setting the uvw data for the
-        # polygon #i to the calculated values.
+        # Set the four uvw coordinates for the uvw-polygon #i which corresponds to the geometry 
+        # polygon #i.
         uvwTag.SetSlow(i, a, b, c, d)
 
     # Now we basically do the same for the sphere object. We could also just take the x and z 
@@ -98,7 +99,7 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     # resulting in planar projection from that angle. This is a bit more formal than projecting by 
     # just discarding a component (the y component in the former case).
 
-    # Our projection orientation and point, there is nothing special about these values, they are
+    # Our projection orientation and point, there is nothing special about these values, they
     # just look good for this example.
     projectionNormal: c4d.Vector = c4d.Vector(1, 1, 0).GetNormalized()
     projectionOrigin: c4d.Vector = c4d.Vector(0)
@@ -109,8 +110,7 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     radius: c4d.Vector = sphere.GetRad()
     poly: c4d.CPolygon
     for i, poly in enumerate(sphere.GetAllPolygons()):
-        # We project each point of the polygon into the plane define by the projection plane origin
-        # and normal.
+        # We project each point of the polygon into the projection plane.
         a: c4d.Vector = ProjectIntoPlane(points[poly.a], projectionOrigin, projectionNormal)
         b: c4d.Vector = ProjectIntoPlane(points[poly.b], projectionOrigin, projectionNormal)
         c: c4d.Vector = ProjectIntoPlane(points[poly.c], projectionOrigin, projectionNormal)
@@ -132,7 +132,7 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     # state. This makes it impossible to use the UV tools inside a generator object's GetVirtualObjects
     uvwTag: c4d.UVWTag = cylinder.MakeVariableTag(c4d.Tuvw, cylinder.GetPolygonCount())
 
-    # Boiler plate code for UV commands to work.
+    # Boiler plate code for UV commands to work, see dedicated #CallUVCommand example for details.
     doc: c4d.documents.BaseDocument = mxutils.CheckType(sphere.GetDocument())
     doc.SetActiveObject(cylinder)
 
@@ -149,8 +149,9 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     handle: c4d.modules.bodypaint.TempUVHandle = mxutils.CheckType(
         c4d.modules.bodypaint.GetActiveUVSet(doc, c4d.GETACTIVEUVSET_ALL))
     
-    # Retrieve the internal UVW data for the currently opened texture view and then invoke
+    # Retrieve the internal UVW data for the current texture view and then invoke
     # the #UVCOMMAND_OPTIMALCUBICMAPPING command, mapping our cylinder object.
+
     uvw: list[dict] = mxutils.CheckType(handle.GetUVW())
     settings: c4d.BaseContainer = c4d.BaseContainer()
     if not c4d.modules.bodypaint.CallUVCommand(
@@ -159,20 +160,20 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
         c4d.UVCOMMAND_OPTIMALCUBICMAPPING, settings):
         raise RuntimeError("CallUVCommand failed.")
 
-    # Write the updated uvw data back and close the texture view we opened above.
+    # Write the updated uvw data back.
     if not handle.SetUVWFromTextureView(uvw, True, True, True):
         raise RuntimeError("Failed to write Bodypaint uvw data back.")
     
     c4d.modules.bodypaint.FreeActiveUVSet(handle)
     doc.SetMode(oldMode)
 
-    return None
+    return
 
 # The following code is boilerplate code to create geometry, generate UVW data for it, and apply 
 # materials. It is not relevant for the the subject of UVW mapping.
 
 def BuildGeometry(doc: c4d.documents.BaseDocument) -> tuple[c4d.PolygonObject, c4d.PolygonObject]:
-    """Constructs a plane and sphere polygon object.
+    """Constructs the plane, sphere, and cylinder geometry.
     """
     # Instantiate the generators.
     planeGen: c4d.BaseObject = mxutils.CheckType(c4d.BaseObject(c4d.Oplane), c4d.BaseObject)
