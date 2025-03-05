@@ -29,6 +29,7 @@ Deform caches can only be found on non-generator `PointObject` objects and they 
 | geometry_caches_xxx.py | Explains the geometry model of the Cinema API in Cinema 4D. |
 | geometry_polygonobject_xxx.py | Explains the user-editable polygon object model of the Cinema API. |
 | geometry_splineobject_xxx.py | Explains the user-editable spline object model of the Cinema API. |
+| geometry_uvw_2025_xxx.py | Explains how to generate UVW data for polygon objects. |
 | operation_extrude_polygons_xxx.py | Demonstrates how to extend polygonal geometry at the example of extruding polygons. |
 | operation_flatten_polygons_xxx.py | Demonstrates how to deform points of a point object at the example of 'flattening' the selected polygons in a polygon object. |
 | operation_transfer_axis_xxx.py | Demonstrates how to 'transfer' the axis of a point object to another object while keeping its vertices in place. |
