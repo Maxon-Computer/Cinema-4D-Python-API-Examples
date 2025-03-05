@@ -35,28 +35,20 @@ doc: c4d.documents.BaseDocument  # The currently active document.
 op: typing.Optional[c4d.BaseObject]  # The selected object within that active document. Can be None.
 
 def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
-    """Demonstrates how to generate UVW data for polygon objects..
+    """Demonstrates how to generate UVW data for polygon objects.
     """
     def MapVector(value: c4d.Vector, inMin: c4d.Vector, inMax: c4d.Vector) -> c4d.Vector:
         """Maps a vector from a given range to the positive unit quadrant.
         """
-        # We swizzle the vector to only consider the x and z components, as UV are the relevant c
-        # components for us and the x and z components happened to be the relevant ones for this
-        # example (the plane object).
+        # We swizzle the vector to only consider the x and z components, as u and v are the relevant
+        # components in UVW data for us and the x and z of points components happened to be the 
+        # relevant ones for this example.
         return c4d.Vector(
             c4d.utils.RangeMap(value.x, inMin.x, inMax.x, 0, 1, True),
             c4d.utils.RangeMap(value.z, inMin.z, inMax.z, 0, 1, True), 0)
     
     def ProjectIntoPlane(p: c4d.Vector, q: c4d.Vector, normal: c4d.Vector) -> c4d.Vector:
         """Projects the point #p orthogonally into the plane defined by #q and #normal.
-
-        Args:
-            p: The point to project.
-            q: A point in the plane.
-            normal: The normal of the plane (expected to be a normalized vector).
-
-        Returns:
-            The projected point.
         """
         # The distance from the point #p to its orthogonal projection #p' on the plane. Or, in short,
         # the length of the shortest path (in Euclidean space) from #p to the plane.
@@ -72,11 +64,11 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     sphere: c4d.PolygonObject = geometries[1]
     cylinder: c4d.PolygonObject = geometries[2]
 
-    # The simplest way to generate UVW data is the simple planar layout which can be directly
-    # derived from point or construction data. An example is of course a plane object, but similar
-    # techniques can also be applied when extruding or lofting a line, as we then can also associate
-    # each point with a percentage of the total length of the line, and a percentage of the total
-    # extrusion height or lofting rotation, the uv coordinates of that point.
+    # A simple way to generate UVW data is a planar layout which can be directly derived from point 
+    # or construction data. An example is of course a plane object, but similar techniques can also 
+    # be applied when extruding or lofting a line, as we then can also associate each point with a 
+    # percentage of the total length of the line, and a percentage of the total extrusion height or 
+    # lofting rotation, the uv coordinates of that point.
 
     # Create a UVW tag for the plane object and get the points of the plane object.
     uvwTag: c4d.UVWTag = plane.MakeVariableTag(c4d.Tuvw, plane.GetPolygonCount())
@@ -88,10 +80,9 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     for i, poly in enumerate(plane.GetAllPolygons()):
         # Calculate the uvw data for each point of the polygon. We operate here on the implicit
         # knowledge that the plane object is centered on its origin, e.g., goes form -radius to
-        # radius in all three dimensions. We then just map -radius to radius to 0 to 1, as UV data
-        # is always placed in the positive quadrant unit square ('goes' from 0 to 1). The reason why
-        # always calculate uvw data for four points, is because Cinema 4D always handles polygons as
-        # quads, even if they are triangles or n-gons.
+        # radius in all three dimensions. We then just map [-radius, radius] to [0, 1], as UV data
+        # always 'goes' from 0 to 1. The reason why we always calculate uvw data for four points, 
+        # is because Cinema 4D always handles polygons as quads, even if they are triangles or n-gons.
         a: c4d.Vector = MapVector(points[poly.a], -radius, radius)
         b: c4d.Vector = MapVector(points[poly.b], -radius, radius)
         c: c4d.Vector = MapVector(points[poly.c], -radius, radius)
@@ -105,12 +96,12 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     # components of each point to get a top-down uvw projection on the sphere. But we make it a 
     # bit more interesting by projecting each point into a plane defined by the normal of (1, 1, 0), 
     # resulting in planar projection from that angle. This is a bit more formal than projecting by 
-    # just discarding a component (the y component in our case).
+    # just discarding a component (the y component in the former case).
 
     # Our projection orientation and point, there is nothing special about these values, they are
     # just look good for this example.
     projectionNormal: c4d.Vector = c4d.Vector(1, 1, 0).GetNormalized()
-    projectionPoint: c4d.Vector = c4d.Vector(0)
+    projectionOrigin: c4d.Vector = c4d.Vector(0)
 
     uvwTag: c4d.UVWTag = sphere.MakeVariableTag(c4d.Tuvw, sphere.GetPolygonCount())
     points: typing.List[c4d.Vector] = sphere.GetAllPoints()
@@ -118,11 +109,12 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     radius: c4d.Vector = sphere.GetRad()
     poly: c4d.CPolygon
     for i, poly in enumerate(sphere.GetAllPolygons()):
-
-        a: c4d.Vector = ProjectIntoPlane(points[poly.a], projectionPoint, projectionNormal)
-        b: c4d.Vector = ProjectIntoPlane(points[poly.b], projectionPoint, projectionNormal)
-        c: c4d.Vector = ProjectIntoPlane(points[poly.c], projectionPoint, projectionNormal)
-        d: c4d.Vector = ProjectIntoPlane(points[poly.d], projectionPoint, projectionNormal)
+        # We project each point of the polygon into the plane define by the projection plane origin
+        # and normal.
+        a: c4d.Vector = ProjectIntoPlane(points[poly.a], projectionOrigin, projectionNormal)
+        b: c4d.Vector = ProjectIntoPlane(points[poly.b], projectionOrigin, projectionNormal)
+        c: c4d.Vector = ProjectIntoPlane(points[poly.c], projectionOrigin, projectionNormal)
+        d: c4d.Vector = ProjectIntoPlane(points[poly.d], projectionOrigin, projectionNormal)
 
         # We must still map the projected points to the unit square. What we do here is not quite
         # mathematically correct, as there is no guarantee that the projected points have the same
@@ -138,7 +130,6 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
     # Doing this comes with the huge disadvantage that we must be in a certain GUI state, i.e., the
     # UV tools only work if the object is in the active document and the UV tools are in a certain
     # state. This makes it impossible to use the UV tools inside a generator object's GetVirtualObjects
-
     uvwTag: c4d.UVWTag = cylinder.MakeVariableTag(c4d.Tuvw, cylinder.GetPolygonCount())
 
     # Boiler plate code for UV commands to work.
@@ -177,13 +168,13 @@ def GenerateUvwData(geometries: tuple[c4d.PolygonObject]) -> None:
 
     return None
 
-# The following code is boilerplate code to create a plane and sphere object, generate UVW data for
-# them, and apply a material to them. This is all boilerplate code and not the focus of this example.
+# The following code is boilerplate code to create geometry, generate UVW data for it, and apply 
+# materials. It is not relevant for the the subject of UVW mapping.
 
 def BuildGeometry(doc: c4d.documents.BaseDocument) -> tuple[c4d.PolygonObject, c4d.PolygonObject]:
     """Constructs a plane and sphere polygon object.
     """
-    # Instantiate a plane and sphere generator.
+    # Instantiate the generators.
     planeGen: c4d.BaseObject = mxutils.CheckType(c4d.BaseObject(c4d.Oplane), c4d.BaseObject)
     sphereGen: c4d.BaseObject = mxutils.CheckType(c4d.BaseObject(c4d.Osphere), c4d.BaseObject)
     cylinderGen: c4d.BaseObject = mxutils.CheckType(c4d.BaseObject(c4d.Ocylinder), c4d.BaseObject)
@@ -193,12 +184,10 @@ def BuildGeometry(doc: c4d.documents.BaseDocument) -> tuple[c4d.PolygonObject, c
     temp.InsertObject(planeGen)
     temp.InsertObject(sphereGen)
     temp.InsertObject(cylinderGen)
-
-    # Build the caches of the plane and sphere generators.
     if not temp.ExecutePasses(None, False, False, True, c4d.BUILDFLAGS_0):
         raise RuntimeError("Could not build the cache for plane and sphere objects.")
 
-    # Retrieve the caches of the plane and sphere generators.
+    # Retrieve the caches of the generators.
     planeCache: c4d.PolygonObject = mxutils.CheckType(planeGen.GetCache(), c4d.PolygonObject)
     sphereCache: c4d.PolygonObject = mxutils.CheckType(sphereGen.GetCache(), c4d.PolygonObject)
     cylinderCache: c4d.PolygonObject = mxutils.CheckType(cylinderGen.GetCache(), c4d.PolygonObject)
@@ -217,7 +206,7 @@ def BuildGeometry(doc: c4d.documents.BaseDocument) -> tuple[c4d.PolygonObject, c
     sphere.SetMg(c4d.Matrix(off=c4d.Vector(0, 0, 0)))
     cylinder.SetMg(c4d.Matrix(off=c4d.Vector(300, 0, 0)))
 
-    # Insert the plane and sphere into the active document and return them.
+    # Insert the result the passed document and return them.
     doc.InsertObject(plane)
     doc.InsertObject(sphere)
     doc.InsertObject(cylinder)
