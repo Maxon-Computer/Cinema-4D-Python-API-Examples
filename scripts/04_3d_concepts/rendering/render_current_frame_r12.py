@@ -13,8 +13,8 @@ import c4d
 
 
 def main():
-    # Retrieves a copy of the current documents render settings
-    rd = doc.GetActiveRenderData().GetClone().GetData()
+    # Retrieves the current documents render settings
+    rd = doc.GetActiveRenderData().GetDataInstance()
     if rd is None:
         raise RuntimeError("Failed to retrieve the clone of the active Render Settings.")
 

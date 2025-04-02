@@ -85,7 +85,7 @@ def main():
     bmp.AddChannel(True, True)
 
     # Renders the document
-    if c4d.documents.RenderDocument(doc, rd.GetData(), bmp, c4d.RENDERFLAGS_EXTERNAL, prog=PythonCallBack,
+    if c4d.documents.RenderDocument(doc, rd.GetDataInstance(), bmp, c4d.RENDERFLAGS_EXTERNAL, prog=PythonCallBack,
                                     wprog=PythonWriteCallBack) != c4d.RENDERRESULT_OK:
         raise RuntimeError("Failed to render the temporary document.")
 

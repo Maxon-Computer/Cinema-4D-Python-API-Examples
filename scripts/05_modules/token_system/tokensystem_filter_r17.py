@@ -19,7 +19,12 @@ def main():
     print(path)
 
     # Setups the RenderPathData
-    rpd = {'_doc': doc, '_rData': doc.GetActiveRenderData(), '_rBc': doc.GetActiveRenderData().GetData(), '_frame': 1}
+    rpd = {
+        '_doc': doc, 
+        '_rData': doc.GetActiveRenderData(), 
+        '_rBc': doc.GetActiveRenderData().GetDataInstance(), 
+        '_frame': 1
+    }
 
     # Excludes the project token to the "tokenization"
     exclude = ['prj']

@@ -40,7 +40,7 @@ def main():
         raise RuntimeError("Failed to initialize the bitmap.")
 
     # Renders the document
-    if c4d.documents.RenderDocument(tempDoc, rd.GetData(), bmp, c4d.RENDERFLAGS_EXTERNAL) != c4d.RENDERRESULT_OK:
+    if c4d.documents.RenderDocument(tempDoc, rd.GetDataInstance(), bmp, c4d.RENDERFLAGS_EXTERNAL) != c4d.RENDERRESULT_OK:
         raise RuntimeError("Failed to render the temporary document.")
 
     # Frees the temporary document, means that all objects from this document are no longer alive.

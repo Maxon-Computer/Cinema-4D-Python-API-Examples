@@ -242,9 +242,9 @@ class RoundedTube(c4d.plugins.ObjectData, RoundedTubeHelper):
         num_seg = op[c4d.PY_TUBEOBJECT_SEG] if op[c4d.PY_TUBEOBJECT_SEG] is not None else 36
 
         # Calculates LOD for subdivision parameter
-        sub = c4d.utils.CalcLOD(num_sub, 1, 1, 1000)
-        rsub = c4d.utils.CalcLOD(num_rsub, 1, 1, 1000)
-        seg = c4d.utils.CalcLOD(num_seg, 1, 3, 1000)
+        sub = c4d.utils.CalcLOD(int(num_sub), 1., 1, 1000)
+        rsub = c4d.utils.CalcLOD(int(num_rsub), 1., 1, 1000)
+        seg = c4d.utils.CalcLOD(int(num_seg), 1., 3, 1000)
 
         # Defines list of vector position of points
         ptCount = 4 * (sub + rsub)

@@ -24,7 +24,7 @@ def main():
     renderData = doc.GetActiveRenderData()
     if renderData is None:
         raise RuntimeError("Failed to retrieve the render setting.")
-    renderSettings = renderData.GetData()
+    renderSettings = renderData.GetDataInstance()
     renderSettings[c4d.RDATA_XRES] = 1280
     renderSettings[c4d.RDATA_YRES] = 720
 

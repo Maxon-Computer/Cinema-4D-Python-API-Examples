@@ -18,7 +18,7 @@ def main():
         raise ValueError("op is none, please select one object")
 
     # Retrieves the data stored into the BaseContainer of the object
-    bc = op.GetData()
+    bc = op.GetDataInstance()
     if bc is None:
         raise RuntimeError("Failed to retrieve bc")
 
