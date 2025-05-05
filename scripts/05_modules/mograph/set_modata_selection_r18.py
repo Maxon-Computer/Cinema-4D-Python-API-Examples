@@ -23,6 +23,11 @@ def main():
     # Builds list for clones selection states
     states = [1] * op[c4d.MG_LINEAR_COUNT]
 
+    # Create MoGraph Selection Tag on the cloner to store the selection
+    tag = op.MakeTag(c4d.Tmgselection)
+    if tag is None:
+        raise RuntimeError("Failed to create a MoGraph Selection Tag on the selected object.")
+        
     # Creates new BaseSelect and sets it to states list
     selection = c4d.BaseSelect()
     selection.SetAll(states)
