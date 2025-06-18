@@ -1,0 +1,6 @@
+// The English translation strings for the dialog resource IDD_BUTTONS.
+DIALOGSTRINGS IDD_BUTTONS // Must match the dialog ID
+{
+	IDS_ADD "Add";
+	IDS_SUBTRACT "Subtract";
+}

@@ -1,0 +1,6 @@
+// The German translation strings for the dialog resource IDD_VALUES.
+DIALOGSTRINGS IDD_VALUES
+{
+	IDS_VALUE_A "Wert A";
+	IDS_VALUE_B "Wert B";
+}

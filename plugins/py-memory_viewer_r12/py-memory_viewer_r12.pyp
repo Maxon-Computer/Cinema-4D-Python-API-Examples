@@ -2,6 +2,10 @@
 Copyright: MAXON Computer GmbH
 Author: XXX, Maxime Adam
 
+Note:
+    This code example has been deprecated and will be removed in a future release. Not all code and
+    techniques shown in this example are exemplary. Use it at your own risk.
+
 Description:
     - Creates a Dialog which display the memory usage.
     - The Memory Usage is displayed in a custom Gadget (GeUserArea).

@@ -1,191 +1,39 @@
 # Plugins
 
-This folder contains plugins that should be copied in the plugins folder of Cinema 4D:
+Contains code examples for implementing plugins using the Cinema 4D Python API.
 
-- Windows: C:/Users/{username}/AppData/Roaming/MAXON/{cinemaversion}/plugins
-- macOS: /Users/{username}/Library/Preferences/MAXON/{cinemaversion}/plugins
+| Plugin Name | Category | Description |
+| ----------- | -------- | ----------- |
+| py-cmd_gui_hello_world       | Command/Gui         | Demonstrates the most basic command/dialog plugin possible, this is not only a command hello world example, but generally a plugin hello world example. |
+| py-cmd_gui_simple            | Command/Gui         | Demonstrates a simple dialog with two number input fields, a combo box and a button to carry out numeric operations on the two numbers. |
+| py-cmd_gui_dynamic           | Command/Gui         | Demonstrates a dialog with dynamic content, where the content changes based on user input. |
+| py-cmd_gui_persistent        | Command/Gui         | Demonstrates how to store dialog layout data and values persistently over dialog open/close and Cinema 4D restart boundaries. |
+| py-cmd_gui_persistent_no_restart | Command/Gui     | Demonstrates a simple way to store dialog layout data and values persistently over dialog open/close boundaries (but not over Cinema 4D restart boundaries). :warning: The no-restart version of this example is considerably less complex than the full version. It is recommend to start out with this version, when persistent layouts or values are a requirement. |
+| py-cmd_gui_resources         | Command/Gui         | Demonstrates a plugin that uses resources to define its dialog layout and string translations. |
+| py-texture_baker             | Command/Gui         | Legacy code example that demonstrates implementing a simple texture baking dialog. |
+| py-memory_viewer             | Command/Gui         | Legacy code example that demonstrates implementing a memory viewer dialog. |
+| py-sculpt_save_mask          | Command             | Legacy code example for the Sculpting API, highly specialized and not that useful outside of sculpting. |
+| py-rounded_tube              | ObjectData          | Demonstrates how to implement a polygonal object generator with handles to drive parameters. |
+| py-double_circle             | ObjectData          | Demonstrates how to implement a spline object generator with handles to drive parameters. |
+| py-spherify_modifier         | ObjectData          | Demonstrates how to implement a modifier object that modifies a point object. |
+| py-custom_icon               | ObjectData          | Demonstrates how to implement a scene element that dynamically updates its icon. |
+| py-ocio_node                 | ObjectData          | Demonstrates how to implement a scene element respecting OpenColorIO color management. |
+| py-offset_y_spline           | ObjectData          | Questionable design, should not be followed. |
+| py-gravitation               | ObjectData          | Demonstrates how to implement a classic particle modifier object that applies a simple gravitation effect for each particle. |
+| py-dynamic_parameters_object | NodeData            | Demonstrates how to implement a node (at the example of an object) that dynamically updates its parameters. |
+| py-look_at_camera            | TagData             | Demonstrates how to implement a tag that forces the host object to look at the camera (like the Look At Camera Tag). |
+| py-fresnel                   | ShaderData          | Demonstrates how to implement a shader that computes a fresnel effect. |
+| py-liquid_painter            | ToolData            | Demonstrates how to implement a simple tool. |
+| py-tooldata_ui               | ToolData            | Demonstrates how to implement a ToolData with a linkBox where it's possible to drag and drop an object, which is then cloned and added to the document in a random position. |
+| py-sculpt_grab_brush         | SculptBrushToolData | Demonstrates how to implement a brush tool that modifies a BaseObject by grabbing all points under the brush. |
+| py-sculpt_pull_brush         | SculptBrushToolData | Demonstrates how to implement a brush tool that modifies a BaseObject by pulling all points under the brush. |
+| py-sculpt_twist_brush        | SculptBrushToolData | Demonstrates how to implement a brush tool that modifies a BaseObject by twisting all points under the brush. |
+| py-sculpt_paint_brush        | SculptBrushToolData | Demonstrates how to implement a brush tool that rasterizes the stencil onto the polygons touched by the brush, accessing the stencil and BodyPaint layer. |
+| py-ies_meta                  | SceneSaverData      | Demonstrates how to implement a scene saver plugin that exports all IES Meta information from the current document to a txt file, iterating through all objects in the scene. |
+| py-xample_loader             | BitmapLoaderData    | Demonstrates how to implement a custom bitmap loader to import a custom picture format into Cinema 4D. |
+| py-xample_saver              | BitmapSaverData     | Demonstrates how to implement a custom bitmap saver to export a custom picture format into Cinema 4D. |
+| py-preference                | PreferenceData      | Demonstrates how to implement a preference category in the Cinema 4D preference dialog, exposing parameters as global preferences. |
+| py-render_token              | Render Token        | Demonstrates how to register two Tokens, one visible in the render settings and the other not. A token is a string that will be replaced during the token evaluation time by a string representation. |
+| py-licensing_example         | Licensing           | Demonstrates how a plugin can implement custom licensing in Python, opening a dialog that asks for the user's serial according to the current user_id logged in, and saving a file in the temp folder if the serial is correct. |
 
-## CommandData
-A data class for creating command plugins. (Previously known as menu plugins.)
-
-### py-commanddata_dialog
-
-    Creates a Dialog which display 2 buttons OK and Cancel.
-    
-### py-memory_viewer
-
-    Creates a Dialog which display the memory usage.
-    The Memory Usage is displayed in a custom Gadget (GeUserArea).
-
-### py-texture_baker
-
-    Creates a Dialog to manage texture baking.
-    Bakes selected object diffuse to the uv and display the result in the Picture Viewer.
-    
-### py-sculpt_save_mask
-
-    Command, rasterizing(baking) the mask data to a bitmap using the first found UV tag on the sculpt object.
-    Illustrates the ability to access the mask data on a sculpt object.
-    
-## ObjectData
-A data class for creating object plugins.
-An object plugin can either be a generator, a modifier, a spline generator or a particle modifier. 
-This is set when the object is registered and affects which functions are called.
-
-### py-dynamic_parameters_object
-
-    Generator, which handle dynamics descriptions and link the parameter angle of first phong tag from the generator.
-    
-### py-custom_icon
-
-    Demonstrates how to define a custom icon color according to the new Cinema 4D R21 icon features.
-    
-### py-rounded_tube
-
-    Generator, generating a c4d.PolygonObject from nothing (like the Cube).
-    Manages handles to drive parameters (works only in R18+).
-
-### py-double_circle
-
-    Generator, generating a c4d.SplineObject from nothing (like the spline circle).
-    Consists of two circles in a given plane.
-    Manages handles to drive parameters.
-    Registers Help Callback to display user help, if the user click on show help of a parameter.
-
-### py-offset_y_spline
-
-    Generator, generating a c4d.SplineObject from a child spline object (like the spline mask generator).
-    Retrieves the first child object and offset all its points on the y-axis by a specific value. Tangents are unaffected.
-    Demonstrates a Spline Generator that requires Input Spline and Outputs a valid Spline everywhere in Cinema 4D.
-
-### py-spherify_modifier
-
-    Modifier, modifying a point object (like the bend deformer).
-    Supports Falloff (R18 and R19 only).
-
-### py-sculpt_modifier_deformer
-
-    Modifier, modifying a point object using the pull sculpting brush tool.
-
-### py-gravitation
-
-    Particle Modifier, applying a simple gravitation effect for each particles.
-    
-## TagData
-A data class for creating tag plugins.
-Tag plugins appear in the Tag menu of the Object Manager and can be attached to objects.
-
-### py-look_at_camera
-
-        
-    Tag, force the host object to look at the camera (like the Look At Camera Tag).
-    
-## ShaderData
-
-A data class for creating shader (channel shader) plugins.
-Shader plugins appear in the popup menu of the channels in the Material Manager
-
-### py-fresnel
-
-    Shader, computing a fresnel effect.
-
-## FalloffData
-A data class for creating falloff plugins.
-Falloffs appear in any falloff description (unless the flag PLUGINFLAG_HIDE is set during registration) and extend the functionality of effectors and anything that uses falloffs.
-Falloff are deprecated in R20 and replaced by Fields, but Falloff keep working for compatibility reason.
-
-### py-noise_falloff
-
-    
-    Falloff, modify how effector sampling occurs in this case using a noise (like the spherical falloff).
-    Falloff are deprecated in R20 and replaced by Fields, but Falloff keep working for compatibility reason.
-    Manages handles to drive parameters.
-    
-## ToolData
-A data class for creating tool plugins.
-
-### py-liquid_painter
-
-    Creates a liquid Painter Tool.
-    Consists of Metaball and Sphere.
-    
-### py-tooldata_ui
-
-    Creates a ToolData with a linkBox on it where it's possible to drag and drop an object.
-    When this linked object is clicked, its cloned and added to the document in a random position.
-
-## SculptBrushToolData
-A data class for creating brush plugins (not only limited to sculpting).
-
-### py-sculpt_grab_brush
-
-    Brush Tool, modifying a BaseObject by grabbing all points under the brush.
-    
-### py-sculpt_pull_brush
-
-    Brush Tool, modifying a BaseObject by pulling all points under the brush.
-    
-### py-sculpt_twist_brush
-
-    Brush Tool, modifying a BaseObject by twisting all points under the brush.
-    
-### py-sculpt_paint_brush
-
-    Brush Tool, rasterize the stencil onto the polygons touched by the brush. You will need an active stencil for the brush to work.
-    Illustrates the ability to access the stencil for a brush and also how to access the bodypaint layer to apply paint.
-
-## SceneSaverData
-A data class for creating scene saver plugins (custom scene file format exporter).
-
-### py-ies_meta
-
-    Exporter, exporting all IES Meta information from the current document to a txt files.
-    Iterates all objects present in the cache of each objects in the scene to retrieve IES light.
-    
-## BitmapLoaderData
-A data class for creating bitmap loader plugins (custom bitmap file format importer).
-
-### py-xample_loader
-
-    Creates a Bitmap Loader to import a custom picture format into Cinema 4D.
-    
-## BitmapSaverData
-A data class for creating bitmap saver plugins (custom bitmap file format exporter).
-
-### py-xample_saver
-
-    Creates a Bitmap Saver to export a custom picture format into Cinema 4D.
-    
-## PreferenceData
-A data class for defining a new preference category in the Cinema 4D preference dialog.
-
-### py-preference
-
-    Exposes parameters as global Preference (EDIT->Preference windows).
-    Takes care to store data in the world container, so every part of Cinema 4D can access them.
-
-## Token
-A token is a string that will be replaced during the token evaluation time by a string representation.
-
-### py-render_token
-
-    Registers two Tokens plugin. One visible in the render setting the other one not.
-    A token is a string that will be replaced during the token evaluation time by a string representation.
-    
-## Licensing
-In Cinema R21, the licensing changed but keep in mind python is a scripted language, meaning there is no 100% way to secure it.
-At a given time the script will be in the memory.
-
-Please don't implement security/serial checking logic into your plugin, instead, it's preferred to send
-the data into a server which will check for the validity of the entered serial.
-
-But due to the nature of python, it will still be more or less easy to bypass any kind of security
-and directly register the plugin by editing a plugin source code.
-
-Even if you encrypt your python plugin it will be just harder for the attackers but not impossible.
-
-### py-licensing_example
-
-    Demonstrates how a plugin can implements a custom licensing in Python.
-    Opens a dialog which asks for the serial of the user, according to the current user_id logged in.
-    Saves a fie in the temp folder if the serial is correct so the next startup doesn't ask the serial again.
+`py-noise_falloff` is a legacy code example for falloffs, a technology that has been replaced by fields in R20. Falloffs are still supported for compatibility reasons, but new development should focus on fields instead.

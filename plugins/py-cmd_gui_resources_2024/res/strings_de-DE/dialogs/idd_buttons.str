@@ -1,0 +1,6 @@
+// The German translation strings for the dialog resource IDD_BUTTONS.
+DIALOGSTRINGS IDD_BUTTONS
+{
+	IDS_ADD "Addieren";
+	IDS_SUBTRACT "Subtrahieren";
+}

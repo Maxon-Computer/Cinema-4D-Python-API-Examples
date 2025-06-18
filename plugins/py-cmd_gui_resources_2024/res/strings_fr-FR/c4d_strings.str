@@ -1,0 +1,8 @@
+// These are the generic French strings for the plugin. We place here only the plugin name and 
+// help string. Which we then load at runtime with c4d.plugins.GeLoadString(). This file has
+// been unicode escaped, see unicode_encode_strings.py for details.
+STRINGTABLE
+{
+	IDS_PLUGIN_NAME "Py - Ressources Gui";
+	IDS_PLUGIN_HELP "Ouvre une fen\u00eatre de dialogue qui est rempli \u00e0 l'aide de fichiers de ressources.";
+}

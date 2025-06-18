@@ -1,0 +1,6 @@
+// The French translation strings for the dialog resource IDD_BUTTONS.
+DIALOGSTRINGS IDD_BUTTONS
+{
+	IDS_ADD "Ajouter";
+	IDS_SUBTRACT "Soustraire";
+}

@@ -2,6 +2,24 @@
 Copyright: MAXON Computer GmbH
 Author: Riccardo Gigante, Maxime Adam
 
+Warning:
+
+    What this plugin does, implement GetVirtualObjects() and GetContour() in parallel is very much 
+    not recommended. The example was born out of a user request for how the SplineMask generator 
+    works in Cinema 4D, which itself is an extreme outlier. Splines should not have input objects, 
+    i.e., spline generators should not follow the pattern that they have children that are used to 
+    build their output (exactly what the SplineMask object does). While this example shows how this 
+    can be achieved, the approach is riddled with problems (which we can internally solve with full
+    access to the C++ API), but for externals, both in Python and C++, this is a bad idea.
+
+    The primary issue is that a spline must be implemented with GetContour() to be a valid spline 
+    generator, and here we are not being provided a `hh` (HierarchyHelp) object, which is required 
+    to correctly build the caches of our child dependencies. Hence this double implementation of 
+    GetVirtualObjects() and GetContour().
+
+    What this example does specifically, just move/deform a spline, could easily be implemented 
+    correctly with a deformer. USE AT YOUR OWN RISK!
+
 Description:
     - Retrieves the first child object and offset all its points on the y-axis by a specific value. Tangents are unaffected.
     - Demonstrates a Spline Generator that requires Input Spline and Outputs a valid Spline everywhere in Cinema 4D.
@@ -309,6 +327,10 @@ class OffsetYSpline(c4d.plugins.ObjectData):
 
         # Performs operation on the spline
         resSpline = SplineInputGeneratorHelper.OffsetSpline(deformedSpline, op[c4d.PY_OFFSETYSPLINE_OFFSET])
+
+        # One of the hacks required to make this work (in this case for simulations), we copy tags 
+        # from the input spline into the cache.
+        op.CopyTagsTo(resSpline, True, -2, False)
 
         # Returns the modified spline
         return resSpline

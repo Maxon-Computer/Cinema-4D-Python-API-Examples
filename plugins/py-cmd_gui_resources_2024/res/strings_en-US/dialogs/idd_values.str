@@ -1,0 +1,6 @@
+// The English translation strings for the dialog resource IDD_VALUES.
+DIALOGSTRINGS IDD_VALUES // Must match the dialog ID
+{
+	IDS_VALUE_A "Value A";
+	IDS_VALUE_B "Value B";
+}

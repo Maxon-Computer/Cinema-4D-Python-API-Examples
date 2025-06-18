@@ -1,0 +1,6 @@
+// The French translation strings for the dialog resource IDD_VALUES.
+DIALOGSTRINGS IDD_VALUES
+{
+	IDS_VALUE_A "Valeur A";
+	IDS_VALUE_B "Valeur B";
+}

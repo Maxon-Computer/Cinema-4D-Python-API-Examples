@@ -1,0 +1,11 @@
+// These are the generic English strings for the plugin. We place here only the plugin name and 
+// help string. Which we then load at runtime with c4d.plugins.GeLoadString().
+STRINGTABLE
+{
+	// When c4d.plugins.GeLoadString(IDS_PLUGIN_NAME) is being called, and thee current language is
+	// either English, or  neither German nor French (the two other languages we support in this 
+	// example), the string "Py - Resource Gui" is returned. This only works when define both the
+	// string ID and the string value in this file.
+	IDS_PLUGIN_NAME "Py - Resource Gui"; 
+	IDS_PLUGIN_HELP "Opens a dialog window that is populated using resource files.";
+}
