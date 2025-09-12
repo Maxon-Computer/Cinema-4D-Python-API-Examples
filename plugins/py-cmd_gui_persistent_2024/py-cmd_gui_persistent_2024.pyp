@@ -7,18 +7,20 @@ in each group. The group weights and gadget values will persist when the dialog 
 and reopened, the user switches a layout, or when Cinema 4D is restarted.
 
 Note:
-    Cinema 4D itself heavily relies on layout files these days to persistently store dialog layouts.
-    But third party plugins often are not part of a layout file, and therefore cannot rely on the 
-    layout file system for this purpose.
 
-    This example uses custom serialization and deserialization to cover all possible boundaries 
-    (open/close and restart) over which values should be preserved. This is only relevant for the 
-    case when the dialog is not part of a layout file.
+    Cinema 4D itself heavily relies on layout files these days to persistently store dialog layouts
+    and values. In this regard, the API is working as intended. But third party plugins often are 
+    not part of a layout file, and therefore cannot rely on the layout file system for this purpose.
 
-    The relevant code sections have been marked with "@RestartPersistence", and there is also the
-    `py-cmd_gui_persistent_no_restart` example which does not use custom serialization and 
-    deserialization, i.e., has these sections removed. See the other example for a simpler
-    implementation, but that does not persist over Cinema 4D restarts.
+    This example therefore uses custom serialization and deserialization to cover all possible 
+    boundaries (open/close and restart) over which values should be preserved. This is only relevant
+    for the case when the dialog is not part of a layout file.
+
+    The relevant code sections have been marked with "@CustomSerialization", and there is also
+    `py-cmd_gui_persistent_no_restart_2024.pyp` next to this example which does not use custom
+    serialization and deserialization, i.e., has these sections removed. The dialog data saving 
+    will work there within layouts files and within one Cinema 4D session, but not over Cinema 4D 
+    restart boundaries.
 
 Subjects:
     - Layout support for dialogs via BFM_LAYOUT_GETDATA and BFM_LAYOUT_SETDATA.
@@ -61,7 +63,7 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
     ID_GRP_C: int = 1003
     ID_GRP_D: int = 1004
     
-    # The IDs for the labels displaying the size of groups in the main group.
+    # The IDs for the three labels displaying the size of groups in the main group.
     ID_LBL_WEIGHT_A: int = 1100
     ID_LBL_WEIGHT_B: int = 1101
     ID_LBL_WEIGHT_C: int = 1102
@@ -102,8 +104,7 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
                   c4d.DR_MULTILINE_NO_DARK_BACKGROUND | c4d.DR_MULTILINE_NO_BORDER)
         self.SetString(999, "Demonstrates a dialog with a persistent GUI state that will be saved "
                             "between Cinema 4D sessions. Resize the groups and change the values "
-                            "and then open and close the dialog or restart Cinema 4D to see the "
-                            "values persist.")
+                            "then restart Cinema 4D to see the values being restored.")
         # end of helper text
 
         self.GroupBorderSpace(*self.PAD_BORDER_SPACE)
@@ -163,13 +164,13 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
         self.AddEditNumberArrows(self.ID_NUM_PERSISTENT_VALUE, self.FLAG_TOP_LEFT, initw=200)
         self.GroupEnd() # end of ID_GRP_D
 
-        # @RestartPersistence: One of the issues at the moment is that #BFM_LAYOUT_SETDATA will not
+        # @CustomSerialization: One of the issues at the moment is that #BFM_LAYOUT_SETDATA will not
         # have been emitted yet when we open the dialog for the first time after a restart of
         # Cinema 4D. And since #GroupWeightsLoad() will only work while the group is not yet closed
         # when the dialog is not part of a layout, we need to load the weights manually here. To
         # simplify things, we also use the #LoadValues() but pass None, to signal that we want to
         # load values from disk, which will be done in the #LoadValuesFromDisk() method. This must
-        # be removed when you do not need @RestartPersistence.
+        # be removed when you do not need @CustomSerialization.
         if self._weights is None:
             self.LoadValues(None)
 
@@ -183,7 +184,7 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
         return True
     
     def InitValues(self) -> bool:
-        """Called by Cinema 4D to initialize the values dialog once its GUI has been built.
+        """Called by Cinema 4D to initialize the values dialog once its GUI has bee built.
         """
         # Set the persistent values of the dialog. The values cannot be None at this point.
         self.SetBool(self.ID_CHK_PERSISTENT_VALUE, self._chkPersistentValue)
@@ -236,7 +237,7 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
         # stored layout data into the dialog. This happens for example when the user switches the
         # layout of Cinema 4D, or when the dialog has been opened. Unfortunately, this message is
         # only emitted after CreateLayout() has been called, causing all the custom serialization
-        # troubles we have here. 
+        # trouble we have here. 
         elif (mid == c4d.BFM_LAYOUT_SETDATA):
             # The message data is a bit odd in that the container does not directly contain the
             # #BFM_LAYOUT_SETDATA data, but stored in a sub-container with the ID
@@ -251,10 +252,10 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
     def AskClose(self) -> bool:
         """Called by Cinema 4D when the user tries to close the dialog to potentially prevent it.
 
-        @RestartPersistence: 
+        @CustomSerialization: 
 
             This whole method is only needed when we want to manually save layout data to disk. You
-            can remove this method when you do not need @RestartPersistence.
+            can remove this method when you do not need @CustomSerialization.
         """
         if not self.SaveValues(None):
             print("Warning: Failed to save persistent values to disk.")
@@ -278,8 +279,8 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
         Returns:
             bool: True if the values were loaded successfully, False otherwise.
         """
-        # @RestartPersistence: When no data is passed, we try to load the values from disk. Must be
-        # removed when you do not need @RestartPersistence.
+        # @CustomSerialization: When no data is passed, we try to load the values from disk. Must be
+        # removed when you do not need @CustomSerialization.
         if data is None:
             return self.LoadValuesFromDisk()
 
@@ -312,9 +313,9 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
     def LoadValuesFromDisk(self) -> bool:
         """Loads the persistent values of the dialog from disk.
 
-        @RestartPersistence:
+        @CustomSerialization:
             This method is only needed when we want to manually save layout data to disk. You can
-            remove this method when you do not need @RestartPersistence.
+            remove this method when you do not need @CustomSerialization.
 
         Returns:
             bool: True if the values were loaded successfully, False otherwise.
@@ -344,6 +345,7 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
                 if data:
                     return self.LoadValues(data)
                 
+
         # When reach this point and there is a file, this means that reading must have failed.
         if fileExists:
             print(f"Warning: The serialization file '{path}' exists, but failed to load. "
@@ -404,8 +406,8 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
         Returns:
             bool: True if the values were saved successfully, False otherwise.
         """
-        # @RestartPersistence: When no data is passed, we try to save the values to disk. Must be
-        # removed when you do not need @RestartPersistence.
+        # @CustomSerialization: When no data is passed, we try to save the values to disk. Must be
+        # removed when you do not need @CustomSerialization.
         if data is None:
             return self.SaveValuesToDisk()
         
@@ -428,9 +430,9 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
     def SaveValuesToDisk(self) -> bool:
         """Saves the persistent values of the dialog to disk.
 
-        @RestartPersistence:
+        @CustomSerialization:
             This method is only needed when we want to manually save layout data to disk. You can   
-            remove this method when you do not need @RestartPersistence.
+            remove this method when you do not need @CustomSerialization.
 
         Returns:
             bool: True if the values were saved successfully, False otherwise.
@@ -478,7 +480,7 @@ class PersistentGuiDialog(c4d.gui.GeDialog):
         return res
     
     def SetWeightLabels(self) -> None:
-        """Sets the labels displaying the group weights in the dialog.
+        """Sets the labels display the group weights in the dialog.
         """
         # What is a bit counterintuitive is that weight values which have been read with GeDialog.
         # GroupWeightsSave() are often not the same values we have manually initialized them as.
@@ -579,12 +581,11 @@ class PersistentGuiCommand (c4d.plugins.CommandData):
     # --- Custom methods and attributes ------------------------------------------------------------
     
     # The unique ID of the plugin, it must be obtained from developers.maxon.net.
-    ID_PLUGIN: int = 1065635
+    ID_PLUGIN: int = 10656351
 
     # The name and help text of the plugin.
     STR_NAME: str = "Py - Persistent Gui"
-    STR_HELP: str = ("Opens a dialog that persistently stores group weights and values over "
-                     "dialog open/close and Cinema 4D restart boundaries.")
+    STR_HELP: str = "Opens a dialog that persistently stores group weights and values."
 
     # A lookup table for the save paths for classes used by this plugin, so that we do not have to
     # establish them each time we are being asked for a save path.

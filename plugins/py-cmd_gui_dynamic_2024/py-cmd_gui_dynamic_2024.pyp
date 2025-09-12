@@ -1,25 +1,26 @@
 """Demonstrates a dialog with dynamically addable and removable GUI elements.
 
-Open this dialog by running the command "Py - Dynamic Gui" in the Commander (Shift + C).
-The user can add and remove 'items' in the dialog, which are represented by link boxes. Dragging a
-scene element (such as an object, material, or tag) into a link box updates the label of that link box
-to the type name of the dragged item (e.g., "BaseObject"). The two dynamic aspects are:
+Open this dialog example by running the command "Py - Dynamic Gui" in the Commander (Shift + C).
+The user can add and remove 'items' to the dialog, which are represented by link boxes. Dragging a
+scene element such as an object, material, or tag into the link box will then update the label of
+that previously empty or otherwise linked link box to the type name of the dragged item, e.g.,
+"BaseObject". So, the two dynamic aspects are adding and removing items from the dialog and the
+labels updating when the user drags an item into a link box.
 
-    1. Adding and removing items from the dialog.
-    2. Updating labels when the user drags an item into a link box.
-
-This example also demonstrates the use of an abstraction layer, which, while not strictly necessary,
-can provide a more structured way of managing dialog data. This is implemented as the `Items` property
-of the `DynamicGuiDialog` class, allowing you to set `myDynamicGuiDialog.Items = [a, b, c]` to rebuild
-the UI and display the items `a`, `b`, and `c` in three link boxes.
+Also shown here is the idea of an abstraction layer, which is not strictly necessary, but can be 
+useful when one wants to have a more structured way of dealing with the data in a dialog.
+This is realized as the property `Items` of the `DynamicGuiDialog` class, which allows us to
+just invoke `myDynamicGuiDialog.Items = [a, b, c]` for the dialog to rebuild its UI and
+show the items `a`, `b`, and `c` in three link boxes.
 
 Subjects:
-    - Using GeDialog to create dialogs with dynamic content.
-    - Implementing a simple data model abstraction layer to simplify dialog interaction. Here,
-    `DynamicGuiDialog.Items` is a property that can be set and retrieved, and setting it rebuilds the UI.
-    - Using `GeDialog.LayoutFlushGroup()` to clear a group of gadgets and `LayoutChanged()` to notify
-    Cinema 4D that the layout has changed.
-    - Using `GeDialog.AddCustomGui()` to add custom GUI elements (here, link boxes).
+    - Using GeDialog to create a dialog with dynamic content.
+    - Using a simple data model abstraction layer to simplify interaction with the dialog. Here
+      we realize DynamicGuiDialog.Items as a property that can be set and get, and upon
+      setting the property, the dialog will rebuild its UI.
+    - Using GeDialog.LayoutFlushGroup() to clear a group of gadgets and LayoutChanged() to notify
+      Cinema 4D that the layout has changed.
+    - Using GeDialog.AddCustomGui() to add custom GUI elements (here link boxes).
 """
 __copyright__ = "Copyright 2025, MAXON Computer"
 __author__ = "Ferdinand Hoppe"
@@ -44,7 +45,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     ID_GRP_ELEMENTS: int = 1001
     ID_GRP_BUTTONS: int = 1002
 
-    # The two buttons at the bottom.
+    # The three buttons at the bottom.
     ID_BTN_ADD: int = 2000
     ID_BTN_REMOVE: int = 2001
 
@@ -59,8 +60,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
 
     # A settings container for a LinkBoxGui instance, these are all default settings, so we could
     # pass the empty BaseContainer instead with the same effect. But here you can tweak the settings
-    # of a custom GUI. Since we want all link boxes to look same, this is done as a constant attached
-    # to the class.
+    # of a custom GUI. Since we want all link boxes to look same, this is done as a class constant.
     LINKBOX_SETTINGS: c4d.BaseContainer = c4d.BaseContainer()
     LINKBOX_SETTINGS.SetBool(c4d.LINKBOX_HIDE_ICON, False)
     LINKBOX_SETTINGS.SetBool(c4d.LINKBOX_LAYERMODE, False)
@@ -85,7 +85,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     # Our data model, we expose _items as a property, so that we can read and write items from
     # the outside. For basic type gadgets, e.g., string, bool, int, float, etc., there are
     # convenience methods attached to GeDialog like Get/SetString. But there is no GetLink() method.
-    # So, one must do one of two things:
+    # So one must do one of two things:
     #
     #   1. Store all custom GUI gadgets in a list and manually interact with them.
     #   2. Put a little abstraction layer on top of things as I did here. In this case this also
@@ -93,17 +93,17 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     #
     # Calling DynamicGuiDialogInstance.Items will always yield all items in the order as shown in
     # the GUI, and calling myDynamicGuiDialogInstance.Items = [a, b, c] will then show the items
-    # [a, b, c] in three link boxes in the dialog. None of these two approaches is really 
-    # intrinsically better, but I prefer using abstractions.
+    # [a, b, c] in three link boxes in the dialog. No method is really intrinsically better, but I
+    # prefer it like this.
     @property
     def Items(self) -> list[c4d.BaseList2D]:
-        """Gets all items linked in the link boxes.
+        """gets all items linked in the link boxes.
         """
         return self._items
 
     @Items.setter
     def Items(self, value: list[c4d.BaseList2D]) -> None:
-        """Sets all items linked in the link boxes.
+        """Sets all items linked in link boxes.
         """
         if not isinstance(value, list):
             raise TypeError(f"Items: {value}")
@@ -117,7 +117,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
             self.PopulateDynamicGroup(isUpdate=True)
 
     def InitValues(self) -> bool:
-        """Called by Cinema 4D after CreateLayout() has run.
+        """Called by Cinema 4D once CreateLayout() has ran.
 
         Not needed in this case.
         """
@@ -126,7 +126,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     def CreateLayout(self) -> bool:
         """Called once by Cinema 4D when a dialog opens to populate the dialog with gadgets.
 
-        You are not limited to adding items only in this method; a dialog can be repopulated
+        But one is not bound to adding only items from this method; a dialog can be repopulated
         dynamically.
         """
         self._hasCreateLayout = True
@@ -162,13 +162,13 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
         # Set the group spacing of ID_GRP_MAIN to (5, 5, 5, 5)
         self.GroupBorderSpace(*self.DEFAULT_SPACE)
 
-        # A layout group inside #ID_GRP_MAIN, it has two columns and we will place pairs of
+        # An layout group inside #ID_GRP_MAIN, it has two columns and we will place pairs of
         # labels and link boxes in it. The layout is now:
         #
         #   Main {
         #       Elements {
-        #           d, e,
-        #           f, g,
+        #           a, b,
+        #           c, d,
         #           ... }
         #       b,
         #       c,
@@ -179,29 +179,29 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
                         flags=c4d.BFH_SCALEFIT | c4d.BFV_SCALEFIT, cols=2)
         # Set the group spacing of ID_GRP_ELEMENTS to (5, 5, 5, 5).
         self.GroupBorderSpace(*self.DEFAULT_SPACE)
-        # Call our PopulateDynamicGroup() method here with isUpdate=False, so that group
-        # ID_GRP_ELEMENTS won't be flushed the first time it is built. This is equivalent to moving
-        # all the code from PopulateDynamicGroup() to the line below.
+        # Call our PopulateDynamicGroup() method, here with isUpdate=False, so that group
+        # ID_GRP_ELEMENTS won't be flushed the first time it is being built. Doing this is the same
+        # as moving all the code from PopulateDynamicGroup() to the line below.
         self.PopulateDynamicGroup(isUpdate=False)
         self.GroupEnd()  # ID_GRP_ELEMENTS
 
-        # A second layout group inside ID_GRP_MAIN, it has two columns and will place our buttons
+        # A second layout group inside ID_GRP_MAIN, it has three columns and will place our buttons
         # in it. The layout is now:
         #
         #   Main {
         #       Elements {
-        #           d, e,
-        #           f, g,
+        #           a, b,
+        #           c, d,
         #           ... }
         #       Buttons {
-        #           h, i,
-        #           j, k,
+        #           a, b, c,
+        #           e, f, g,
         #           ...},
         #       c,
         #       ...
         #   }
         #
-        self.GroupBegin(id=self.ID_GRP_BUTTONS, flags=c4d.BFH_SCALEFIT, cols=2)
+        self.GroupBegin(id=self.ID_GRP_BUTTONS, flags=c4d.BFH_SCALEFIT, cols=3)
         self.GroupBorderSpace(*self.DEFAULT_SPACE)
         # The two buttons.
         self.AddButton(id=self.ID_BTN_ADD,
@@ -217,14 +217,14 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     def PopulateDynamicGroup(self, isUpdate: bool = False):
         """Builds the dynamic part of the GUI.
 
-        This is a custom method, not a member of GeDialog.
+        This is a custom method that is not a member of GeDialog.
 
         Args:
-            isUpdate (bool, optional): Whether this is a GUI update event. Defaults to False.
+            isUpdate (bool, optional): If this is a GUI update event. Defaults to False.
 
         Raises:
-            MemoryError: If gadget allocation fails.
-            RuntimeError: If linking objects fails.
+            MemoryError: On gadget allocation failure.
+            RuntimeError: On linking objects failure.
         """
         # When this is an update event, i.e., the group #ID_GRP_ELEMENTS has been populated before,
         # flush the items in the group and set the gadget insertion pointer of this dialog to
@@ -272,7 +272,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     def AddEmptyItem(self) -> None:
         """Adds a new empty item to the data model and updates the GUI.
 
-        This is a custom method, not a member of GeDialog.
+        This is a custom method that is not a member of GeDialog.
         """
         self._items.append(None)
         self.PopulateDynamicGroup(isUpdate=True)
@@ -280,7 +280,7 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     def RemoveLastItem(self) -> None:
         """Removes the last item from the data model and updates the GUI.
 
-        This is a custom method, not a member of GeDialog.
+        This is a custom method that is not a member of GeDialog.
         """
         if len(self._items) > 0:
             self._items.pop()
@@ -289,10 +289,11 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
     def UpdateItem(self, cid: int):
         """Updates an item in the list of link boxes.
 
-        This is a custom method, not a member of GeDialog.
+        This is a custom method that is not a member of GeDialog.
 
         Args:
-            cid (int): The gadget ID for which this event was fired (guaranteed to be a link box).
+            cid (int): The gadget ID for which this event was fired (guaranteed to be a link box
+                GUI gadget ID unless I screwed up somewhere :D).
         """
         # The index of the link box and therefore index in self._items, e.g., the 0, 1, 2, 3, ...
         # link box GUI / item.
@@ -305,11 +306,12 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
             raise RuntimeError(
                 f"Could not access link box GUI for gadget id: {cid}")
 
-        # Retrieve the item in the link box GUI. This can return None, but that is acceptable, as we
-        # want to reflect in our data model self._items when a link box is empty. The second argument
-        # to GetLink() is a type filter. We pass #Tbaselist2d to indicate that we are interested in
-        # anything that is a BaseList2D. If we passed Obase (any object), and the user linked a material,
-        # the method would return None. If we passed Ocube, only cube objects would be retrieved.
+        # Retrieve the item in the link box gui. This can return None, but in this case we are
+        # okay with that, as we actually want to reflect in our data model self._items when
+        # link box is empty. The second argument to GetLink() is a type filter. We pass here
+        # #Tbaselist2d to indicate that we are interested in anything that is a BaseList2D. When
+        # would pass Obase (any object), and the user linked a material, the method would return
+        # None. If we would pass Ocube, only cube objects would be retrieved.
         item: typing.Optional[c4d.BaseList2D] = gui.GetLink(
             self._doc, c4d.Tbaselist2d)
 
@@ -321,12 +323,15 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
         """Called by Cinema 4D when the user interacts with a gadget.
 
         Args:
-            cid (int): The ID of the gadget that was interacted with.
-            msg (c4d.BaseContainer): The command data (not used here).
+            cid (int): The id of the gadget which has been interacted with.
+            msg (c4d.BaseContainer): The command data, not used here.
 
         Returns:
             bool: Success of the command.
         """
+        # You could also put a lot of logic into this method, but for an example it might be better
+        # to separate out the actual logic into methods to make things more clear.
+
         # The "Add Item" button has been clicked.
         if cid == self.ID_BTN_ADD:
             self.AddEmptyItem()
@@ -340,6 +345,22 @@ class DynamicGuiDialog(c4d.gui.GeDialog):
 
         return super().Command(cid, msg)
 
+    def CoreMessage(self, cid: int, msg: c4d.BaseContainer) -> bool:
+        """Called by Cinema 4D when a core event occurs.
+
+        You could use this to automatically update the dialog when the selection state in the 
+        document has changed. I did not flesh this one out.
+        """
+        # When "something" has happened in the, e.g., the selection has changed ...
+        # if cid == c4d.EVMSG_CHANGE:
+        # items: list[c4d.BaseList2D] = (
+        #     self._doc.GetSelection() + self._doc.GetActiveMaterials() if self._doc else [])
+
+        # newItems: list[c4d.BaseList2D] = list(n for n in items if n not in self._items)
+        # self.Items = self.Items + newItems
+
+        return super().CoreMessage(cid, msg)
+
 
 class DynamicGuiCommand (c4d.plugins.CommandData):
     """Realizes the common implementation for a command that opens a foldable dialog.
@@ -352,7 +373,7 @@ class DynamicGuiCommand (c4d.plugins.CommandData):
     REF_DIALOG: DynamicGuiDialog | None = None
 
     def GetDialog(self) -> DynamicGuiDialog:
-        """Returns the dialog instance bound to this class.
+        """Returns the class bound dialog instance.
         """
         # Instantiate a new dialog when there is none.
         if self.REF_DIALOG is None:
@@ -362,53 +383,53 @@ class DynamicGuiCommand (c4d.plugins.CommandData):
         return self.REF_DIALOG
 
     def Execute(self, doc: c4d.documents.BaseDocument) -> bool:
-        """Folds or unfolds the dialog window.
+        """Folds or unfolds the dialog.
         """
         # Get the dialog bound to this command data plugin type.
         dlg: DynamicGuiDialog = self.GetDialog()
-        # Fold the dialog, i.e., hide it if it is open and not already folded.
+        # Fold the dialog, i.e., hide it if it is open and unfolded.
         if dlg.IsOpen() and not dlg.GetFolding():
             dlg.SetFolding(True)
-        # Open or unfold the dialog. When we open the dialog, we do it asynchronously, so the
-        # user can unfocus the dialog and continue working in Cinema 4D while the dialog is open.
+        # Open or unfold the dialog. When we open the dialog, we do it asynchronously, i.e., the
+        # user can unfocus the dialog and continue working in Cinema 4D, while the dialog is open.
         # The alternative would be to open a modal dialog, which would force the user to focus the
-        # dialog until it is closed. Modal dialogs can be useful but cannot be docked in the layout.
+        # dialog until it is closed. Modal can be useful but cannot be docked in the layout.
         else:
             dlg.Open(c4d.DLG_TYPE_ASYNC, self.ID_PLUGIN, defaultw=300, defaulth=300)
-            # When the dialog does not yet have any items (i.e., has never been opened before), we
+            # When the dialog does not yet have any items, i.e., has never been opened before, we
             # add the currently selected items in the document to the dialog. Due to our abstraction,
-            # this will add the necessary GUI gadgets and link the selected items in the link boxes.
+            # this will add the necessary GUI gadgets and link the set items in the link boxes.
             if dlg.Items == []:
                 dlg.Items = doc.GetSelection()
 
         return True
 
     def RestoreLayout(self, secret: any) -> bool:
-        """Restores the dialog after layout changes.
+        """Restores the dialog on layout changes.
         """
         return self.GetDialog().Restore(self.ID_PLUGIN, secret)
 
     def GetState(self, doc: c4d.documents.BaseDocument) -> int:
         """Sets the command icon state of the plugin.
 
-        This method can tint the command icon blue when the dialog is open, or grey it out when
-        some condition is not met (not implemented here). For example, you could disable the plugin
-        when nothing is selected in the scene, or when the document is not in polygon editing mode, etc.
+        With this you can tint the command icon blue when the dialog is open or grey it out when
+        some condition is not met (not done here). You could for example disable the plugin when
+        there is nothing selected in a scene, when document is not in polygon editing mode, etc.
         """
-        # The icon is never greyed out; the button can always be clicked.
+        # The icon is never greyed out, the button can always be clicked.
         result: int = c4d.CMD_ENABLED
 
-        # Tint the icon blue when the dialog is already open and not folded.
+        # Tint the icon blue when the dialog is already open.
         dlg: DynamicGuiDialog = self.GetDialog()
         if dlg.IsOpen() and not dlg.GetFolding():
             result |= c4d.CMD_VALUE
 
         return result
     
-    # The unique ID of the plugin. It must be obtained from developers.maxon.net.
+    # The unique ID of the plugin, it must be obtained from developers.maxon.net.
     ID_PLUGIN: int = 1065633
 
-    # The name and help text for the plugin.
+    # The name and help text of the plugin.
     STR_NAME: str = "Py - Dynamic Gui"
     STR_HELP: str = "Opens a dialog whose content a user can change by interacting with it."
 
@@ -418,21 +439,24 @@ class DynamicGuiCommand (c4d.plugins.CommandData):
 
         This is a custom method and not part of the CommandData interface.
         """
-        # Load one of the built-in icons of Cinema 4D as the icon for the plugin. You can browse the
-        # built-in icons at:
+        # Load one of the builtin icons of Cinema 4D as the icon of the plugin, you can browse the
+        # builtin icons under:
+        #
         #   https://developers.maxon.net/docs/py/2023_2/modules/c4d.bitmaps/RESOURCEIMAGE.html
+        #
         # You could also load your own icon file here.
         bitmap: c4d.bitmaps.BaseBitmap = c4d.bitmaps.InitResourceBitmap(iconId)
 
-        # The instance of the command that is registered and will live throughout the entire
-        # lifetime of the Cinema 4D session. Commands are effectively singletons (although
+        # The instance of the command that will is registered and will live throughout the whole
+        # lifetime of the Cinema 4D session. I.e., commands are effectively singletons (although
         # not formally implemented as such).
         command: object = cls()
 
-        # Register the command. Registration can fail, for example, if the ID is already taken.
-        # If this happens, Cinema 4D will print an error message to the console automatically. When
-        # registering multiple plugins, it can make sense to stop registering if one fails, but we do
-        # not need this here, so we just ignore the return value of RegisterCommandPlugin().
+        # Register the command, a registration can fail, for example when the ID is already taken.
+        # But if this happens, Cinema 4D will print an error message to the console on its own. When
+        # we register multiple plugins, it can make sense to stop registering plugins, when one of
+        # them fails. But we do not need this here, so we just ignore the return value of the
+        # RegisterCommandPlugin() function.
         c4d.plugins.RegisterCommandPlugin(
             id=cls.ID_PLUGIN, str=cls.STR_NAME, info=0, icon=bitmap, help=cls.STR_HELP, dat=command)
 
