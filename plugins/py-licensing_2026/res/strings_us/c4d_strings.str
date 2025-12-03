@@ -1,0 +1,46 @@
+// Contains the global - i.e., neither description nor dialog specific - string definitions used in 
+// the py-licensing example.
+STRINGTABLE
+{
+  IDS_HLP_DATA  "Displays the licensing information exposed by Cinema 4D and the data defined by the plugin.
+
+Salt 1: The serial generation secret of the plugin, it is used to sign license keys generated for your plugin. This is a static value which must be kept secret.
+
+Salt 2: The file encryption secret of the plugin, it is used to encrypt license files created for your plugin. This is a static value which must be kept secret. 
+
+User Name: The name and surname of the user associated with the license that is currently active in Cinema 4D.
+
+User ID: The unique identifier of the user associated with the license that is currently active in Cinema 4D.
+
+System ID: The unique identifier of the system (hardware) the license that is currently active in Cinema 4D is bound to.
+
+Product ID: The unique identifier of the product the license that is currently active in Cinema 4D is bound to. This value can contain modifiers such as 'commercial' or 'beta' and is also different for Cinema 4D (app), the Commandline app, a Teams Render Client, etc. It is often not a good idea to bind plugins directly to the user using a specific Product ID. Instead we could look for certain modifiers such as 'commercial' being present in the Product ID. See also https://developers.maxon.net/docs/cpp/2026_0_0/page_maxonapi_pluginlicensing.html.
+
+Product Version: The version of Cinema 4D that is currently running.
+
+Account Licenses: A table of all product IDs, i.e., licenses, the user has currently in his or her account, including the number of seats available for each license.";
+
+
+  IDS_HLP_LICENSE  "Contains the settings and output for generating a license key for your plugin.
+
+When you 'just want to run' the example, simply press the 'Activate' button to activate a the currently generated license (and possibly change the activation mode before).
+License Type: The type of license to generate. 
+
+Storage Mode: Defines where the license key is stored. It can either be stored in a license file on disk or directly in Cinema 4D. Both storage forms are encrypted.
+
+Activation Mode: Defines whether a restart of Cinema 4D is required to apply the licensing changes made. If 'Requires Restart' is selected, the user will be prompted to restart Cinema 4D when activating or deactivating a license. If 'No Restart Required' is selected, the changes will be applied immediately without requiring a restart.
+
+Bind to System ID: If the generated license key should be bound to the given system ID of the user (i.e., what is currently shown in the Data section of this dialog).
+
+Bind to Product ID: If the generated license key should be bound to the given product ID of the user (i.e., what is currently shown in the Data section of this dialog).
+
+License Key: The generated license key for your plugin based on the selected settings.
+
+Generate: Generates a licenses key for the current settings (but does not activate it).
+
+Activate: Activates the license key shown in the License Key field.
+
+Deactivate: Deactivates all licenses for the plugin (both a possibly present license file and any license stored in Cinema 4D).";
+
+  IDS_DLG_RESTART_REQUIRED  "A restart of Cinema 4D is required to apply the licensing changes which have been made. Do you want to restart now?";
+}

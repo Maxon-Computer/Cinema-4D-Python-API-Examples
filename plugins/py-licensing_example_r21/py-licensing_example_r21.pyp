@@ -1,3 +1,7 @@
+"""This example has been deprecated, please refer to the py-licensing_2026 example for a more up to date
+licensing implementation.
+"""
+'''
 """
 Copyright: MAXON Computer GmbH
 Author: Maxime Adam
@@ -210,3 +214,4 @@ if __name__ == "__main__":
         RegisterPlugin()
     else:
         print("No license found for license_example.pyp")
+'''

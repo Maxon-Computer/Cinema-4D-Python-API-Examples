@@ -13,7 +13,7 @@ Class or methods highlighted:
     - c4d.plugins.ObjectData.Draw()
     - c4d.BaseDraw.SetPen()
 """
-__copyright__ = "Copyright 2022, MAXON Computer"
+__copyright__ = "Copyright 2024, MAXON Computer"
 __author__ = "Ferdinand Hoppe"
 __date__ = "13/09/2024"
 __license__ = "Apache-2.0 license"

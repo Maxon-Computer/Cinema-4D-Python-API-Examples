@@ -25,8 +25,8 @@ def main():
     if renderData is None:
         raise RuntimeError("Failed to retrieve the render setting.")
     renderSettings = renderData.GetDataInstance()
-    renderSettings[c4d.RDATA_XRES] = 1280
-    renderSettings[c4d.RDATA_YRES] = 720
+    renderSettings[c4d.RDATA_XRES] = 1280.0
+    renderSettings[c4d.RDATA_YRES] = 720.0
 
     # Reads the path stored in the render setting
     path = renderSettings[c4d.RDATA_PATH]

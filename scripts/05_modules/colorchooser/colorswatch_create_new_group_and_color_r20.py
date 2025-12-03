@@ -3,7 +3,9 @@ Copyright: MAXON Computer GmbH
 Author: Maxime Adam
 
 Description:
-    - Creates a swatch group and adds rainbow colors to it.
+    - Creates a swatch group and adds rainbow colors to it. A color swatch group can be found in
+      any color picker field in the attributes manager by clicking on the 'Color Swatches' icon
+      on the far right of the unfolded color field.
 
 Class/method highlighted:
     - c4d.modules.colorchooser.SwatchData
@@ -36,14 +38,7 @@ def main():
         # Creates rainbow colors and stores them in the previously created group
         hsv = c4d.Vector(float(i) * 0.05, 1.0, 1.0)
         rgb = c4d.utils.HSVToRGB(hsv)
-
-        # Creates a maxon.ColorA for the current color
-        col4 = maxon.ColorA()
-        col4.r = rgb.x
-        col4.g = rgb.y
-        col4.b = rgb.z
-        col4.a = 1.0
-        group.AddColor(col4)
+        group.AddColor(c4d.Vector4d(rgb.x, rgb.y, rgb.z, 1.0))
 
     # Inserts the swatch group in the last position
     index = swatchData.GetGroupCount(c4d.SWATCH_CATEGORY_DOCUMENT) - 1

@@ -12,12 +12,15 @@ Class/method highlighted:
 """
 import c4d
 
+doc: c4d.documents.BaseDocument  # The currently active document.
+
 
 def main():
     # Retrieves a copy of the current documents render settings
-    rd = doc.GetActiveRenderData().GetClone().GetDataInstance()
-    if rd is None:
-        raise RuntimeError("Failed to retrieve the clone of the active Render Settings.")
+    renderDataContainer = doc.GetActiveRenderData().GetDataInstance()
+    rdCopy = renderDataContainer.GetClone(c4d.COPYFLAGS_NONE)
+    if rdCopy is None:
+        raise RuntimeError("Failed to retrieve clone of the active render data container.")
 
     # Access the basedraw of the render view (filters etc.)
     bd = doc.GetRenderBaseDraw()
@@ -32,14 +35,14 @@ def main():
     bd[c4d.BASEDRAW_DISPLAYFILTER_HORIZON] = False
 
     # Gets the x and y res from the render settings
-    xRes = int(rd[c4d.RDATA_XRES])
-    yRes = int(rd[c4d.RDATA_YRES])
+    xRes = int(rdCopy[c4d.RDATA_XRES])
+    yRes = int(rdCopy[c4d.RDATA_YRES])
 
     # Sets various render parameters
-    rd[c4d.RDATA_FRAMESEQUENCE] = 3
-    rd[c4d.RDATA_SAVEIMAGE] = False
-    rd[c4d.RDATA_MULTIPASS_SAVEIMAGE] = False
-    rd[c4d.RDATA_RENDERENGINE] = c4d.RDATA_RENDERENGINE_PREVIEWHARDWARE
+    rdCopy[c4d.RDATA_FRAMESEQUENCE] = 3
+    rdCopy[c4d.RDATA_SAVEIMAGE] = False
+    rdCopy[c4d.RDATA_MULTIPASS_SAVEIMAGE] = False
+    rdCopy[c4d.RDATA_RENDERENGINE] = c4d.RDATA_RENDERENGINE_PREVIEWHARDWARE
 
     # Initializes the bitmap with the result size
     # The resolution must match with the output size of the render settings
@@ -51,7 +54,7 @@ def main():
         raise RuntimeError("Failed to initialize the Bitmap.")
 
     # Calls the renderer
-    res = c4d.documents.RenderDocument(doc, rd, bmp, c4d.RENDERFLAGS_EXTERNAL)
+    res = c4d.documents.RenderDocument(doc, rdCopy, bmp, c4d.RENDERFLAGS_EXTERNAL)
 
     # Leaves if there is an error while rendering
     if res != c4d.RENDERRESULT_OK:

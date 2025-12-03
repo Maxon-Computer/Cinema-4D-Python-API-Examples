@@ -31,7 +31,7 @@ def main():
     # interpolations to linear. Each knot in the knot data container is itself 
     # a c4d.BaseContainer, storing the data for a single knot.
     for _, knot in knotData:
-        knot[c4d.GRADIENTKNOT_INTERPOLATION] = c4d.GRADIENT_INTERPOLATION_NONE
+        knot[c4d.GRADIENTKNOT_INTERPOLATION] = c4d.GRADIENT_INTERPOLATION_LINEAR
 
     # Items can also be retrieved by their index from a BaseContainer, here 
     # the first index, i.e., second item, in the container. In this case the 

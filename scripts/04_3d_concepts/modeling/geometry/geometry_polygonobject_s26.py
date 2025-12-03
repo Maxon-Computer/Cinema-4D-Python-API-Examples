@@ -234,13 +234,13 @@ def ConstructPolygonObject() -> None:
     return cube
 
 def main(doc: c4d.documents.BaseDocument) -> None:
-    """Runs the example.
+    """Runs the example.Fi
 
     Args:
         doc: The active document.
     """
     # Run the example constructing a polygon object.
-    cube = ConstructPolygonObject(doc)
+    cube = ConstructPolygonObject()
 
     # Insert the polygon object into the document, wrapping the operation into an undo.
     if not doc.StartUndo():

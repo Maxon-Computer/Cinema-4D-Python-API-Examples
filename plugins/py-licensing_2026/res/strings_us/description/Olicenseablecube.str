@@ -1,0 +1,10 @@
+// Contains the string table for the Olicenseablecube description.
+STRINGTABLE Olicenseablecube
+{
+	Olicenseablecube "Licensable Cube";
+	
+	PY_LICENSABLE_CUBE_HEIGHT "Height";
+	PY_LICENSABLE_CUBE_WIDTH "Width";
+	PY_LICENSABLE_CUBE_DEPTH "Depth";
+	PY_LICENSABLE_GET_LICENSE "Get License";
+}

@@ -1,0 +1,35 @@
+// Contains the string definitions for the License Manager dialog used in the py-licensing example.
+DIALOGSTRINGS DLG_LICENSE_MANAGER
+{
+  IDS_LICENSE_MANAGER                            "Py - License Manager";
+
+  IDS_GRP_DATA                                   "Data";
+  IDS_LBL_DATA_SALT                              "Salt";
+  IDS_LBL_DATA_FILE_KEY                          "File Key";
+  IDS_LBL_DATA_USER_ID                           "User ID";
+  IDS_LBL_DATA_USER_NAME                         "User Name";
+  IDS_LBL_DATA_USER_SURNAME                      "User Surname";
+  IDS_LBL_DATA_SYSTEM_ID                         "System ID";
+  IDS_LBL_DATA_PRODUCT_VERSION                   "Product Version";
+  IDS_LBL_DATA_PRODUCT_ID                        "Product ID";
+  IDS_LBL_DATA_ACCOUNT_LICENSES                  "Account Licenses";
+
+  IDS_GRP_LICENSE                                "License";
+  IDS_LBL_LICENSE_TYPE                           "License Type";
+    IDS_CMB_LICENSE_TYPE_COMMERCIAL              "Commercial";
+    IDS_CMB_LICENSE_TYPE_DEMO                    "Demo";
+    IDS_CMB_LICENSE_TYPE_EDUCATIONAL             "Educational";
+    IDS_CMB_LICENSE_TYPE_NFR                     "NFR";
+  IDS_LBL_LICENSE_USE_SYSTEM_ID                  "Bind to System ID";
+  IDS_LBL_LICENSE_USE_PRODUCT_ID                 "Bind to Product ID";
+  IDS_BTN_LICENSE_GENERATE                       "Generate";
+  IDS_LBL_LICENSE_STORAGE_MODE                   "Storage Mode";
+    IDS_CMB_LICENSE_STORAGE_MODE_FILE            "License File";
+    IDS_CMB_LICENSE_STORAGE_MODE_SYSTEM          "Cinema 4D";
+  IDS_LBL_LICENSE_ACTIVATION_MODE                "Activation Mode";
+    IDS_CMB_LICENSE_ACTIVATION_MODE_RESTART      "Requires Restart";
+    IDS_CMB_LICENSE_ACTIVATION_MODE_NO_RESTART   "Does not Require Restart";
+  IDS_LBL_LICENSE_KEY                            "License Key";
+  IDS_BTN_LICENSE_ACTIVATE                       "Activate";
+  IDS_BTN_LICENSE_DEACTIVATE                     "Deactivate";
+}

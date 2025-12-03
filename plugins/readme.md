@@ -34,6 +34,6 @@ Contains code examples for implementing plugins using the Cinema 4D Python API.
 | py-xample_saver              | BitmapSaverData     | Demonstrates how to implement a custom bitmap saver to export a custom picture format into Cinema 4D. |
 | py-preference                | PreferenceData      | Demonstrates how to implement a preference category in the Cinema 4D preference dialog, exposing parameters as global preferences. |
 | py-render_token              | Render Token        | Demonstrates how to register two Tokens, one visible in the render settings and the other not. A token is a string that will be replaced during the token evaluation time by a string representation. |
-| py-licensing_example         | Licensing           | Demonstrates how a plugin can implement custom licensing in Python, opening a dialog that asks for the user's serial according to the current user_id logged in, and saving a file in the temp folder if the serial is correct. |
+| py-licensing_2026         | Licensing           | Demonstrates how to implement licensing checks in plugins. |
 
 `py-noise_falloff` is a legacy code example for falloffs, a technology that has been replaced by fields in R20. Falloffs are still supported for compatibility reasons, but new development should focus on fields instead.
