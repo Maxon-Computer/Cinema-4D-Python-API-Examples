@@ -1,0 +1,472 @@
+<!-- Realizes the HTML page that is displayed in the HtmlViewerCustomGui and used to control lights 
+ in Cinema 4D. 
+ 
+The page is styled to match the native UI of Cinema 4D and uses Bootstrap for layout and styling. 
+The page displays a list of lights in the scene, allowing the user to view and edit their properties 
+such as name, color, brightness, light type, shadow type, and enabled state. The page communicates 
+with the host application (Cinema 4D) using post messages to send and receive data about the lights 
+in the scene. -->
+
+<!DOCTYPE html>
+
+<!-- Apply the Bootstrap dark theme, add a minimal header, only including the charset and Bootstrap 
+ CSS links. -->
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" 
+        integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" 
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<!-- Style our page so that it is closer to the native UI of Cinema 4D.
+
+When displaying an alien web page, we can use any styling we want. But when the HtmlViewerCustomGui 
+is used to display a web based control to carry out actions in Cinema 4D, we must align its styling 
+with the native UI of Cinema 4D. The match does not have to be perfect, but we should match the 
+general colors, sizes, and font choices of the native UI. The styling and templating system shown 
+below is a starting point for that. The values in double curly braces, e.g., {{ someVariable }}, 
+are replaced by the dialog loading this file with values taken from the native UI at runtime.
+
+When we write CSS for the HtmlViewerCustomGui, we must target WebKit browsers (in the rare cases
+where we write browser specific CSS), e.g., Safari and Chrome. We can ignore all other browser 
+specific CSS as the HtmlViewerCustomGui is based on WebView2 (Windows) and WebKit (macOS). -->
+<style>
+    body {
+        --bs-body-font-size: {{ fontSize }};
+        --bs-body-font-family: {{ fontFamily }};
+        --bs-body-bg: {{ bgControl }};
+        --bs-body-color: {{ fgText }};
+
+        --bs-border-radius: 0.25rem;
+    }
+
+    /* scrollbar */
+    html, body, .scroll-pane {
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+    }
+
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: {{ bgControl }};
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: {{ bgButton }};
+        border-radius: 4px;
+    }
+
+    /* form controls */
+    .form-control {
+        background-color: {{ bgEdit }};
+        border-color: {{ bgEdit }};
+        font-size: {{ fontSize }};
+        padding: 0.2rem 0.4rem;
+    }
+
+    .form-control:focus,
+    .form-control:focus-visible {
+        background-color: {{ bgEdit }};
+        border-color: {{ bgFocus }};
+        box-shadow: none;
+    }
+
+    /* buttons */
+    .btn {
+        --bs-btn-padding-x: 0.5rem;
+        --bs-btn-padding-y: 0.05rem;
+        --bs-btn-bg: {{ bgButton }};
+        --bs-btn-border-color: {{ bgButton }};
+        --bs-btn-hover-bg: {{ bgButtonHighlight }};
+        --bs-btn-hover-border-color: {{ bgButtonHighlight }};
+        --bs-btn-active-bg: {{ bgButtonHighlight }};
+        --bs-btn-active-border-color: {{ bgButtonHighlight }};
+        --bs-btn-disabled-bg: {{ bgButtonDisabled }};
+        --bs-btn-disabled-border-color: {{ bgButtonDisabled }};
+
+        border-radius: 9999px;
+        font-size: {{ fontSize }};
+    }
+
+    .btn-icon {
+        background:none;
+        border:none;
+        color:inherit;
+        margin:0;
+    }
+
+    .btn:focus-visible {
+        background-color: {{ bgButtonHighlight }};
+        border-color: {{ bgFocus }};
+        box-shadow: none;
+    }
+
+    /* select */
+    .form-select,
+    .form-select:hover,
+    .form-select:focus {
+        background-color: {{ bgButton }};
+        border-color: {{ bgButton }};
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.375rem;
+    }
+
+    /* checkbox */
+    .form-check-input:checked {
+        background-color: {{ bgFocus }};
+        border-color: {{ bgFocus }};
+    }
+
+    /* color picker */
+    .form-control-color {
+        padding: 0.2rem !important;
+        height: 1.5rem;
+        width: 3rem;
+    }
+
+    /* range slider */
+    .form-range::-webkit-slider-runnable-track {
+        height: 5px;
+        background: {{ bgEdit }};
+        border-radius: 999px;
+    }
+
+    .form-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 10px;
+        height: 10px;
+        margin-top: -2px;
+        background: {{ bgFocus }};
+        border-radius: 50%;
+        box-shadow: none;
+        cursor: pointer;
+    }
+
+
+    /* Custom classes */
+    .object-container {
+        align-items: center;
+        display: grid;
+        grid-template-columns: 75px 1fr;
+        gap: 0.375rem;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .scene-object:not(:last-child) {
+        border-bottom: 1px solid {{ bgButton }};
+        padding-bottom: 0.4rem;
+        margin-bottom: 0.4rem;
+        
+    }
+    
+    /* This comment only exists so that the VS Code syntax highlighter does not have an existential 
+       crisis due to the invalid {{ }}  markup above. */
+</style>
+
+<!-- The content of the page is a list of scene lights. Each light row shows a header bar with the 
+    light name, color, and brightness. The header can be expanded to reveal additional properties
+    such as light type, shadow type, and enabled state. Changes made in the UI are sent to the host
+    application (Cinema 4D) via post messages. The host also pushes updated scene data to this page
+    whenever the scene changes. -->
+<body>
+    <div class="m-3">
+        <input type="hidden" id="currentSceneHash" value="0">
+        <div class="mb-1" id ="scene-container">
+        </div>
+    </div>
+</body>
+
+<!-- Now we have to define/include the JavaScript that will make this example work. -->
+
+<!-- Include the Bootstrap JS bundle. Required for the collapse component used to expand/collapse
+     the detail rows of each light entry. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js" 
+    integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Define the script that drives the browser <-> Cinema 4D data exchange of this example, this could of course 
+     also be a dedicated JS file -->
+<script>
+
+// Helper to escape HTML when interpolating values into the template
+function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+/** Returns an HTML string for a scene item. Use interpolation via the named fields.
+ */
+const ITEM_HTML = ({ objectHash = 0, name = '', position = [ '', '', '' ], color = '#ffffff', brightness = 0, 
+                    lightType = 0, shadowType = 0, isEnabled = 0 } = {}) => `
+<div class="scene-object" id="${escapeHtml(objectHash)}">
+    <!-- Header bar: name, color, brightness slider, unlabeled controls, chevron -->
+    <div class="d-flex align-items-center gap-2 w-100">
+        <input type="text" class="form-control item-name" value="${escapeHtml(name)}" placeholder="Name" 
+            style="max-width:10rem;">
+        <input type="color" class="form-control form-control-color item-color" value="${escapeHtml(color)}" 
+            style="min-width:3rem;">
+        <input type="range" min="0" max="1" step="0.01" class="form-range item-brightness-range" 
+            value="${escapeHtml(brightness)}">
+        <input type="number" min="0" max="100" class="form-control brightness-percent ms-2" 
+            value="${Math.round((brightness || 0) * 100)}" step="1" style="width:5rem">
+        <span>%</span>
+        <button class="toggle-collapse btn btn-icon" aria-expanded="false" 
+            aria-controls="collapse-${escapeHtml(objectHash)}" data-bs-toggle="collapse" 
+            data-bs-target="#collapse-${escapeHtml(objectHash)}">
+            <i class="bi bi-chevron-down"></i>
+        </button>
+        <button class="btn btn-icon btn-visibility" title="Show this light" 
+            style="width:2rem;height:2rem;">
+            <i class="bi bi-eye"></i>
+        </button>
+    </div>
+
+    <!-- Collapsible details -->
+    <div class="collapse mt-2 w-100" id="collapse-${escapeHtml(objectHash)}">
+        <div class="object-container">
+            <div class="label">Enabled</div>
+            <input type="checkbox" class="form-check-input item-enabled" ${isEnabled ? 'checked' : ''}>
+            <div class="label">Light Type</div>
+            <select class="form-control form-select item-light-type">
+                <option value="0" ${lightType == 0 ? 'selected' : ''}>Omni</option>
+                <option value="1" ${lightType == 1 ? 'selected' : ''}>Spot</option>
+                <option value="3" ${lightType == 3 ? 'selected' : ''}>Distant</option>
+                <option value="8" ${lightType == 8 ? 'selected' : ''}>Area</option>
+                <option value="2" ${lightType == 2 ? 'selected' : ''}>Square Spot</option>
+                <option value="4" ${lightType == 4 ? 'selected' : ''}>Parallel</option>
+                <option value="5" ${lightType == 5 ? 'selected' : ''}>Parallel Spot</option>
+                <option value="6" ${lightType == 6 ? 'selected' : ''}>Square Parallel Spot</option>
+                <option value="9" ${lightType == 9 ? 'selected' : ''}>IES</option>
+            </select>
+            <div class="label">Shadow Type</div>
+            <select class="form-control form-select item-shadow-type">
+                <option value="0" ${shadowType == 0 ? 'selected' : ''}>None</option>
+                <option value="1" ${shadowType == 1 ? 'selected' : ''}>Shadow Maps (Soft)</option>
+                <option value="2" ${shadowType == 2 ? 'selected' : ''}>Raytraced (Hard)</option>
+                <option value="3" ${shadowType == 3 ? 'selected' : ''}>Area</option>
+            </select>
+            <!--
+            <div class="label">Position.X</div>
+            <input type="number" class="form-control item-position-x" value="${escapeHtml(position[0])}" step="0.01">
+            <div class="label">Position.Y</div>
+            <input type="number" class="form-control item-position-y" value="${escapeHtml(position[1])}" step="0.01">
+            <div class="label">Position.Z</div>
+            <input type="number" class="form-control item-position-z" value="${escapeHtml(position[2])}" step="0.01">
+            -->
+        </div>
+    </div>
+</div>`;
+
+/** Builds the GUI from the data received from the host application (Cinema 4D). The data is expected 
+ * to be a JSON object with a sceneState property that contains an array of objects representing the 
+ * lights in the scene. Each object should have properties such as objectHash, name, position, color, 
+ * brightness, lightType, shadowType, and isEnabled.
+ * 
+ * @param {Object} data - The data received from the host application.
+ */
+function buildGuiFromData(data) {
+    if (!data || typeof data !== 'object' || !data?.sceneState)
+        return;
+
+    const incomingSceneHash = data.sceneState?.sceneHash || 0;
+    const objects = data.sceneState?.objects || [];
+    if (incomingSceneHash == 0 || !Array.isArray(objects))
+    return;
+
+    // Update the stored scene hash and remove all objects that are no longer present in the scene 
+    // data. We do not really make use of the scene hash in this example, but in a more complex
+    // scenario, the scene hash could be used to determine if we have to invalidate all data.
+    const currentSceneHash = document.getElementById('currentSceneHash')?.value || 0;
+    document.getElementById('currentSceneHash').value = incomingSceneHash;
+    for (const item of document.querySelectorAll('.scene-object')) {
+        if (!objects.some(obj => obj?.objectHash == item.id)) {
+            item.remove();
+        }
+    }
+
+    // Now we can add/update the objects in the scene data. We will create a new HTML element for
+    // each object that is not already present in the DOM.
+    for (const obj of objects) {
+        // There is no existing GUI/div for an object with the hash of #obj, so we create one.
+        if (!document.getElementById(obj?.objectHash || '')) {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = ITEM_HTML(obj).trim();
+            document.getElementById('scene-container').appendChild(wrapper.firstElementChild);
+        // The object already exists in the DOM, so we update its values.
+        } else {
+            const otherObj = document.getElementById(obj?.objectHash || '');
+            otherObj.querySelector('.item-name').value = obj?.name || '';
+            otherObj.querySelector('.item-color').value = obj?.color || '#ffffff';
+            otherObj.querySelector('.item-brightness-range').value = obj?.brightness || 0;
+            const pctEl = otherObj.querySelector('.brightness-percent');
+            if (pctEl) pctEl.value = Math.round((obj?.brightness || 0) * 100);
+            otherObj.querySelector('.item-light-type').value = obj?.lightType || 0;
+            otherObj.querySelector('.item-shadow-type').value = obj?.shadowType || 0;
+            otherObj.querySelector('.item-enabled').checked = obj?.isEnabled || false;
+        }
+    }
+}
+
+/** Handles receiving data from the host application as a JSON string.
+ *
+ * We assign our handler to window.maxon.messageListener, the cross-platform receive hook that
+ * behaves identically on Windows and macOS. It is invoked whenever the host application in
+ * Cinema 4D calls PostWebMessage() on its HtmlViewerCustomGui. The data is sent as a JSON string
+ * and we must parse it back to an object.
+ */
+window.maxon.messageListener = (message) => {
+    // Attempt to parse the data as JSON, if it is not valid JSON we will ignore it.
+    if (!message || typeof message !== 'string')
+        return;
+
+    try {
+        var data = JSON.parse(message);
+    }
+    catch (error) {
+        return;
+    }
+
+    // Check if this is a mxnCustomEvent message and if so, update the GUI state.
+    if (data?.mxnCustomEvent === 'sendLightData')
+        buildGuiFromData(data);
+};
+
+/** Sends a field-change notification to the host application (Cinema 4D) as a JSON post message.
+ *
+ * We send through window.maxon.postMessage(), the cross-platform send hook that behaves
+ * identically on Windows and macOS.
+ *
+ * @param {HTMLElement} row   - The .scene-object row whose data changed.
+ * @param {string}      field - The field name that was changed (e.g. 'brightness', 'name').
+ * @param {*}           value - The new value of the field.
+ */
+function postMessage(row, field, value) {
+    // Build the data ...
+    if (!row) return;
+
+    const payload = { mxnCustomEvent: 'receiveLightData', objectHash: row.id, field, value };
+    const msg = JSON.stringify(payload);
+
+    // ... and send it to the host application.
+    if (window?.maxon?.postMessage)
+        window.maxon.postMessage(msg);
+}
+
+// Below we define the event listeners for the various input fields in the GUI to handle sending data
+// back. In larger projects such a hyper-manual approach is of course not very practical, and we could
+// use a web framework to abstract away that manual work.
+
+/** Handles input events for the various input fields in the GUI. When an input field is changed, we 
+ * send a post message to the host application with the new value.
+ */
+document.addEventListener('input', (e) => {
+    const t = e.target;
+    if (!t) return;
+    const row = t.closest('.scene-object');
+    if (!row) return;
+
+    if (t.matches('.item-brightness-range')) {
+        const v = parseFloat(t.value) || 0;
+        postMessage(row, 'brightness', v);
+        return;
+    }
+
+    if (t.matches('.brightness-percent')) {
+        const p = parseFloat(t.value) || 0;
+        postMessage(row, 'brightness', Math.max(0, Math.min(100, Math.round(p))) / 100);
+        return;
+    }
+
+    if (t.matches('.item-name')) {
+        postMessage(row, 'name', t.value);
+        return;
+    }
+
+    if (t.matches('.item-color')) {
+        postMessage(row, 'color', t.value);
+        return;
+    }
+});
+
+/** Handles change events for the various select and checkbox fields in the GUI. When a select or 
+ * checkbox field is changed, we send a post message to the host application with the new value.
+ */
+document.addEventListener('change', (e) => {
+    const t = e.target;
+    if (!t) return;
+    const row = t.closest('.scene-object');
+    if (!row) return;
+
+    if (t.matches('.item-light-type')) {
+        postMessage(row, 'lightType', parseInt(t.value, 10));
+        return;
+    }
+
+    if (t.matches('.item-shadow-type')) {
+        postMessage(row, 'shadowType', parseInt(t.value, 10));
+        return;
+    }
+
+    if (t.matches('.item-enabled')) {
+        postMessage(row, 'isEnabled', t.checked ? 1 : 0);
+        return;
+    }
+});
+
+/** Handles click events for the visibility toggle button. When the button is clicked, we send a post 
+ * message to the host application with the new visibility state.
+ */
+document.addEventListener('click', (e) => {
+    const t = e.target;
+    if (!t) return;
+    const btn = t.closest('.btn-visibility');
+    if (!btn) return;
+    e.preventDefault();
+    const row = btn.closest('.scene-object');
+    if (!row) return;
+    const pressed = btn.getAttribute('aria-pressed') === 'true';
+    const next = !pressed;
+    btn.setAttribute('aria-pressed', String(next));
+    postMessage(row, 'makeVisible', next ? 1 : 0);
+});
+
+/** Handles input events for the various input fields in the GUI. When an input field is changed, we 
+ * send a post message to the host application with the new value.
+ */
+document.addEventListener('input', (e) => {
+    const target = e.target;
+    if (!target) return;
+
+    if (target.matches('.item-brightness-range')) {
+        const val = parseFloat(target.value);  // 0..1
+        const row = target.closest('.scene-object');
+        const pctInput = row?.querySelector('.brightness-percent');
+        if (pctInput) pctInput.value = Math.round(val * 100);
+    }
+
+    if (target.matches('.brightness-percent')) {
+        const p = parseFloat(target.value);
+        const row = target.closest('.scene-object');
+        const range = row?.querySelector('.item-brightness-range');
+        const clamped = isNaN(p) ? 0 : Math.max(0, Math.min(100, Math.round(p)));
+        if (range) range.value = (clamped / 100).toFixed(2);
+        target.value = clamped;
+    }
+});
+</script>
+
+</html>

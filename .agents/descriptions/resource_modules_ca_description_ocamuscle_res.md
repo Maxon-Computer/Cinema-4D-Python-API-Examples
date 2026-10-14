@@ -1,0 +1,131 @@
+# Description: Muscle
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/ca/description/ocamuscle.res`
+- **Symbol:** `Ocamuscle`
+- **Category:** Objects
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Base Object (`Obase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+Mode | ID_CA_MUSCLE_OBJECT_MODE | LONG |  |  |  | ID_CA_MUSCLE_OBJECT_MODE_EDIT; ID_CA_MUSCLE_OBJECT_MODE_ANIMATE
+State | ID_CA_MUSCLE_OBJECT_STATE | LONG |  |  |  | ID_CA_MUSCLE_OBJECT_STATE_RELAX; ID_CA_MUSCLE_OBJECT_STATE_COMPRESSED; ID_CA_MUSCLE_OBJECT_STATE_EXTENDED
+Auto Volume | ID_CA_MUSCLE_OBJECT_AUTO_COMPRESS | BOOL |  |  |  | 
+Auto Volume | ID_CA_MUSCLE_OBJECT_AUTO_EXTEND | BOOL |  |  |  | 
+Length | ID_CA_MUSCLE_OBJECT_RELAX_LENGTH | REAL | 0.0 |  |  | 
+Length | ID_CA_MUSCLE_OBJECT_COMPRESS_LENGTH | REAL | 0.0 |  |  | 
+Length | ID_CA_MUSCLE_OBJECT_EXTEND_LENGTH | REAL | 0.0 |  |  | 
+Set | ID_CA_MUSCLE_OBJECT_STATE_SET | BUTTON |  |  |  | 
+Shape | ID_CA_MUSCLE_OBJECT_SHAPE_RELAX | SPLINE |  |  |  | 
+Shape | ID_CA_MUSCLE_OBJECT_SHAPE_COMPRESS | SPLINE |  |  |  | 
+Shape | ID_CA_MUSCLE_OBJECT_SHAPE_EXTEND | SPLINE |  |  |  | 
+Add | ID_CA_MUSCLE_OBJECT_ANCHORS_ADD | BUTTON |  |  |  | 
+Remove | ID_CA_MUSCLE_OBJECT_ANCHORS_REMOVE | BUTTON |  |  |  | 
+Auto Align | ID_CA_MUSCLE_OBJECT_AUTO_ALIGN | BOOL |  |  |  | 
+Type | ID_CA_MUSCLE_OBJECT_TYPE | LONG |  |  |  | ID_CA_MUSCLE_OBJECT_TYPE_LINEAR; ID_CA_MUSCLE_OBJECT_TYPE_CUBIC; ID_CA_MUSCLE_OBJECT_TYPE_AKIMA; ID_CA_MUSCLE_OBJECT_TYPE_BSPLINE
+Segment Count | ID_CA_MUSCLE_OBJECT_SEGMENTS_COUNT | LONG | 1 |  |  | 
+Radial Count | ID_CA_MUSCLE_OBJECT_RADIAL_COUNT | LONG | 3 |  |  | 
+Subdivision | ID_CA_MUSCLE_OBJECT_SUBD | LONG | 0 | 6 |  | 
+Segment Resolution | ID_CA_MUSCLE_OBJECT_SEGMENTS_RES | LONG | 1 |  |  | 
+Radial Resolution | ID_CA_MUSCLE_OBJECT_RADIAL_RES | LONG | 3 |  |  | 
+Transition | ID_CA_MUSCLE_OBJECT_SHAPE_TRANSITION | SPLINE |  |  |  | 
+Subdivision | ID_CA_MUSCLE_OBJECT_SUBD_CALC | LONG | 0 | 6 |  | 
+Direction | ID_CA_MUSCLE_OBJECT_DEFORM | LONG |  |  |  | ID_CA_MUSCLE_OBJECT_DEFORM_RADIAL; ID_CA_MUSCLE_OBJECT_DEFORM_NORMAL; ID_CA_MUSCLE_OBJECT_DEFORM_DIRECTION
+Fat Offset | ID_CA_MUSCLE_OBJECT_FATOFFSET | REAL | 0.0 |  |  | 
+Object | ID_CA_MUSCLE_OBJECT_DEFORM_DIRECTION_LINK | LINK |  |  |  | 
+Dynamics | ID_CA_MUSCLE_OBJECT_DYNAMICS | BOOL |  |  |  | 
+On Frame | ID_CA_MUSCLE_OBJECT_DYNAMICS_FRAME | BOOL |  |  |  | 
+Strength | ID_CA_MUSCLE_OBJECT_STRENGTH | REAL | 0.0 |  |  | 
+Stiffness | ID_CA_MUSCLE_OBJECT_STIFFNESS | REAL | 0.0 | 100.0 |  | 
+Structure | ID_CA_MUSCLE_OBJECT_STRUCTUAL_STIFFNESS | REAL | 0.0 | 100.0 |  | 
+Volume Stiffness | ID_CA_MUSCLE_OBJECT_VOLUME_STIFFNESS | REAL | 0.0 | 100.0 |  | 
+Drag | ID_CA_MUSCLE_OBJECT_DRAG | REAL | 0.0 | 100.0 |  | 
+Stiffness | ID_CA_MUSCLE_OBJECT_STIFFNESS_CURVE | SPLINE |  |  |  | 
+Gravity | ID_CA_MUSCLE_OBJECT_GRAVITY | REAL |  |  |  | 
+Forces | ID_CA_MUSCLE_OBJECT_FORCES | IN_EXCLUDE |  |  |  | 
+Springs | ID_CA_MUSCLE_OBJECT_SPRINGS | LONG | 0 | 100 |  | 
+Iterations | ID_CA_MUSCLE_OBJECT_ITERATIONS | LONG | 1 | 1000 |  | 

@@ -1,0 +1,46 @@
+"""Retrieves a volume object from a volume builder.
+
+Topics:
+    * c4d.Ovolumebuilder
+    * c4d.Ovolume
+"""
+__author__ = "Maxime Adam"
+__copyright__ = "Copyright (C) 2026 MAXON Computer GmbH"
+__license__ = "Apache-2.0 License"
+__version__ = "R20"
+
+import c4d
+import maxon
+
+
+def main():
+    # Checks if there is an active object
+    if op is None:
+        raise ValueError("op is None, please select one object.")
+
+    # Checks if the selected object is a volume builder
+    if not op.IsInstanceOf(c4d.Ovolumebuilder):
+        raise TypeError("op is not a c4d.Ovolumebuilder.")
+
+    # Retrieves the volume builder cache
+    cache = op.GetCache()
+    if cache is None:
+        raise RuntimeError("Failed to retrieve the cache.")
+
+    # Checks if the cache object is a volume object
+    if not cache.IsInstanceOf(c4d.Ovolume):
+        raise TypeError("cache is not a c4d.Ovolume.")
+
+    # Retrieves the core volume interface
+    volume = cache.GetVolume()
+    if volume is None:
+        raise RuntimeError("Failed to retrieve the core volume, most likely there is no volume set.")
+    print(volume)
+
+    # Prints the grid name
+    gridName = volume.GetGridName()
+    print(gridName)
+
+
+if __name__ == '__main__':
+    main()

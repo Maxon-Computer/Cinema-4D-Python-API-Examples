@@ -1,0 +1,114 @@
+# Description: Target
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/mograph/description/oetarget.res`
+- **Symbol:** `Oetarget`
+- **Category:** Objects
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Base Object (`Obase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+### Deformer Panel (`Oedeformer_panel`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Deformation | ID_MG_EFFECTORDEFORMER_MODE | LONG |  |  |  | ID_MG_EFFECTORDEFORMER_MODE_OFF; ID_MG_EFFECTORDEFORMER_MODE_OBJECT; ID_MG_EFFECTORDEFORMER_MODE_POINT; ID_MG_EFFECTORDEFORMER_MODE_POLYGON
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+Strength | MGTARGETEFFECTOR_STRENGTH | REAL |  |  |  | 
+Selection | MGTARGETEFFECTOR_SELECTION | STRING |  |  |  | 
+Target Mode | MGTARGETEFFECTOR_MODE | LONG |  |  |  | MGTARGETEFFECTOR_MODE_OBJECT; MGTARGETEFFECTOR_MODE_CAMERA; MGTARGETEFFECTOR_MODE_NEXT; MGTARGETEFFECTOR_MODE_PREV; MGTARGETEFFECTOR_MODE_FIELDS
+Loop | MGTARGETEFFECTOR_LOOP | BOOL |  |  |  | 
+Set Weight | MGTARGETEFFECTOR_SETWEIGHT | BOOL |  |  |  | 
+Target Object | MGTARGETEFFECTOR_OBJECT | LINK |  |  |  | 
+Use Pitch | MGTARGETEFFECTOR_PITCH | BOOL |  |  |  | 
+Reverse Heading | MGTARGETEFFECTOR_REVERSEVECTOR | BOOL |  |  |  | 
+Up Vector | MGTARGETEFFECTOR_PRIMITIVEAXIS | LONG |  |  |  | MGTARGETEFFECTOR_PRIMITIVEAXIS_NONE; MGTARGETEFFECTOR_PRIMITIVEAXIS_LINK; MGTARGETEFFECTOR_PRIMITIVEAXIS_XP; MGTARGETEFFECTOR_PRIMITIVEAXIS_XN; MGTARGETEFFECTOR_PRIMITIVEAXIS_YP; MGTARGETEFFECTOR_PRIMITIVEAXIS_YN; MGTARGETEFFECTOR_PRIMITIVEAXIS_ZP; MGTARGETEFFECTOR_PRIMITIVEAXIS_ZN
+Object | MGTARGETEFFECTOR_UP | LINK |  |  |  | 
+Repel | MGTARGETEFFECTOR_REACT | BOOL |  |  |  | 
+Distance | MGTARGETEFFECTOR_RANGE | REAL | 0.0 |  |  | 
+Distance Strength | ETARG_RANGE_STRENGTH | REAL |  |  |  | 
+Deformation | ID_MG_EFFECTORDEFORMER_MODE | LONG |  |  |  | ID_MG_EFFECTORDEFORMER_MODE_OFF; ID_MG_EFFECTORDEFORMER_MODE_OBJECT; ID_MG_EFFECTORDEFORMER_MODE_POINT; ID_MG_EFFECTORDEFORMER_MODE_POLYGON

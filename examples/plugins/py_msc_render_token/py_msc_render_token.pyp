@@ -1,0 +1,89 @@
+"""Demonstrates how to register two Tokens, one visible in the render settings and the other not.
+
+The example registers two tokens and shows how one appears in render settings while the other remains hidden. Token evaluation replaces each token with its string representation.
+
+To run this example, place the file in the Cinema 4D plugins folder and restart Cinema 4D.
+
+Topics:
+    - Registering visible and hidden render tokens
+    - Replacing tokens with evaluated string values
+"""
+__copyright__ = "Copyright 2026, MAXON Computer"
+__author__ = "Maxime Adam"
+__date__ = "25/08/2026"
+__license__ = "Apache-2.0 license"
+__version__ = "21.0.0"
+
+import c4d
+
+
+def PythonToken(data):
+    """The function that will be called to return the string representation of a token.
+
+    Args:
+        data (c4d.BaseContainer): A BaseContainer filled with some informative data, where:
+            data[0]: The BaseDocument used for rendering, can be a clone of the original document.
+
+            data[1]: The RenderData used for rendering.
+            data[2]: The BaseContainer with the render settings (can be different from _rData->GetDataInstance()).
+            data[3]: The BaseTake used for rendering.
+            data[4]: The frame number used for rendering or NOTOK if the frame is not yet recognized.
+            data[5]: The pass user name if multipass is activated.
+            data[6]: The pass type name if multipass is activated.
+            data[7]: The pass ID used for rendering or NOTOK if multipass is not active or not yet recognized.
+            data[8]: True if the pass is a separated light pass.
+            data[9]: The light number id.
+            data[10]: True if the pass is a separated reflectance material pass.
+            data[11]: If _isLight is True or _isMaterial is True store here the object scene name.
+            data[12]: If True warning strings will be used for the Tokens that cannot be resolved.
+            data[13]: An owner node for certain tokens such as MoGraph cache tokens.
+
+    Returns:
+        str: The string that will replace the token
+    """
+
+    # Returns the frame number as a string. So this will replace the token by the frame number.
+    return str(data[4])
+
+
+def PythonHiddenToken(data):
+    """The function that will be called to return the string representation of a token.
+
+    Args:
+        data (c4d.BaseContainer): A BaseContainer filled with some informative data, where:
+            data[0]: The BaseDocument used for rendering, can be a clone of the original document.
+            data[1]: The RenderData used for rendering.
+            data[2]: The BaseContainer with the render settings (can be different from _rData->GetDataInstance()).
+            data[3]: The BaseTake used for rendering.
+            data[4]: The frame number used for rendering or NOTOK if the frame is not yet recognized.
+            data[5]: The pass user name if multipass is activated.
+            data[6]: The pass type name if multipass is activated.
+            data[7]: The pass ID used for rendering or NOTOK if multipass is not active or not yet recognized.
+            data[8]: True if the pass is a separated light pass.
+            data[9]: The light number id.
+            data[10]: True if the pass is a separated reflectance material pass.
+            data[11]: if _isLight is True or _isMaterial is True store here the object scene name.
+            data[12]: if True warning strings will be used for the Tokens that cannot be resolved.
+            data[13]: An owner node for certain tokens such as MoGraph cache tokens.
+
+    Returns:
+        str: The string that will replace the token
+    """
+
+    # Returns the frame number as a string. So this will replace the token by the frame number.
+    return str(data[4])
+
+
+if __name__ == "__main__":
+    # First it's important to check if the token is not already registered
+    for registeredToken in c4d.modules.tokensystem.GetAllTokenEntries():
+        # Checks if the token name is already used, if it's the case exit.
+        if registeredToken.get("_token") in ["PythonToken", "PythonHiddenToken"]:
+            exit()
+
+    # Registers the token "PythonToken" that will be visible in te render setting.
+    c4d.plugins.RegisterToken("PythonToken", "This is a Python Token", "001", PythonToken)
+
+    # Registers the token "PythonHiddenToken" it will not be visible in te render setting.
+    c4d.plugins.RegisterHiddenToken(
+        "PythonHiddenToken", "This is a Hidden Python Token", "001", PythonHiddenToken)

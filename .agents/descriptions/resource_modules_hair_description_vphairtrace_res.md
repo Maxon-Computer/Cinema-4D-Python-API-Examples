@@ -1,0 +1,71 @@
+# Description: Hair Tracer
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/hair/description/vphairtrace.res`
+- **Symbol:** `VPhairtrace`
+- **Category:** Video Posts
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Post Effect (`VPbase`)
+
+No parameters.
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Cache Primary Rays | HAIR_RENDER_PHYSICAL_CACHE_PRIMARY | BOOL |  |  |  | 
+Cache Secondary Rays | HAIR_RENDER_PHYSICAL_CACHE_SECONDARY | BOOL |  |  |  | 
+Cache Blurry Rays | HAIR_RENDER_PHYSICAL_CACHE_BLURRY | BOOL |  |  |  | 
+Cache GI Rays | HAIR_RENDER_PHYSICAL_CACHE_GI | BOOL |  |  |  | 
+No label | HAIR_RENDER_SEPARATOR_PHYSICAL_B | SEPARATOR |  |  |  | 
+GI Sampling | HAIR_RENDER_PHYSICAL_GI | LONG |  |  |  | HAIR_RENDER_PHYSICAL_GI_PIXEL; HAIR_RENDER_PHYSICAL_GI_VERTEX
+Sampling | HAIR_RENDER_COLOR_SAMPLING | LONG |  |  |  | HAIR_RENDER_COLOR_SAMPLING_FULL; HAIR_RENDER_COLOR_SAMPLING_VERTEX
+GI Quality | HAIR_RENDER_PHYSICAL_GI_QUALITY | REAL | 0.0 | 16000.0 |  | 
+Render | HAIR_RENDER_TYPE | LONG |  |  |  | HAIR_RENDER_TYPE_RASTER_8BIT; HAIR_RENDER_TYPE_RASTER_32BIT; HAIR_RENDER_TYPE_RASTER_POST; HAIR_RENDER_TYPE_RAYTRACED
+No label | HAIR_RENDER_SEPARATOR_A | SEPARATOR |  |  |  | 
+AA Quality | HAIR_RENDER_AA_QUALITY | LONG |  |  |  | HAIR_RENDER_AA_QUALITY_NONE; HAIR_RENDER_AA_QUALITY_LOW; HAIR_RENDER_AA_QUALITY_MED; HAIR_RENDER_AA_QUALITY_HIGH; HAIR_RENDER_AA_QUALITY_BEST; HAIR_RENDER_AA_QUALITY_USER
+Type | HAIR_RENDER_AA_MODE | LONG |  |  |  | HAIR_RENDER_AA_MODE_OLD; HAIR_RENDER_AA_MODE_NEW; HAIR_RENDER_AA_MODE_SUBPIXEL
+Filter | HAIR_RENDER_AA_USER | REAL | 0.0 |  |  | 
+No label | HAIR_RENDER_SEPARATOR_B | SEPARATOR |  |  |  | 
+Cast Shadows | HAIR_RENDER_SHADOWS | BOOL |  |  |  | 
+Transparency | HAIR_RENDER_TRANSPARENCY | BOOL |  |  |  | 
+Reflection/Refraction/Traced Shadows | HAIR_RENDER_TRACING | BOOL |  |  |  | 
+No label | HAIR_RENDER_SEPARATOR_C | SEPARATOR |  |  |  | 
+Tracing Memory | HAIR_RENDER_MEMORY_USE | LONG |  |  |  | HAIR_RENDER_MEMORY_USE_LOW; HAIR_RENDER_MEMORY_USE_MED; HAIR_RENDER_MEMORY_USE_HIGH; HAIR_RENDER_MEMORY_USE_MAX
+Shadows | HAIR_RENDER_SHADOW_TYPE | LONG |  |  |  | HAIR_RENDER_SHADOW_TYPE_NONE; HAIR_RENDER_SHADOW_TYPE_AUTO; HAIR_RENDER_SHADOW_TYPE_SOFT; HAIR_RENDER_SHADOW_TYPE_HARD
+No label | HAIR_RENDER_SEPARATOR_D | SEPARATOR |  |  |  | 
+Trans. Threshold | HAIR_RENDER_SHADOW_TRANS_ACCURACY | REAL | 0.0 | 100.0 |  | 
+Depth Threshold | HAIR_RENDER_SHADOW_DIST_ACCURACY | REAL | 0.0 |  |  | 
+No label | HAIR_RENDER_SEPARATOR_E | SEPARATOR |  |  |  | 
+Antialiasing | HAIR_RENDER_SHADOW_AA_LEVEL | LONG |  |  |  | HAIR_RENDER_AA_QUALITY_NONE; HAIR_RENDER_AA_QUALITY_LOW; HAIR_RENDER_AA_QUALITY_MED; HAIR_RENDER_AA_QUALITY_HIGH; HAIR_RENDER_AA_QUALITY_BEST; HAIR_RENDER_AA_QUALITY_USER
+Filter | HAIR_RENDER_SHADOW_AA_USER | REAL | 0.0 |  |  | 
+Sample Size | HAIR_RENDER_SHADOW_SAMPLE_SIZE | LONG | 0 | 65536 |  | 
+Shadow Map | HAIR_RENDER_SHADOWS_MAP | LONG |  |  |  | HAIR_RENDER_SHADOWS_MAP_250; HAIR_RENDER_SHADOWS_MAP_500; HAIR_RENDER_SHADOWS_MAP_750; HAIR_RENDER_SHADOWS_MAP_1000; HAIR_RENDER_SHADOWS_MAP_1250; HAIR_RENDER_SHADOWS_MAP_1500; HAIR_RENDER_SHADOWS_MAP_1750; HAIR_RENDER_SHADOWS_MAP_2000; HAIR_RENDER_SHADOWS_MAP_CUSTOM
+Resolution | HAIR_RENDER_SHADOW_CACHE_SIZE | LONG | 64 | 65536 |  | 
+No label | HAIR_RENDER_SEPARATOR_F | SEPARATOR |  |  |  | 
+Traced Width | HAIR_RENDER_SHADOW_WIDTH | REAL | 0.0 | 89.0 |  | 
+Mode | HAIR_RENDER_LIGHTS_MODE | LONG |  |  |  | HAIR_RENDER_MODE_INCLUDE; HAIR_RENDER_MODE_EXCLUDE
+Lights | HAIR_RENDER_LIGHTS | IN_EXCLUDE |  |  |  | 
+Hair | HAIR_RENDER_OBJECTS_HAIR | BOOL |  |  |  | 
+Polygon | HAIR_RENDER_OBJECTS_POLYGON | BOOL |  |  |  | 
+Spline | HAIR_RENDER_OBJECTS_SPLINE | BOOL |  |  |  | 
+Particle | HAIR_RENDER_OBJECTS_PARTICLE | BOOL |  |  |  | 
+Length | HAIR_RENDER_HAIR_LENGTH | REAL | 0.0 |  |  | 
+Count | HAIR_RENDER_HAIR_COUNT | LONG | 0 |  |  | 
+Mode | HAIR_RENDER_OBJECTS_MODE | LONG |  |  |  | HAIR_RENDER_MODE_INCLUDE; HAIR_RENDER_MODE_EXCLUDE
+Objects | HAIR_RENDER_OBJECTS | IN_EXCLUDE |  |  |  | 
+Image | HAIR_RENDER_MP_RGB | BOOL |  |  |  | 
+Depth | HAIR_RENDER_MP_DEPTH | LONG |  |  |  | HAIR_RENDER_MP_DEPTH_OFF; HAIR_RENDER_MP_DEPTH_ON; HAIR_RENDER_MP_DEPTH_OWN
+Alpha | HAIR_RENDER_MP_ALPHA | LONG |  |  |  | HAIR_RENDER_MP_ALPHA_OFF; HAIR_RENDER_MP_ALPHA_ON; HAIR_RENDER_MP_ALPHA_OWN
+Split Back | HAIR_RENDER_MP_SPLIT_BACK | BOOL |  |  |  | 
+Color | HAIR_RENDER_MP_COLOR | BOOL |  |  |  | 
+Diffuse | HAIR_RENDER_MP_DIFFUSE | BOOL |  |  |  | 
+Specular | HAIR_RENDER_MP_SPECULAR | BOOL |  |  |  | 
+Secondary | HAIR_RENDER_MP_SECONDARY_SPECULAR | BOOL |  |  |  | 
+Received Shadows | HAIR_RENDER_MP_RECIEVE_SHADOW | BOOL |  |  |  | 
+Self-Shadows | HAIR_RENDER_MP_SELF_SHADOW | BOOL |  |  |  | 
+Illumination | HAIR_RENDER_MP_ILLUMINATION | BOOL |  |  |  | 

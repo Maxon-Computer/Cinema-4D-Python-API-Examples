@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": false,
+
+    // Exclude common generated and documentation files from the workspace
+    "files.exclude": {
+      ".agents": true,
+      "AGENTS.md": true,
+      "**/documentation.html": true,
+      "docs": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true
+    },
+    "search.exclude": {
+      "**/documentation.html": true,
+      "**/docs": true,
+      "**/AGENTS.md": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true
+    }
+  }
+}

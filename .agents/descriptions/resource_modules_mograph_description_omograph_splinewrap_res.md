@@ -1,0 +1,118 @@
+# Description: Spline Wrap
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/mograph/description/omograph_splinewrap.res`
+- **Symbol:** `Omograph_splinewrap`
+- **Category:** Objects
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Base Object (`Obase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+Spline | MGSPLINEWRAPDEFORMER_SPLINE | LINK |  |  |  | 
+Rail | MGSPLINEWRAPDEFORMER_RAIL_SPLINE | LINK |  |  |  | 
+Axis | MGSPLINEWRAPDEFORMER_AXIS | LONG |  |  |  | MGSPLINEWRAPDEFORMER_AXIS_XP; MGSPLINEWRAPDEFORMER_AXIS_XN; MGSPLINEWRAPDEFORMER_AXIS_YP; MGSPLINEWRAPDEFORMER_AXIS_YN; MGSPLINEWRAPDEFORMER_AXIS_ZP; MGSPLINEWRAPDEFORMER_AXIS_ZN
+Strength | MGSPLINEWRAPDEFORMER_STRENGTH | REAL | 0.0 |  |  | 
+Offset | MGSPLINEWRAPDEFORMER_OFFSET | REAL |  |  |  | 
+From | MGSPLINEWRAPDEFORMER_FROM | REAL |  |  |  | 
+To | MGSPLINEWRAPDEFORMER_TO | REAL |  |  |  | 
+Mode | MGSPLINEWRAPDEFORMER_LENMODE | LONG |  |  |  | MGSPLINEWRAPDEFORMER_LENMODE_FIT; MGSPLINEWRAPDEFORMER_LENMODE_KEEP
+End Mode | MGSPLINEWRAPDEFORMER_MODE | LONG |  |  |  | MGSPLINEWRAPDEFORMER_MODE_CLAMP; MGSPLINEWRAPDEFORMER_MODE_EXTEND
+Scale from Rail | MGSPLINEWRAPDEFORMER_RAIL_SCALE | BOOL |  |  |  | 
+Size | MGSPLINEWRAPDEFORMER_SIZE | SPLINE |  |  |  | 
+Size Strength | MGSPLINEWRAPDEFORMER_SIZESTRN | REAL |  |  |  | 
+Spline Size | MGSPLINEWRAPDEFORMER_SPLINESIZE | SPLINE |  |  |  | 
+Spline Size Strength | MGSPLINEWRAPDEFORMER_SPLINESIZESTRN | REAL |  |  |  | 
+Rotation from Rail | MGSPLINEWRAPDEFORMER_RAIL_TARGET | BOOL |  |  |  | 
+Up Vector | MGSPLINEWRAPDEFORMER_UPVECTOR | VECTOR |  |  |  | 
+Banking | MGSPLINEWRAPDEFORMER_BANK | REAL |  |  |  | 
+Rotation | MGSPLINEWRAPDEFORMER_ROTATE | SPLINE |  |  |  | 
+Rotation Strength | MGSPLINEWRAPDEFORMER_ROTSTRN | REAL |  |  |  | 
+Spline Rotation | MGSPLINEWRAPDEFORMER_SLINEROTATE | SPLINE |  |  |  | 
+Spline Rotation Strength | MGSPLINEWRAPDEFORMER_SPLINEROTSTRN | REAL |  |  |  | 
+Fix Bounding Box | MGSPLINEWRAPDEFORMER_FIXBB | BOOL |  |  |  | 
+Bounding Box Center | MGSPLINEWRAPDEFORMER_BB_CENTER | VECTOR |  |  |  | 
+Bounding Box Size | MGSPLINEWRAPDEFORMER_BB_RADIUS | VECTOR |  |  |  | 

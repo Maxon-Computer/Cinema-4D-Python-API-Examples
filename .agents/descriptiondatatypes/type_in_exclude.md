@@ -1,0 +1,36 @@
+# Description Data Type: IN_EXCLUDE
+
+- **Cinema 4D Version:** `2027.0.0`
+
+This file describes the IN_EXCLUDE description data type and lists all flags encountered in the resources for Cinema 4D 2027.0.0.
+
+## Flags
+
+Flag | Arguments | Example
+---- | --------- | -------
+ACCEPT | 1035496 | <code>IN_EXCLUDE ID_DELTAMUSH_DEFORMER_INEXCLUDE_LIST<br>{<br>&nbsp;&nbsp;//NUM_FLAGS 1;<br>&nbsp;&nbsp;//IMAGE_01_ON 300000131;<br>&nbsp;&nbsp;//IMAGE_01_OFF 300000130;<br>&nbsp;&nbsp;//INIT_STATE 1;<br><br>&nbsp;&nbsp;ACCEPT{1035496;} // Accept DeltaMush Tag<br>}</code>
+ANIM | OFF | <code>IN_EXCLUDE REDSHIFT_MATERIAL_OVERRIDE_EXCLUSION_LIST<br>{<br>&nbsp;&nbsp;ANIM OFF;<br>&nbsp;&nbsp;ACCEPT { Mbase; };<br>}</code>
+BIG_MODE_SIZE | 100 | <code>IN_EXCLUDE REDSHIFT_TRACESET_OBJECTS<br>{<br>&nbsp;&nbsp;SCALE_V;<br>&nbsp;&nbsp;NUM_FLAGS 1;<br>&nbsp;&nbsp;INIT_STATE 1;<br>&nbsp;&nbsp;IMAGE_01_ON 1009316; IMAGE_01_OFF 1009320; // Hierarchy<br>&nbsp;&nbsp;NO_RESIZABLE;<br>&nbsp;&nbsp;BIG_MODE_SIZE 100;<br>&nbsp;&nbsp;ACCEPT { Obase; };<br>}</code>
+EDITPORT |  | <code>IN_EXCLUDE OP_MATTERWAVES_LIGHTLIST{ INPORT; EDITPORT; NUM_FLAGS 0; INIT_STATE 0; IMAGE_01_ON 1009316; IMAGE_01_OFF 1009320; ACCEPT { Olight; } }</code>
+HIDDEN |  | <code>IN_EXCLUDE TAKEBASE_OVERRIDES<br>{<br>&nbsp;&nbsp;HIDDEN;<br>&nbsp;&nbsp;NUM_FLAGS 0; INIT_STATE 0; SEND_SELCHNGMSG 1;<br>}</code>
+IMAGE_01_OFF | 300000130 | <code>IN_EXCLUDE ID_REMESH_GUIDE_SPLINES<br>{<br>&nbsp;&nbsp;NUM_FLAGS 1;<br>&nbsp;&nbsp;INIT_STATE 1;<br>&nbsp;&nbsp;IMAGE_01_ON 300000131;<br>&nbsp;&nbsp;IMAGE_01_OFF 300000130;<br>&nbsp;&nbsp;ACCEPT<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;Ospline;<br>&nbsp;&nbsp;}<br>}</code>
+IMAGE_01_ON | 300000131 | <code>IN_EXCLUDE ID_REMESH_GUIDE_SPLINES<br>{<br>&nbsp;&nbsp;NUM_FLAGS 1;<br>&nbsp;&nbsp;INIT_STATE 1;<br>&nbsp;&nbsp;IMAGE_01_ON 300000131;<br>&nbsp;&nbsp;IMAGE_01_OFF 300000130;<br>&nbsp;&nbsp;ACCEPT<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;Ospline;<br>&nbsp;&nbsp;}<br>}</code>
+IMAGE_02_OFF | 300000230 | <code>IN_EXCLUDE ID_CA_COLLISION_DEFORMER_OBJECT_COLLIDERS<br>{<br>&nbsp;&nbsp;NUM_FLAGS 2; INIT_STATE 3; SEND_SELCHNGMSG 1; SCALE_V;<br>&nbsp;&nbsp;IMAGE_01_ON 1009316; IMAGE_01_OFF 1009320;<br>&nbsp;&nbsp;IMAGE_02_ON 300000231; IMAGE_02_OFF 300000230;<br>&nbsp;&nbsp;ACCEPT { Obase; Tbase; };<br>}</code>
+IMAGE_02_ON | 300000231 | <code>IN_EXCLUDE ID_CA_COLLISION_DEFORMER_OBJECT_COLLIDERS<br>{<br>&nbsp;&nbsp;NUM_FLAGS 2; INIT_STATE 3; SEND_SELCHNGMSG 1; SCALE_V;<br>&nbsp;&nbsp;IMAGE_01_ON 1009316; IMAGE_01_OFF 1009320;<br>&nbsp;&nbsp;IMAGE_02_ON 300000231; IMAGE_02_OFF 300000230;<br>&nbsp;&nbsp;ACCEPT { Obase; Tbase; };<br>}</code>
+IMAGE_03_OFF | 1009320 | <code>IN_EXCLUDE REDSHIFT_LIGHT_EXCLUSION_LIST<br>{<br>&nbsp;&nbsp;SCALE_V; NUM_FLAGS 3;<br>&nbsp;&nbsp;INIT_STATE 7;<br>&nbsp;&nbsp;IMAGE_01_ON 1009314; IMAGE_01_OFF 1009318; // Illumination<br>&nbsp;&nbsp;IMAGE_02_ON 1009315; IMAGE_02_OFF 1009319; // Shadows<br>&nbsp;&nbsp;IMAGE_03_ON 1009316; IMAGE_03_OFF 1009320; // Hierarchy<br>&nbsp;&nbsp;ACCEPT { Obase; };<br>}</code>
+IMAGE_03_ON | 1009316 | <code>IN_EXCLUDE REDSHIFT_LIGHT_EXCLUSION_LIST<br>{<br>&nbsp;&nbsp;SCALE_V; NUM_FLAGS 3;<br>&nbsp;&nbsp;INIT_STATE 7;<br>&nbsp;&nbsp;IMAGE_01_ON 1009314; IMAGE_01_OFF 1009318; // Illumination<br>&nbsp;&nbsp;IMAGE_02_ON 1009315; IMAGE_02_OFF 1009319; // Shadows<br>&nbsp;&nbsp;IMAGE_03_ON 1009316; IMAGE_03_OFF 1009320; // Hierarchy<br>&nbsp;&nbsp;ACCEPT { Obase; };<br>}</code>
+IMAGE_04_OFF | 1009320 | <code>IN_EXCLUDE LIGHT_EXCLUSION_LIST { SCALE_V; NUM_FLAGS 4; INIT_STATE 15;<br>&nbsp;&nbsp;IMAGE_01_ON 1009314; IMAGE_02_ON 1009313; IMAGE_03_ON 1009315; IMAGE_04_ON 1009316;<br>&nbsp;&nbsp;IMAGE_01_OFF 1009318; IMAGE_02_OFF 1009317; IMAGE_03_OFF 1009319; IMAGE_04_OFF 1009320;<br>&nbsp;&nbsp;ACCEPT { Obase; }; }</code>
+IMAGE_04_ON | 1009316 | <code>IN_EXCLUDE LIGHT_EXCLUSION_LIST { SCALE_V; NUM_FLAGS 4; INIT_STATE 15;<br>&nbsp;&nbsp;IMAGE_01_ON 1009314; IMAGE_02_ON 1009313; IMAGE_03_ON 1009315; IMAGE_04_ON 1009316;<br>&nbsp;&nbsp;IMAGE_01_OFF 1009318; IMAGE_02_OFF 1009317; IMAGE_03_OFF 1009319; IMAGE_04_OFF 1009320;<br>&nbsp;&nbsp;ACCEPT { Obase; }; }</code>
+INIT_STATE | 1 | <code>IN_EXCLUDE MGSCATTER_AREA_INEX_LIST<br>{<br>&nbsp;&nbsp;NUM_FLAGS 1;<br>&nbsp;&nbsp;INIT_STATE 1;<br><br>&nbsp;&nbsp;ACCEPT<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;Obase;<br>&nbsp;&nbsp;}<br>}</code>
+INPORT |  | <code>IN_EXCLUDE IN_INEXCLUDELIST { INPORT; MULTIPLE; }</code>
+MULTIPLE |  | <code>IN_EXCLUDE IN_INEXCLUDELIST { INPORT; MULTIPLE; }</code>
+NO_RESIZABLE |  | <code>IN_EXCLUDE REDSHIFT_TRACESET_OBJECTS<br>{<br>&nbsp;&nbsp;SCALE_V;<br>&nbsp;&nbsp;NUM_FLAGS 1;<br>&nbsp;&nbsp;INIT_STATE 1;<br>&nbsp;&nbsp;IMAGE_01_ON 1009316; IMAGE_01_OFF 1009320; // Hierarchy<br>&nbsp;&nbsp;NO_RESIZABLE;<br>&nbsp;&nbsp;BIG_MODE_SIZE 100;<br>&nbsp;&nbsp;ACCEPT { Obase; };<br>}</code>
+NUM_FLAGS | 0 | <code>IN_EXCLUDE MGMOSPLINEOBJECT_PARTICLEFIELDS { NUM_FLAGS 0; ACCEPT { Obase; Oparticle; } }</code>
+OPEN |  | <code>IN_EXCLUDE TMORPHCAM_LIST_LINKS { OPEN; NUM_FLAGS 0; ACCEPT { Ocamera; /&#42;Orscamera&#42;/1057516; 1028083; } }</code>
+OUTPORT |  | <code>IN_EXCLUDE OUT_INEXCLUDELIST { OUTPORT; MULTIPLE; }</code>
+PARENTCOLLAPSE | PBD_CONSTRAINT_TAG_OTHER_OBJECTS | <code>IN_EXCLUDE PBD_CONSTRAINT_TAG_EXCLUDE_OBJECTS<br>{<br>&nbsp;&nbsp;ANIM OFF;<br>&nbsp;&nbsp;PARENTCOLLAPSE PBD_CONSTRAINT_TAG_OTHER_OBJECTS;<br>&nbsp;&nbsp;NUM_FLAGS 0;<br>&nbsp;&nbsp;INIT_STATE 0;<br>&nbsp;&nbsp;SMALL_MODE_SIZE 80;<br>&nbsp;&nbsp;BIG_MODE_SIZE 150;<br>&nbsp;&nbsp;ACCEPT<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;100004020; // CLOTH_TAG_ID<br>&nbsp;&nbsp;&nbsp;&nbsp;100004021; // COLLIDER_TAG_ID<br>&nbsp;&nbsp;&nbsp;&nbsp;100004022; // BELT_TAG_ID<br>&nbsp;&nbsp;&nbsp;&nbsp;1017326; // HAIR_COLLIDER_TAG_ID<br>&nbsp;&nbsp;&nbsp;&nbsp;1018068; // HAIR_SPLINE_DYNAMICS_TAG_ID<br>&nbsp;&nbsp;&nbsp;&nbsp;1018074; // HAIR_CONSTRAINT_TAG_ID<br>&nbsp;&nbsp;&nbsp;&nbsp;1058895; // ID_PBDCONSTRAINTTAG<br>&nbsp;&nbsp;&nbsp;&nbsp;1059981; // ID_RIGIDBODYTAG<br>&nbsp;&nbsp;}<br>&nbsp;&nbsp;REFUSE { }<br>}</code>
+REFUSE | GVbase VPbase Tbase Mbase | <code>IN_EXCLUDE MGTRACEROBJECT_OBJECTLIST<br>{<br>&nbsp;&nbsp;ACCEPT<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;Obase;<br>&nbsp;&nbsp;&nbsp;&nbsp;1001381;<br>&nbsp;&nbsp;}<br>&nbsp;&nbsp;REFUSE<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;GVbase;<br>&nbsp;&nbsp;&nbsp;&nbsp;VPbase;<br>&nbsp;&nbsp;&nbsp;&nbsp;Tbase;<br>&nbsp;&nbsp;&nbsp;&nbsp;Mbase;<br>&nbsp;&nbsp;}<br>}</code>
+SCALE_H |  | <code>IN_EXCLUDE TBP_PART_JOINTS { SCALE_H; SCALE_V; }</code>
+SCALE_V |  | <code>IN_EXCLUDE REDSHIFT_BAKESET_OBJECTS<br>{<br>&nbsp;&nbsp;SCALE_V;<br>&nbsp;&nbsp;ACCEPT { Obase; };<br>}</code>
+SEND_SELCHNGMSG | 1 | <code>IN_EXCLUDE PARTICLEOBJECT_INCLUDE<br>{<br>&nbsp;&nbsp;NUM_FLAGS 0; INIT_STATE 0; SEND_SELCHNGMSG 1;<br>&nbsp;&nbsp;ACCEPT { Obase; };<br>}</code>
+SMALL_MODE_SIZE | 80 | <code>IN_EXCLUDE FP_MULTI_GROUP_SCENE_LINK_LIST<br>{<br>&nbsp;&nbsp;NUM_FLAGS 1;<br>&nbsp;&nbsp;INIT_STATE 1;<br>&nbsp;&nbsp;SEND_SELCHNGMSG 1;<br>&nbsp;&nbsp;SMALL_MODE_SIZE 80;<br>&nbsp;&nbsp;BIG_MODE_SIZE 150;<br>&nbsp;&nbsp;IMAGE_01_ON 300000131;<br>&nbsp;&nbsp;IMAGE_01_OFF 300000130;<br>&nbsp;&nbsp;ACCEPT<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;1060887; // Ofpgroup<br>&nbsp;&nbsp;}<br>}</code>

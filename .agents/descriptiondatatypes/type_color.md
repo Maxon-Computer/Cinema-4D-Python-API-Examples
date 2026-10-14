@@ -1,0 +1,26 @@
+# Description Data Type: COLOR
+
+- **Cinema 4D Version:** `2027.0.0`
+
+This file describes the COLOR description data type and lists all flags encountered in the resources for Cinema 4D 2027.0.0.
+
+## Flags
+
+Flag | Arguments | Example
+---- | --------- | -------
+ANIM | OFF | <code>COLOR REDSHIFT_MATERIAL_OVERRIDE_COLOR { ANIM OFF; }</code>
+COLOR_AS_UI_COLOR |  | <code>COLOR ID_GVBASE_COLOR { COLOR_AS_UI_COLOR; }</code>
+DEFAULT | 0 | <code>COLOR ID_MG_BASEEFFECTOR_COLOR<br>{<br>&nbsp;&nbsp;DEFAULT 0;<br>}</code>
+EDITPORT |  | <code>COLOR TP_IF_LIGHT_COLOR { INPORT; EDITPORT; }</code>
+FIELD | COLOR | <code>COLOR FIELDLAYER_SOLID_COLOR { OPEN; FIELD COLOR; }</code>
+FIT_H |  | <code>COLOR DOCUMENT_DEFAULTMATERIAL_COLOR { ANIM OFF; FIT_H; }</code>
+HIDDEN |  | <code>COLOR MATERIAL_REFLECTION_COLOR { HIDDEN; }</code>
+HIDEINPORT |  | <code>COLOR ID_LAYER_COLOR { ANIM OFF; HIDEINPORT; }</code>
+INPORT |  | <code>COLOR GV_MG_SAMPLEEFFECTOR_ICOLOR<br>{<br>&nbsp;&nbsp;INPORT;<br>}</code>
+OPEN |  | <code>COLOR MATERIAL_COLOR_COLOR { OPEN; }</code>
+OUTPORT |  | <code>COLOR GV_MG_DATA_OCOLOR<br>{<br>&nbsp;&nbsp;OUTPORT;<br>}</code>
+PARENTCOLLAPSE | CAMERAOBJECT_DISPLAY_RESOLUTION | <code>COLOR CAMERAOBJECT_DISPLAY_RESOLUTION_COLOR { PARENTCOLLAPSE CAMERAOBJECT_DISPLAY_RESOLUTION; }</code>
+PARENTID | GW_FF_COLORON | <code>COLOR GW_FF_COLOR { PARENTID GW_FF_COLORON; }</code>
+PORTONLY |  | <code>COLOR TP_OUT_IF_LIGHT_COLOR { OUTPORT; PORTONLY; }</code>
+SCALE_H |  | <code>COLOR GW_COL { SCALE_H; }</code>
+UNIMPORTANTFORDEFAULTS |  | <code>COLOR ANNOTATIONTAG_COLOR { UNIMPORTANTFORDEFAULTS; ANIM OFF; }</code>

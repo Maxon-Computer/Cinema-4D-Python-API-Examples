@@ -1,0 +1,15 @@
+# Description Data Type: RSCOLORALPHA
+
+- **Cinema 4D Version:** `2027.0.0`
+
+This file describes the RSCOLORALPHA description data type and lists all flags encountered in the resources for Cinema 4D 2027.0.0.
+
+## Flags
+
+Flag | Arguments | Example
+---- | --------- | -------
+CREATEPORT |  | <code>RSCOLORALPHA GV_REDSHIFT_C4DSHADER_OUTPUT { OUTPORT; PORTONLY; CREATEPORT; }</code>
+INPORT |  | <code>RSCOLORALPHA GV_REDSHIFT_OUTPUT_ENVIRONMENT { INPORT; PORTONLY; }</code>
+OUTPORT |  | <code>RSCOLORALPHA GV_REDSHIFT_C4DSHADER_OUTPUT { OUTPORT; PORTONLY; CREATEPORT; }</code>
+PORTONLY |  | <code>RSCOLORALPHA GV_REDSHIFT_OUTPUT_ENVIRONMENT { INPORT; PORTONLY; }</code>
+STATICPORT |  | <code>RSCOLORALPHA GV_REDSHIFT_MULTISHADER_OUTPUT_COLOR { OUTPORT; PORTONLY; CREATEPORT; STATICPORT; }</code>

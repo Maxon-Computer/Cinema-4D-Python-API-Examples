@@ -1,0 +1,15 @@
+# Description Data Type: GVGENERALINSTANCE
+
+- **Cinema 4D Version:** `2027.0.0`
+
+This file describes the GVGENERALINSTANCE description data type and lists all flags encountered in the resources for Cinema 4D 2027.0.0.
+
+## Flags
+
+Flag | Arguments | Example
+---- | --------- | -------
+CREATEPORT |  | <code>GVGENERALINSTANCE GV_DETAILS_INPUT_OBJECT { INPORT; STATICPORT; CREATEPORT; }</code>
+INPORT |  | <code>GVGENERALINSTANCE GV_OBJECT_OPERATOR_OBJECT_IN { INPORT; }</code>
+ITERATOR |  | <code>GVGENERALINSTANCE GV_INCLUDE_OUTPUT_OBJECT { OUTPORT; STATICPORT; CREATEPORT; ITERATOR; }</code>
+OUTPORT |  | <code>GVGENERALINSTANCE GV_OBJECT_OPERATOR_OBJECT_OUT { OUTPORT; }</code>
+STATICPORT |  | <code>GVGENERALINSTANCE GV_DETAILS_INPUT_OBJECT { INPORT; STATICPORT; CREATEPORT; }</code>

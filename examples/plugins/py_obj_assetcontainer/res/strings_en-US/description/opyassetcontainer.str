@@ -1,0 +1,11 @@
+STRINGTABLE Opyassetcontainer
+{
+    Opyassetcontainer "Asset Container Object";
+
+    PY_ASSETCONTAINER_SELECTION "Selection";
+    PY_ASSETCONTAINER_SELECTION_NONE "None";
+    PY_ASSETCONTAINER_SOURCE "Source";
+    PY_ASSETCONTAINER_ADD "Add";
+    PY_ASSETCONTAINER_DELETE "Delete";
+    PY_ASSETCONTAINER_INSTRUCTIONS "";
+}

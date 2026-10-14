@@ -1,0 +1,70 @@
+# Description: Dynamics Collision
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/dynamics/description/gvdyncollision.res`
+- **Symbol:** `GVdyncollision`
+- **Category:** Graph View
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Node (`GVbase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Enabled | ID_GVBASE_ENABLE | BOOL |  |  |  | 
+Title Color | ID_GVBASE_COLOR | COLOR |  |  |  | 
+Remark | ID_GVBASE_REMARK | STRING |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Enabled | ID_GVBASE_ENABLE | BOOL |  |  |  | 
+Title Color | ID_GVBASE_COLOR | COLOR |  |  |  | 
+Remark | ID_GVBASE_REMARK | STRING |  |  |  | 
+Object A | COLLISION_NODE_OBJECT_A | LINK |  |  |  | 
+Object B | COLLISION_NODE_OBJECT_B | LINK |  |  |  | 
+One Collision per Pair | COLLISION_NODE_SINGLE_COLLISION | BOOL |  |  |  | 
+Collision Index | COLLISION_NODE_INPUT_COLLISION_INDEX | LONG | 0 |  |  | 
+Object A | COLLISION_NODE_INPUT_OBJECT_A | GVGENERALOBJECT |  |  |  | 
+Object Index A | COLLISION_NODE_INPUT_INDEX_A | LONG | 0 |  |  | 
+Object B | COLLISION_NODE_INPUT_OBJECT_B | GVGENERALOBJECT |  |  |  | 
+Object Index B | COLLISION_NODE_INPUT_INDEX_B | LONG | 0 |  |  | 
+Object A | COLLISION_NODE_OUTPUT_OBJECT_A | GVGENERALOBJECT |  |  |  | 
+Tag A | COLLISION_NODE_OUTPUT_TAG_A | GVGENERALTAG |  |  |  | 
+Object Index A | COLLISION_NODE_OUTPUT_INDEX_A | LONG |  |  |  | 
+Object B | COLLISION_NODE_OUTPUT_OBJECT_B | GVGENERALOBJECT |  |  |  | 
+Tag B | COLLISION_NODE_OUTPUT_TAG_B | GVGENERALTAG |  |  |  | 
+Object Index B | COLLISION_NODE_OUTPUT_INDEX_B | LONG |  |  |  | 
+Count | COLLISION_NODE_OUTPUT_COUNT | LONG |  |  |  | 
+Ghost | COLLISION_NODE_OUTPUT_GHOST | BOOL |  |  |  | 
+Point A | COLLISION_NODE_OUTPUT_POINT_A | VECTOR |  |  |  | 
+Local Point A | COLLISION_NODE_OUTPUT_LOCAL_POINT_A | VECTOR |  |  |  | 
+Point B | COLLISION_NODE_OUTPUT_POINT_B | VECTOR |  |  |  | 
+Local Point B | COLLISION_NODE_OUTPUT_LOCAL_POINT_B | VECTOR |  |  |  | 
+Normal | COLLISION_NODE_OUTPUT_NORMAL | NORMAL |  |  |  | 
+Speed | COLLISION_NODE_OUTPUT_SPEED | REAL |  |  |  | 
+Distance | COLLISION_NODE_OUTPUT_DISTANCE | REAL |  |  |  | 
+Force | COLLISION_NODE_OUTPUT_FORCE | REAL |  |  |  | 
+Force for Pair | COLLISION_NODE_OUTPUT_FORCE_FOR_PAIR | VECTOR |  |  |  | 

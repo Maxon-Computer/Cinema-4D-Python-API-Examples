@@ -1,0 +1,38 @@
+# Node Template: Spline Control Points
+
+- **Node Space ID:** `net.maxon.neutron.nodespace`
+- **Template ID:** `net.maxon.neutron.node.distribution.spline.controlpoints`
+- **Template Name:** `Spline Control Points`
+
+## Attributes
+
+See `.agents/nodes.md` for an overview of Nodes API skills. Not all attributes and ports have a min, max, or default value. Enum values are listed in the form label = value, labe = value, label = value. I.e., if a user asks you to set the an enum attribute or port to "Foo" (citing an UI label), you must search for the label "Foo" in the enum values and use the corresponding value in your code. If a user asks you to set an attribute or port to a value that is not listed in the enum values, you must respond with an error message.
+
+Name | ID  | Data Type | Parameter Type | isVariadic | isNested | isEnum | Min Value | Max Value | Default Value | Enum Values
+---- | --- | --------- | -------------- | ---------- | -------- | ------ | --------- | --------- | ------------- | -----------
+Basic/Asset Version | net.maxon.node.base.assetversion | maxon::Id | Attribute | false | false | true |  |  |  | Latest = latest
+Basic/Color | net.maxon.node.base.color | maxon::Color | Attribute | false | false | false |  |  |  | 
+Basic/Comment | net.maxon.node.base.comment | maxon::String | Attribute | false | false | false |  |  |  | 
+Basic/Display Comment | net.maxon.node.base.displaycomment | maxon::Bool | Attribute | false | false | false |  |  |  | 
+Basic/Name | net.maxon.node.base.name | maxon::String | Attribute | false | false | false |  |  |  | 
+Basic/Ports Display | net.maxon.node.base.portdisplay | maxon::Id | Attribute | false | false | true |  |  | all | Collapsed = none, Connected = connected, Expanded = all
+Basic/Show Preview | net.maxon.node.base.displaypreview | maxon::Bool | Attribute | false | false | false |  |  | true | 
+Filter Tags | net.maxon.node.base.filtertags | maxon::CString | Attribute | false | false | false |  |  |  | 
+Node Category | net.maxon.node.base.category | maxon::InternedId | Attribute | false | false | true |  |  | distributions | distributions = distributions, operators = operators, geometries = geometries, patterns = patterns, primitives = primitives, effectors = effectors, fields = fields, functions = functions, structures = structures, geomodifiers = geomodifiers, geogenerators = geogenerators
+Operator/Rail Object/Geometry | <railobjectin/geometry | maxon::GeometryObject | Attribute | false | false | false |  |  |  | 
+Operator/Rail Object/Matrix | <railobjectin/matrix | maxon::Matrix | Attribute | false | false | false |  |  |  | 
+Preview/Node | net.maxon.node.base.nodepreviewimage | maxon::ImageBaseRef | Attribute | false | false | false |  |  |  | 
+Operator/Align | <enablealignin | maxon::Bool | Input | false | false | false |  |  | true | 
+Operator/Align Offset | <alignoffsetin | maxon::Float | Input | false | false | false |  |  |  | 
+Operator/End Offset | <endoffsetin | maxon::Float | Input | false | false | false | -100 | 100 | 1 | 
+Operator/Geometry | <geometryin | maxon::GeometryObject | Input | false | false | false |  |  |  | 
+Operator/Looping | <enableloopingin | maxon::Bool | Input | false | false | false |  |  | true | 
+Operator/Per Segment | <enablepersegmentin | maxon::Bool | Input | false | false | false |  |  | false | 
+Operator/Rail Object | <railobjectin | net.maxon.neutron.portbundle.object | Input | false | true | false |  |  |  | 
+Operator/Random Offset | <randomoffsetin | maxon::Float | Input | false | false | false | -100 | 100 |  | 
+Operator/Seed | <randomseedin | maxon::Int | Input | false | false | false | 0 | 100 | 12345 | 
+Operator/Spline Offset | <offsetin | maxon::Float | Input | false | false | false | -100 | 100 |  | 
+Operator/Start Offset | <startoffsetin | maxon::Float | Input | false | false | false | -100 | 100 |  | 
+Operator/Up Vector | <upvectorin | maxon::Id | Input | false | false | true |  |  | tangent | enum#net.maxon.neutron.datatype.enum.alignaxis = enum#net.maxon.neutron.datatype.enum.alignaxis, Rail = railobject, Tangent = tangent
+Outputs/Distribution | >distdataout |  | Output | false | false | false |  |  |  | 
+

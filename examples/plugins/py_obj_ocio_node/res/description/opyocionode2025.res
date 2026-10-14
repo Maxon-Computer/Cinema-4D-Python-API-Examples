@@ -1,0 +1,10 @@
+CONTAINER Opyocionode2025
+{
+  NAME Opyocionode2025;
+  INCLUDE Obase;
+
+  GROUP ID_OBJECTPROPERTIES
+  {
+    COLOR OCIO_NODE_2025_COLOR {}
+  }
+}

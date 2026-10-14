@@ -1,0 +1,43 @@
+# Description: Units
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/c4d_xtensions/description/prefsunits.res`
+- **Symbol:** `Prefsunits`
+- **Category:** Other
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+No base descriptions.
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Show Units | PREF_UNITS_DISPLAY | BOOL |  |  |  | 
+Automatic Conversion | PREF_UNITS_AUTOCONVERT | BOOL |  |  |  | 
+Display | PREF_UNITS_BASIC | LONG |  |  |  | PREF_UNITS_BASIC_KM; PREF_UNITS_BASIC_M; PREF_UNITS_BASIC_CM; PREF_UNITS_BASIC_MM; PREF_UNITS_BASIC_MICRO; PREF_UNITS_BASIC_NM; PREF_UNITS_BASIC_MILE; PREF_UNITS_BASIC_YARD; PREF_UNITS_BASIC_FOOT; PREF_UNITS_BASIC_INCH
+Display Decimals | PREF_UNITS_DECIMALS | LONG | 2 | 14 |  | 
+Animation | PREF_UNITS_ANIMATION | LONG |  |  |  | PREF_UNITS_ANIM_FPS; PREF_UNITS_ANIM_SEC; PREF_UNITS_ANIM_SMPTE
+Color Chooser | PREF_UNITS_COLORMODE_COLORCHOOSER | SEPARATOR |  |  |  | 
+Store Last Layout | PREF_UNITS_COLORMODE_REMEMBER_LAST_LAYOUT | BOOL |  |  |  | 
+RGB Range | PREF_UNITS_RGBRANGE | LONG |  |  |  | PREF_UNIT_RANGE_PERCENT; PREF_UNIT_RANGE_1; PREF_UNIT_RANGE_255; PREF_UNIT_RANGE_65535
+Compact Mode | PREF_UNITS_COLORMODE_COMPACT | BOOL |  |  |  | 
+Special Mode | PREF_UNITS_COLORMODE_SPECIAL | LONG |  |  |  | PREF_UNITS_COLORMODE_SPECIAL_DISABLED; PREF_UNITS_COLORMODE_SPECIAL_COLORWHEEL; PREF_UNITS_COLORMODE_SPECIAL_SPECTRUM; PREF_UNITS_COLORMODE_SPECIAL_PICTURE
+Color Wheel Size | PREF_UNITS_COLORMODE_WHEEL_SIZE | LONG |  |  |  | PREF_UNITS_COLORMODE_SIZE_SMALL; PREF_UNITS_COLORMODE_SIZE_MEDIUM; PREF_UNITS_COLORMODE_SIZE_LARGE
+Color Wheel Swatch Size | PREF_UNITS_COLORMODE_WHEEL_SWATCH_SIZE | LONG |  |  |  | PREF_UNITS_COLORMODE_SIZE_SMALL; PREF_UNITS_COLORMODE_SIZE_MEDIUM; PREF_UNITS_COLORMODE_SIZE_LARGE
+Spectrum Size | PREF_UNITS_COLORMODE_SPECTRUM_SIZE | LONG |  |  |  | PREF_UNITS_COLORMODE_SIZE_SMALL; PREF_UNITS_COLORMODE_SIZE_MEDIUM; PREF_UNITS_COLORMODE_SIZE_LARGE
+Picture Mode Swatch Size | PREF_UNITS_COLORMODE_PICTURE_SWATCH_SIZE | LONG |  |  |  | PREF_UNITS_COLORMODE_SIZE_SMALL; PREF_UNITS_COLORMODE_SIZE_MEDIUM; PREF_UNITS_COLORMODE_SIZE_LARGE
+RGB | PREF_UNITS_COLORMODE_RGB | BOOL |  |  |  | 
+HSV | PREF_UNITS_COLORMODE_HSV | BOOL |  |  |  | 
+Temperature | PREF_UNITS_COLORMODE_KELVIN | BOOL |  |  |  | 
+Color Mixer | PREF_UNITS_COLORMODE_MIXER | BOOL |  |  |  | 
+Hexadecimal | PREF_UNITS_COLORMODE_HEX | BOOL |  |  |  | 
+Color Swatches | PREF_UNITS_COLORMODE_SWATCHES | BOOL |  |  |  | 
+Show Group Names | PREF_UNITS_COLORMODE_SWATCHES_SHOWNAMES | BOOL |  |  |  | 
+Swatch Size | PREF_UNITS_COLORMODE_SWATCHES_SWATCH_SIZE | LONG |  |  |  | PREF_UNITS_COLORMODE_SIZE_SMALL; PREF_UNITS_COLORMODE_SIZE_MEDIUM; PREF_UNITS_COLORMODE_SIZE_LARGE
+Linear Numeric Values | PREF_UNITS_COLORMODE_LINEAR | BOOL |  |  |  | 
+Gradient Size | PREF_UNITS_GRADIENT_SIZE | LONG |  |  |  | PREF_UNITS_GRADIENT_SIZE_SMALL; PREF_UNITS_GRADIENT_SIZE_MEDIUM; PREF_UNITS_GRADIENT_SIZE_LARGE
+Selection Handles | PREF_UNITS_GRADIENT_SELECTION_HANDLES | BOOL |  |  |  | 
+Grid Color | PREF_UNITS_ALPHA_GRIDCOLOR | LONG |  |  |  | PREF_UNITS_ALPHA_GRIDCOLOR_LIGHT; PREF_UNITS_ALPHA_GRIDCOLOR_MEDIUM; PREF_UNITS_ALPHA_GRIDCOLOR_DARK

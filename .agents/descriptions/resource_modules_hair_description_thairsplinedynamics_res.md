@@ -1,0 +1,179 @@
+# Description: Rope
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/hair/description/thairsplinedynamics.res`
+- **Symbol:** `Thairsplinedynamics`
+- **Category:** Tags
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Expression (`Texpression`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Priority | EXPRESSION_PRIORITY | PRIORITY |  |  |  | 
+Enable | EXPRESSION_ENABLE | BOOL |  |  |  | 
+
+### Base Tag (`Tbase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Expose on Object | ID_EXPOSETAB | BOOL |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+### Cache (`ocache`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Cache Mode | SIMULATION_CACHE_ENABLED | BOOL |  |  |  | 
+Cache Location | SIMULATION_CACHE_LOCATION | LONG |  |  |  | SIMULATION_CACHE_EXTERNAL; SIMULATION_CACHE_INTERNAL
+Cache Space | SIMULATION_CACHE_SPACE | LONG |  |  |  | SIMULATION_CACHE_SPACE_LOCAL; SIMULATION_CACHE_SPACE_GLOBAL
+Path to Alembic File | SIMULATION_CACHE_EXTERNAL_PATH | FILENAME |  |  |  | 
+Identifier | SIMULATION_CACHE_EXTERNAL_IDENTIFIER | STRING |  |  |  | 
+Scale | SIMULATION_IMPORT_UNIT_SCALE | UNITSCALE |  |  |  | 
+No label | SIMULATION_CACHE_CUSTOM_SEPARATOR | SEPARATOR |  |  |  | 
+Cache Object | SIMULATION_DO_CALCULATE | BUTTON |  |  |  | 
+Cache Scene | SIMULATION_DO_CALCULATE_ALL | BUTTON |  |  |  | 
+Clear Object Cache | SIMULATION_DELCACHE | BUTTON |  |  |  | 
+Clear Scene Cache | SIMULATION_DELCACHE_ALL | BUTTON |  |  |  | 
+Use Animation | SIMULATION_ANIMATION_ENABLED | BOOL |  |  |  | 
+Frame | SIMULATION_ANIMATION_FRAME | BASETIME |  |  |  | 
+Offset | SIMULATION_CACHE_START | BASETIME |  |  |  | 
+Speed | SIMULATION_SPEED | REAL | 0.0 |  |  | 
+Mode | SIMULATION_REPLAY_MODE | LONG |  |  | SIMULATION_REPLAY_MODE_PLAY | SIMULATION_REPLAY_MODE_PLAY; SIMULATION_REPLAY_MODE_LOOP; SIMULATION_REPLAY_MODE_PINGPONG
+Interpolation | SIMULATION_CACHE_POSITION_INTERPOLATION | LONG |  |  | SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC | SIMULATION_CACHE_POSITION_INTERPOLATION_LINEAR; SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC; SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC_MONOTONE
+Tangent Scale | SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC_WEIGHT | REAL | 0.0 |  |  | 
+Remapping Curve | SIMULATION_ANIMATION_CURVE | SPLINE |  |  |  | 
+Convert Object Cache to Alembic | SIMULATION_DO_CONVERT_CACHE | BUTTON |  |  |  | 
+Convert Scene Cache to Alembic | SIMULATION_DO_CONVERT_CACHE_ALL | BUTTON |  |  |  | 
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Expose on Object | ID_EXPOSETAB | BOOL |  |  |  | 
+Priority | EXPRESSION_PRIORITY | PRIORITY |  |  |  | 
+Enable | EXPRESSION_ENABLE | BOOL |  |  |  | 
+Legacy Solver | HAIR_SDYNAMICS_LEGACYON | BOOL |  |  |  | 
+Bendiness | HAIR_SDYNAMICS_PBD_BENDINESS | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_BENDINESS_WEIGHTS | STRING |  |  |  | 
+Curly | HAIR_SDYNAMICS_PBD_TWISTINESS | BOOL |  |  |  | 
+Stretchiness | HAIR_SDYNAMICS_PBD_STRETCHINESS | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_STRETCHINESS_WEIGHTS | STRING |  |  |  | 
+Bounciness | HAIR_SDYNAMICS_PBD_BOUNCINESS | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_BOUNCINESS_WEIGHTS | STRING |  |  |  | 
+Friction | HAIR_SDYNAMICS_PBD_FRICTION | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_FRICTION_WEIGHTS | STRING |  |  |  | 
+Stickiness | HAIR_SDYNAMICS_PBD_STICKINESS | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_STICKINESS_WEIGHTS | STRING |  |  |  | 
+Target Length | HAIR_SDYNAMICS_PBD_TARGET_LENGTH | REAL | 1.0 | 1000.0 |  | 
+Map | HAIR_SDYNAMICS_PBD_TARGET_LENGTH_WEIGHTS | STRING |  |  |  | 
+Min Target Length | HAIR_SDYNAMICS_PBD_TARGET_LENGTH_MIN | REAL | 0.0 | 100 |  | 
+Radius | HAIR_SDYNAMICS_PBD_RADIUS | REAL | 0.001 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_RADIUS_WEIGHTS | STRING |  |  |  | 
+Mass | HAIR_SDYNAMICS_PBD_MASS | REAL | 0.0001 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_MASS_WEIGHTS | STRING |  |  |  | 
+Override | HAIR_SDYNAMICS_PBD_PARTICLE_DAMPING_OVERRIDE | BOOL |  |  |  | 
+Strength | HAIR_SDYNAMICS_PBD_PARTICLE_DAMPING | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_PARTICLE_DAMPING_WEIGHTS | STRING |  |  |  | 
+Min Strength | HAIR_SDYNAMICS_PBD_PARTICLE_DAMPING_WEIGHTS_MIN | REAL | 0.0 |  |  | 
+Tearing | HAIR_SDYNAMICS_PBD_TEARING | BOOL |  |  |  | 
+Tear Past | HAIR_SDYNAMICS_PBD_TEARPAST | REAL | 100.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_TEARING_WEIGHTS | STRING |  |  |  | 
+Min Tear Past | HAIR_SDYNAMICS_PBD_MAPMINTEARPAST | REAL | 100.0 |  |  | 
+Display Anchors | HAIR_SDYNAMICS_PBD_DRAW_FIXED | BOOL |  |  |  | 
+Fixed: | HAIR_SDYNAMICS_PBD_FIXED | STATICTEXT |  |  |  | 
+Set | HAIR_SDYNAMICS_PBD_SET_FIXED | BUTTON |  |  |  | 
+Release | HAIR_SDYNAMICS_PBD_RELEASE_FIXED | BUTTON |  |  |  | 
+Clear | HAIR_SDYNAMICS_PBD_CLEAR_FIXED | BUTTON |  |  |  | 
+Collisions | HAIR_SDYNAMICS_TAG_COLLISIONS | BOOL |  |  |  | 
+Rigid | HAIR_SDYNAMICS_TAG_EXTRA_STIFF | BOOL |  |  |  | 
+Set Initial | HAIR_SDYNAMICS_TAG_SET_STATE | BUTTON |  |  |  | 
+With Pins | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_PINS | BOOL |  |  |  | 
+Influence | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_PINS_STRETCHINESS | REAL | 0.0 | 100.0 |  | 
+Map | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_PINS_STRETCHINESS_WEIGHTS | STRING |  |  |  | 
+Scale | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_PINS_STRETCHINESS_SCALE | REAL | 0.0 | 100.0 |  | 
+With Force | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_FORCE | BOOL |  |  |  | 
+Strength | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_FORCE_STRENGTH | REAL | 0.0 |  |  | 
+Map | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_FORCE_STRENGTH_WEIGHTS | STRING |  |  |  | 
+Scale | HAIR_SDYNAMICS_PBD_FOLLOW_ANIMATION_FORCE_STRENGTH_SCALE | REAL | 0.0 | 100.0 |  | 
+Follow Shape | HAIR_SDYNAMICS_PBD_FOLLOW_SHAPE | BOOL |  |  |  | 
+Drag | HAIR_SDYNAMICS_TAG_DRAG | REAL | 0.0 | 100.0 |  | 
+Radius | HAIR_SDYNAMICS_TAG_RADIUS | REAL | 0.0 |  |  | 
+Stiffness | HAIR_SDYNAMICS_TAG_STIFFNESS | REAL | 0.0 | 100.0 |  | 
+Rubber | HAIR_SDYNAMICS_TAG_RUBBER | REAL | 0.0 | 100.0 |  | 
+Rest Mix | HAIR_SDYNAMICS_REST_MIX | REAL | 0.0 | 100.0 |  | 
+Rest Hold | HAIR_SDYNAMICS_REST_HOLD | REAL | 0.0 | 100.0 |  | 
+Elastic Limit | HAIR_SDYNAMICS_ELASTIC_LIMIT | REAL | 0.0 |  |  | 
+Deform | HAIR_SDYNAMICS_ELASTIC_DEFORM | REAL | 0.0 | 100.0 |  | 
+Display Anchors | HAIR_SDYNAMICS_TAG_DRAW_FIXED | BOOL |  |  |  | 
+Mass | HAIR_SDYNAMICS_TAG_MASS | REAL |  |  |  | 
+Set | HAIR_SDYNAMICS_TAG_SETMASS | BUTTON |  |  |  | 
+Fixed: | HAIR_SDYNAMICS_TAG_FIXED | STATICTEXT |  |  |  | 
+Set | HAIR_SDYNAMICS_TAG_SET_FIXED | BUTTON |  |  |  | 
+Release | HAIR_SDYNAMICS_TAG_RELEASE_FIXED | BUTTON |  |  |  | 
+Clear | HAIR_SDYNAMICS_TAG_CLEAR_FIXED | BUTTON |  |  |  | 
+Gravity | HAIR_SDYNAMICS_TAG_GRAVITY | REAL |  |  |  | 
+Mode | HAIR_SDYNAMICS_TAG_FORCES_INCEXC | LONG |  |  |  | HAIR_SDYNAMICS_TAG_INCEXC_INCLUDE; HAIR_SDYNAMICS_TAG_INCEXC_EXCLUDE
+Forces | HAIR_SDYNAMICS_TAG_FORCES_INCLUDE | IN_EXCLUDE |  |  |  | 
+Cache Mode | HAIR_SDYNAMICS_CACHE_ENABLE | BOOL |  |  |  | 
+Calculate Cache | HAIR_SDYNAMICS_CACHE_CALCULATE | BUTTON |  |  |  | 
+Cache Scene | HAIR_SDYNAMICS_CACHE_CALCULATE_ALL | BUTTON |  |  |  | 
+Clear Cache | HAIR_SDYNAMICS_CACHE_DELETE | BUTTON |  |  |  | 
+Clear Scene Cache | HAIR_SDYNAMICS_CACHE_DELETE_ALL | BUTTON |  |  |  | 
+Update Frame | HAIR_SDYNAMICS_CACHE_CACHE_FRAME | BUTTON |  |  |  | 
+Load... | HAIR_SDYNAMICS_CACHE_CACHE_LOAD | BUTTON |  |  |  | 
+Save... | HAIR_SDYNAMICS_CACHE_CACHE_SAVE | BUTTON |  |  |  | 
+Cache | HAIR_SDYNAMICS_CACHE_CACHE_LIMIT | LONG | 1 | 1000 |  | 
+Maximum Undo Limit (MB) | HAIR_SDYNAMICS_CACHE_TEXT_LIMIT | STATICTEXT |  |  |  | 
+Compress | HAIR_SDYNAMICS_CACHE_COMPRESSED | BOOL |  |  |  | 
+Memory:  | HAIR_SDYNAMICS_CACHE_INFO2 | STATICTEXT |  |  |  | 
+Cache Mode | SIMULATION_CACHE_ENABLED | BOOL |  |  |  | 
+Cache Location | SIMULATION_CACHE_LOCATION | LONG |  |  |  | SIMULATION_CACHE_EXTERNAL; SIMULATION_CACHE_INTERNAL
+Cache Space | SIMULATION_CACHE_SPACE | LONG |  |  |  | SIMULATION_CACHE_SPACE_LOCAL; SIMULATION_CACHE_SPACE_GLOBAL
+Path to Alembic File | SIMULATION_CACHE_EXTERNAL_PATH | FILENAME |  |  |  | 
+Identifier | SIMULATION_CACHE_EXTERNAL_IDENTIFIER | STRING |  |  |  | 
+Scale | SIMULATION_IMPORT_UNIT_SCALE | UNITSCALE |  |  |  | 
+No label | SIMULATION_CACHE_CUSTOM_SEPARATOR | SEPARATOR |  |  |  | 
+Cache Object | SIMULATION_DO_CALCULATE | BUTTON |  |  |  | 
+Cache Scene | SIMULATION_DO_CALCULATE_ALL | BUTTON |  |  |  | 
+Clear Object Cache | SIMULATION_DELCACHE | BUTTON |  |  |  | 
+Clear Scene Cache | SIMULATION_DELCACHE_ALL | BUTTON |  |  |  | 
+Use Animation | SIMULATION_ANIMATION_ENABLED | BOOL |  |  |  | 
+Frame | SIMULATION_ANIMATION_FRAME | BASETIME |  |  |  | 
+Offset | SIMULATION_CACHE_START | BASETIME |  |  |  | 
+Speed | SIMULATION_SPEED | REAL | 0.0 |  |  | 
+Mode | SIMULATION_REPLAY_MODE | LONG |  |  | SIMULATION_REPLAY_MODE_PLAY | SIMULATION_REPLAY_MODE_PLAY; SIMULATION_REPLAY_MODE_LOOP; SIMULATION_REPLAY_MODE_PINGPONG
+Interpolation | SIMULATION_CACHE_POSITION_INTERPOLATION | LONG |  |  | SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC | SIMULATION_CACHE_POSITION_INTERPOLATION_LINEAR; SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC; SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC_MONOTONE
+Tangent Scale | SIMULATION_CACHE_POSITION_INTERPOLATION_CUBIC_WEIGHT | REAL | 0.0 |  |  | 
+Remapping Curve | SIMULATION_ANIMATION_CURVE | SPLINE |  |  |  | 
+Convert Object Cache to Alembic | SIMULATION_DO_CONVERT_CACHE | BUTTON |  |  |  | 
+Convert Scene Cache to Alembic | SIMULATION_DO_CONVERT_CACHE_ALL | BUTTON |  |  |  | 
+Steps | HAIR_SDYNAMICS_TAG_SUBDIV | LONG | 1 | 100 |  | 
+Iterations | HAIR_SDYNAMICS_TAG_ITERATIONS | LONG | 0 |  |  | 
+Auto | HAIR_SDYNAMICS_TAG_AUTOTIME | BOOL |  |  |  | 
+Start | HAIR_SDYNAMICS_TAG_START | BASETIME |  |  |  | 
+End | HAIR_SDYNAMICS_TAG_STOP | BASETIME |  |  |  | 
+Mode | HAIR_SDYNAMICS_PBD_FORCES_INEXMODE | LONG |  |  | HAIR_SDYNAMICS_PBD_FORCES_INEXMODE_EXCLUDE | HAIR_SDYNAMICS_PBD_FORCES_INEXMODE_INCLUDE; HAIR_SDYNAMICS_PBD_FORCES_INEXMODE_EXCLUDE
+Objects | HAIR_SDYNAMICS_PBD_FORCES_INEXCLUDE | IN_EXCLUDE |  |  |  | 
+Pyro | HAIR_SDYNAMICS_PBD_FORCES_INEX_PYRO | BOOL |  |  | 0 | 

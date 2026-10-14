@@ -1,0 +1,176 @@
+# Description: Spring
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/dynamics/description/dynspringobject.res`
+- **Symbol:** `DynSpringObject`
+- **Category:** Objects
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### No label (`DynBinForce`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Apply | FORCE_APPLY | LONG |  |  |  | FORCE_APPLY_A; FORCE_APPLY_B; FORCE_APPLY_BOTH
+
+### No label (`DynInteraction`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Type | FORCE_TYPE_GROUP | LONG |  |  |  | FORCE_TYPE_GROUP_FIXED; FORCE_TYPE_GROUP_HINGE_CARDAN; FORCE_TYPE_GROUP_SLIDER; FORCE_TYPE_GROUP_BALL_SOCKET; FORCE_TYPE_GROUP_WHEEL
+Type | FORCE_TYPE | LONG |  |  |  | FORCE_TYPE_LINEAR; FORCE_TYPE_ANGULAR; FORCE_TYPE_BOTH
+Mode | FORCE_TYPE_MODE | LONG |  |  |  | FORCE_TYPE_LINEAR; FORCE_TYPE_ANGULAR; FORCE_TYPE_BOTH
+Object A | FORCE_OBJECT_A | LINK |  |  |  | 
+Reference Axis A | FORCE_REFERENCE_A | LONG |  |  |  | FORCE_REFERENCE_X; FORCE_REFERENCE_Y; FORCE_REFERENCE_Z; FORCE_REFERENCE_DIRECTION
+Attachment A | FORCE_APPLICATION_A | LONG |  |  |  | FORCE_APPLICATION_COM; FORCE_APPLICATION_OFFSET; FORCE_APPLICATION_POLYPOINT; FORCE_APPLICATION_POINT_SELECTION
+Offset | FORCE_OFFSET_A | VECTOR |  |  |  | 
+Index | FORCE_POINT_A | LONG |  |  |  | 
+Map | FORCE_POINT_SELECTION_A | LINK |  |  |  | 
+Region Of Influence | FORCE_REGION_A | REAL | 1.0 | 1000.0 |  | 
+Shape Conservation | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_A | REAL | 0.0 |  |  | 
+Damping | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_DAMPING_A | REAL | 0.0 |  |  | 
+Object B | FORCE_OBJECT_B | LINK |  |  |  | 
+Reference Axis B | FORCE_REFERENCE_B | LONG |  |  |  | FORCE_REFERENCE_X; FORCE_REFERENCE_Y; FORCE_REFERENCE_Z; FORCE_REFERENCE_DIRECTION
+Attachment B | FORCE_APPLICATION_B | LONG |  |  |  | FORCE_APPLICATION_COM; FORCE_APPLICATION_OFFSET; FORCE_APPLICATION_POLYPOINT; FORCE_APPLICATION_POINT_SELECTION
+Offset | FORCE_OFFSET_B | VECTOR |  |  |  | 
+Index | FORCE_POINT_B | LONG |  |  |  | 
+Map | FORCE_POINT_SELECTION_B | LINK |  |  |  | 
+Region Of Influence | FORCE_REGION_B | REAL | 1.0 | 1000.0 |  | 
+Shape Conservation | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_B | REAL | 0.0 |  |  | 
+Damping | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_DAMPING_B | REAL | 0.0 |  |  | 
+Always Visible | FORCE_ALWAYS_VISIBLE | BOOL |  |  |  | 
+Draw Size | FORCE_SIZE | REAL | 0.0 |  |  | 
+
+### Base Object (`Obase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+Type | FORCE_TYPE_GROUP | LONG |  |  |  | FORCE_TYPE_GROUP_FIXED; FORCE_TYPE_GROUP_HINGE_CARDAN; FORCE_TYPE_GROUP_SLIDER; FORCE_TYPE_GROUP_BALL_SOCKET; FORCE_TYPE_GROUP_WHEEL
+Type | FORCE_TYPE | LONG |  |  |  | FORCE_TYPE_LINEAR; FORCE_TYPE_ANGULAR; FORCE_TYPE_BOTH
+Mode | FORCE_TYPE_MODE | LONG |  |  |  | FORCE_TYPE_LINEAR; FORCE_TYPE_ANGULAR; FORCE_TYPE_BOTH
+Object A | FORCE_OBJECT_A | LINK |  |  |  | 
+Reference Axis A | FORCE_REFERENCE_A | LONG |  |  |  | FORCE_REFERENCE_X; FORCE_REFERENCE_Y; FORCE_REFERENCE_Z; FORCE_REFERENCE_DIRECTION
+Attachment A | FORCE_APPLICATION_A | LONG |  |  |  | FORCE_APPLICATION_COM; FORCE_APPLICATION_OFFSET; FORCE_APPLICATION_POLYPOINT; FORCE_APPLICATION_POINT_SELECTION
+Offset | FORCE_OFFSET_A | VECTOR |  |  |  | 
+Index | FORCE_POINT_A | LONG |  |  |  | 
+Map | FORCE_POINT_SELECTION_A | LINK |  |  |  | 
+Region Of Influence | FORCE_REGION_A | REAL | 1.0 | 1000.0 |  | 
+Shape Conservation | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_A | REAL | 0.0 |  |  | 
+Damping | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_DAMPING_A | REAL | 0.0 |  |  | 
+Object B | FORCE_OBJECT_B | LINK |  |  |  | 
+Reference Axis B | FORCE_REFERENCE_B | LONG |  |  |  | FORCE_REFERENCE_X; FORCE_REFERENCE_Y; FORCE_REFERENCE_Z; FORCE_REFERENCE_DIRECTION
+Attachment B | FORCE_APPLICATION_B | LONG |  |  |  | FORCE_APPLICATION_COM; FORCE_APPLICATION_OFFSET; FORCE_APPLICATION_POLYPOINT; FORCE_APPLICATION_POINT_SELECTION
+Offset | FORCE_OFFSET_B | VECTOR |  |  |  | 
+Index | FORCE_POINT_B | LONG |  |  |  | 
+Map | FORCE_POINT_SELECTION_B | LINK |  |  |  | 
+Region Of Influence | FORCE_REGION_B | REAL | 1.0 | 1000.0 |  | 
+Shape Conservation | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_B | REAL | 0.0 |  |  | 
+Damping | FORCE_POINT_SELECTION_SHAPE_CONSERVATION_DAMPING_B | REAL | 0.0 |  |  | 
+Always Visible | FORCE_ALWAYS_VISIBLE | BOOL |  |  |  | 
+Draw Size | FORCE_SIZE | REAL | 0.0 |  |  | 
+Apply | FORCE_APPLY | LONG |  |  |  | FORCE_APPLY_A; FORCE_APPLY_B; FORCE_APPLY_BOTH
+Rest Length | SPRING_LINEAR_REST_LENGTH | REAL | 0.0 |  |  | 
+Set Rest Length | SPRING_LINEAR_SET_REST_LENGTH | BUTTON |  |  |  | 
+Stiffness | SPRING_LINEAR_STIFFNESS | REAL | 0.0 |  |  | 
+Damping | SPRING_LINEAR_DAMPING | REAL | 0.0 |  |  | 
+Elastic Stretch Limit | SPRING_LINEAR_USE_ELASTIC_STRETCH_LIMIT | BOOL |  |  |  | 
+Value | SPRING_LINEAR_ELASTIC_STRETCH_LIMIT | REAL | 0.0 |  |  | 
+Elastic Compression Limit | SPRING_LINEAR_USE_ELASTIC_COMPRESSION_LIMIT | BOOL |  |  |  | 
+Value | SPRING_LINEAR_ELASTIC_COMPRESSION_LIMIT | REAL | 0.0 |  |  | 
+Breaking Stretch | SPRING_LINEAR_USE_BREAK_STRETCH | BOOL |  |  |  | 
+Value | SPRING_LINEAR_BREAK_STRETCH | REAL | 0.0 |  |  | 
+Breaking Compression | SPRING_LINEAR_USE_BREAK_COMPRESSION | BOOL |  |  |  | 
+Value | SPRING_LINEAR_BREAK_COMPRESSION | REAL | 0.0 |  |  | 
+Rest Angle | SPRING_ANGULAR_REST_LENGTH | REAL |  |  |  | 
+Set Rest Angle | SPRING_ANGULAR_SET_REST_LENGTH | BUTTON |  |  |  | 
+Stiffness | SPRING_ANGULAR_STIFFNESS | REAL | 0.0 |  |  | 
+Damping | SPRING_ANGULAR_DAMPING | REAL | 0.0 |  |  | 
+Elastic Stretch Limit | SPRING_ANGULAR_USE_ELASTIC_STRETCH_LIMIT | BOOL |  |  |  | 
+Value | SPRING_ANGULAR_ELASTIC_STRETCH_LIMIT | REAL | 0.0 |  |  | 
+Elastic Compression Limit | SPRING_ANGULAR_USE_ELASTIC_COMPRESSION_LIMIT | BOOL |  |  |  | 
+Value | SPRING_ANGULAR_ELASTIC_COMPRESSION_LIMIT | REAL | 0.0 |  |  | 
+Breaking Stretch | SPRING_ANGULAR_USE_BREAK_STRETCH | BOOL |  |  |  | 
+Value | SPRING_ANGULAR_BREAK_STRETCH | REAL | 0.0 |  |  | 
+Breaking Compression | SPRING_ANGULAR_USE_BREAK_COMPRESSION | BOOL |  |  |  | 
+Value | SPRING_ANGULAR_BREAK_COMPRESSION | REAL | 0.0 |  |  | 

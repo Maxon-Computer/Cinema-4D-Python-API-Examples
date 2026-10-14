@@ -1,0 +1,174 @@
+# Description: Cogwheel Object
+
+- **Cinema 4D Version:** `2027.0.0`
+- **ID:** `resource/modules/c4d_objects/description/osplinecogwheel.res`
+- **Symbol:** `Osplinecogwheel`
+- **Category:** Objects
+
+Use parameter symbols to access parameters and cycle option symbols for cycle values, never their numeric IDs. Treat Min and Max as constraints and Default as the declared initial value; blank cells mean the resource does not declare that metadata, not that the value is zero. Base Description Parameters lists inherited fields from each base; All Parameters lists the effective parameter set for this description.
+
+## Base Description Parameters
+
+### Base Object (`Obase`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+
+### Basic Properties (`Obaselist`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | BOOL |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+
+### No label (`Osplineprimitive`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Plane | PRIM_PLANE | LONG |  |  |  | PRIM_PLANE_XY; PRIM_PLANE_ZY; PRIM_PLANE_XZ
+Reverse | PRIM_REVERSE | BOOL |  |  |  | 
+
+### Spline (`Ospline`)
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Type | SPLINEOBJECT_TYPE | LONG |  |  |  | SPLINEOBJECT_TYPE_LINEAR; SPLINEOBJECT_TYPE_CUBIC; SPLINEOBJECT_TYPE_AKIMA; SPLINEOBJECT_TYPE_BSPLINE; SPLINEOBJECT_TYPE_BEZIER
+Close Spline | SPLINEOBJECT_CLOSED | BOOL |  |  |  | 
+Interpolation | SPLINEOBJECT_INTERPOLATION | LONG |  |  |  | SPLINEOBJECT_INTERPOLATION_NONE; SPLINEOBJECT_INTERPOLATION_NATURAL; SPLINEOBJECT_INTERPOLATION_UNIFORM; SPLINEOBJECT_INTERPOLATION_ADAPTIVE; SPLINEOBJECT_INTERPOLATION_SUBDIV
+Points | SPLINEOBJECT_SUB | LONG | 0 | 5000 |  | 
+Angle | SPLINEOBJECT_ANGLE | REAL | 0.0 | 90.0 |  | 
+Max Length | SPLINEOBJECT_MAXIMUMLENGTH | REAL | 0.01 |  |  | 
+
+## All Parameters
+
+Name | Symbol | Data Type | Min | Max | Default | Cycle Symbols
+---- | ------ | --------- | --- | --- | ------- | -------------
+Icon File / ID | ID_BASELIST_ICON_FILE | TEXTURE |  |  |  | 
+Color | ID_BASELIST_ICON_COLOR | COLOR |  |  | 1.0 0.9 0.4 | 
+No label | ID_BASELIST_ICON_PRESET_BUTTONS | ICONCHOOSER |  |  |  | 
+Name | ID_BASELIST_NAME | STRING |  |  |  | 
+Layer | ID_LAYER_LINK | LINK |  |  |  | 
+No label | ID_BASELIST_NODESPACE_ADD_REMOVE_BUTTONS | NODESPACE_ADD_REMOVE |  |  |  | 
+Icon Color | ID_BASELIST_ICON_COLORIZE_MODE | LONG |  |  |  | ID_BASELIST_ICON_COLORIZE_MODE_NONE; ID_BASELIST_ICON_COLORIZE_MODE_DISPLAYCOLOR; ID_BASELIST_ICON_COLORIZE_MODE_CUSTOM
+Viewport Visibility | ID_BASEOBJECT_VISIBILITY_EDITOR | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Renderer Visibility | ID_BASEOBJECT_VISIBILITY_RENDER | LONG |  |  |  | OBJECT_UNDEF; OBJECT_ON; OBJECT_OFF
+Enabled | ID_BASEOBJECT_GENERATOR_FLAG | BOOL |  |  |  | 
+Display Color | ID_BASEOBJECT_USECOLOR | LONG |  |  |  | ID_BASEOBJECT_USECOLOR_OFF; ID_BASEOBJECT_USECOLOR_LAYER; ID_BASEOBJECT_USECOLOR_AUTOMATIC; ID_BASEOBJECT_USECOLOR_ALWAYS
+Color | ID_BASEOBJECT_COLOR | COLOR |  |  |  | 
+X-Ray | ID_BASEOBJECT_XRAY | BOOL |  |  |  | 
+Position | ID_BASEOBJECT_REL_POSITION | VECTOR |  |  |  | 
+Rotation | ID_BASEOBJECT_REL_ROTATION | VECTOR |  |  |  | 
+Scale | ID_BASEOBJECT_REL_SCALE | VECTOR |  |  |  | 
+Rotation Order | ID_BASEOBJECT_ROTATION_ORDER | LONG |  |  |  | ID_BASEOBJECT_ROTATION_ORDER_HPB; ID_BASEOBJECT_ROTATION_ORDER_XYZ; ID_BASEOBJECT_ROTATION_ORDER_XZY; ID_BASEOBJECT_ROTATION_ORDER_YXZ; ID_BASEOBJECT_ROTATION_ORDER_YZX; ID_BASEOBJECT_ROTATION_ORDER_ZXY; ID_BASEOBJECT_ROTATION_ORDER_ZYX
+Quaternion Rotation | ID_BASEOBJECT_QUATERNION_ROTATION_INTERPOLATION | BOOL |  |  |  | 
+Freeze All | ID_BASEOBJECT_FREEZE | BUTTON |  |  |  | 
+Unfreeze All | ID_BASEOBJECT_FROZEN_RESET | BUTTON |  |  |  | 
+Frozen Position | ID_BASEOBJECT_FROZEN_POSITION | VECTOR |  |  |  | 
+Freeze P | ID_BASEOBJECT_FREEZE_P | BUTTON |  |  |  | 
+Frozen Rotation | ID_BASEOBJECT_FROZEN_ROTATION | VECTOR |  |  |  | 
+Freeze R | ID_BASEOBJECT_FREEZE_R | BUTTON |  |  |  | 
+Frozen Scale | ID_BASEOBJECT_FROZEN_SCALE | VECTOR |  |  |  | 
+Freeze S | ID_BASEOBJECT_FREEZE_S | BUTTON |  |  |  | 
+Deform Position | ID_BASEOBJECT_DEFORM_POSITION | VECTOR |  |  |  | 
+Deform Rotation | ID_BASEOBJECT_DEFORM_ROTATION | VECTOR |  |  |  | 
+Deform Scale | ID_BASEOBJECT_DEFORM_SCALE | VECTOR |  |  |  | 
+Global Position | ID_BASEOBJECT_GLOBAL_POSITION | VECTOR |  |  |  | 
+Global Rotation | ID_BASEOBJECT_GLOBAL_ROTATION | VECTOR |  |  |  | 
+Transformed Position | ID_BASEOBJECT_ABS_POSITION | VECTOR |  |  |  | 
+Transformed Scale | ID_BASEOBJECT_ABS_SCALE | VECTOR |  |  |  | 
+Transformed Rotation | ID_BASEOBJECT_ABS_ROTATION | VECTOR |  |  |  | 
+Teeth | PRIM_COGWHEEL_TEETH | LONG | 5 |  |  | 
+Legacy Mode | PRIM_COGWHEEL_LEGACY_MODE | BOOL |  |  |  | 
+Show Guides | PRIM_COGWHEEL_SHOW_GUIDES | BOOL |  |  |  | 
+Guide Color | PRIM_COGWHEEL_GUIDE_COLOR | COLOR |  |  |  | 
+Inner Radius | PRIM_COGWHEEL_IRAD | REAL | 0.0 |  |  | 
+Middle Radius | PRIM_COGWHEEL_MRAD | REAL | 0.0 |  |  | 
+Outer Radius | PRIM_COGWHEEL_ORAD | REAL | 0.0 |  |  | 
+Bevel | PRIM_COGWHEEL_BEVEL | REAL | 0.0 | 100.0 |  | 
+Type | PRIM_COGWHEEL_TOOTH_TYPE | LONG |  |  |  | PRIM_COGWHEEL_TOOTH_TYPE_NONE; PRIM_COGWHEEL_TOOTH_TYPE_INVOLUTE; PRIM_COGWHEEL_TOOTH_TYPE_RATCHET; PRIM_COGWHEEL_TOOTH_TYPE_FLAT
+Teeth | PRIM_COGWHEEL_TEETH2 | LONG | 5 | 2000 |  | 
+Lock Radius | PRIM_COGWHEEL_LOCK_RADIUS_FOR_TEETH | BOOL |  |  |  | 
+Orientation | PRIM_COGWHEEL_TEETH_ORIENTATION | REAL |  |  |  | 
+Undercut | PRIM_COGWHEEL_UNDERCUT | BOOL |  |  |  | 
+Root Radius | PRIM_COGWHEEL_ROOT_RADIUS | REAL | 0.0 |  |  | 
+Addendum Radius | PRIM_COGWHEEL_ADDENDUM_RADIUS | REAL | 0.0 |  |  | 
+Pitch Radius | PRIM_COGWHEEL_PITCH_RADIUS | REAL | 0.0 |  |  | 
+Module | PRIM_COGWHEEL_MODULE | REAL | 0.0 |  |  | 
+Diametral Pitch | PRIM_COGWHEEL_DIAMETRAL_PITCH | REAL | 0.0 |  |  | 
+Dedendum | PRIM_COGWHEEL_DEDENDUM | REAL | 0.0 |  |  | 
+Pressure Angle | PRIM_COGWHEEL_PRESSURE_ANGLE | REAL | 0.0 | 30.0 |  | 
+Radial Ratio | PRIM_COGWHEEL_RADIAL_RATIO | REAL | 0.0 | 20.0 |  | 
+Witness Ratio | PRIM_COGWHEEL_WITNESS_RATIO | REAL | 0.0 | 100.0 |  | 
+Undercut Ratio | PRIM_COGWHEEL_UNDERCUT_RATIO | REAL | 0.0 | 100.0 |  | 
+Type | PRIM_COGWHEEL_INLAY_TYPE | LONG |  |  |  | PRIM_COGWHEEL_INLAY_TYPE_NONE; PRIM_COGWHEEL_INLAY_TYPE_SPOKES; PRIM_COGWHEEL_INLAY_TYPE_HOLES; PRIM_COGWHEEL_INLAY_TYPE_ARCHES; PRIM_COGWHEEL_INLAY_TYPE_WAVES
+Orientation | PRIM_COGWHEEL_INLAY_ORIENTATION | REAL |  |  |  | 
+Invert | PRIM_COGWHEEL_INLAY_INVERT | BOOL |  |  |  | 
+Holes | PRIM_COGWHEEL_HOLES_COUNT | LONG | 1 |  |  | 
+Radius | PRIM_COGWHEEL_HOLES_RADIUS | REAL | 0.0 |  |  | 
+Ring Radius | PRIM_COGWHEEL_HOLES_DISTANCE | REAL | 0.0 |  |  | 
+Arc | PRIM_COGWHEEL_HOLES_ARC | REAL | 0.0 | 359.0 |  | 
+Spokes | PRIM_COGWHEEL_SPOKES_COUNT | LONG | 1 |  |  | 
+Outer Radius | PRIM_COGWHEEL_SPOKES_OUTER_RADIUS | REAL | 0.0 |  |  | 
+Inner Radius | PRIM_COGWHEEL_SPOKES_INNER_RADIUS | REAL | 0.0 |  |  | 
+Outer Width | PRIM_COGWHEEL_SPOKES_OUTER_WIDTH | REAL | 0.0 | 100.0 |  | 
+Inner Width | PRIM_COGWHEEL_SPOKES_INNER_WIDTH | REAL | 0.0 | 100.0 |  | 
+Bevel | PRIM_COGWHEEL_SPOKES_BEVEL | REAL | 0.0 | 100.0 |  | 
+Arches | PRIM_COGWHEEL_ARCHES_COUNT | LONG | 1 |  |  | 
+Outer Radius | PRIM_COGWHEEL_ARCHES_OUTER_RADIUS | REAL | 0.0 |  |  | 
+Inner Radius | PRIM_COGWHEEL_ARCHES_INNER_RADIUS | REAL | 0.0 |  |  | 
+Arc Fraction | PRIM_COGWHEEL_ARCHES_ARC_FRACTION | REAL | 0.0 | 100.0 |  | 
+Stretch | PRIM_COGWHEEL_ARCHES_STRETCH | REAL | 0.0 | 100.0 |  | 
+Waves | PRIM_COGWHEEL_WAVES_COUNT | LONG | 1 |  |  | 
+Outer Radius | PRIM_COGWHEEL_WAVES_OUTER_RADIUS | REAL | 0.0 |  |  | 
+Inner Radius | PRIM_COGWHEEL_WAVES_INNER_RADIUS | REAL | 0.0 |  |  | 
+Frequency | PRIM_COGWHEEL_WAVES_FREQUENCY | REAL | 0.0 |  |  | 
+Amplitude | PRIM_COGWHEEL_WAVES_AMPLITUDE | REAL |  |  |  | 
+Phase | PRIM_COGWHEEL_WAVES_PHASE | REAL |  |  |  | 
+Width | PRIM_COGWHEEL_WAVES_WIDTH | REAL | 0.0 | 100.0 |  | 
+Center Hole | PRIM_COGWHEEL_CENTER_HOLE | BOOL |  |  |  | 
+Radius | PRIM_COGWHEEL_CENTER_HOLE_RADIUS | REAL | 0.0 |  |  | 
+Cutout | PRIM_COGWHEEL_CUTOUT | BOOL |  |  |  | 
+Depth | PRIM_COGWHEEL_CUTOUT_DEPTH | REAL |  |  |  | 
+Width | PRIM_COGWHEEL_CUTOUT_WIDTH | REAL | 0.0 |  |  | 
+Cutout Orientation | PRIM_COGWHEEL_CUTOUT_ORIENTATION | REAL |  |  |  | 
+Plane | PRIM_PLANE | LONG |  |  |  | PRIM_PLANE_XY; PRIM_PLANE_ZY; PRIM_PLANE_XZ
+Reverse | PRIM_REVERSE | BOOL |  |  |  | 
+Type | SPLINEOBJECT_TYPE | LONG |  |  |  | SPLINEOBJECT_TYPE_LINEAR; SPLINEOBJECT_TYPE_CUBIC; SPLINEOBJECT_TYPE_AKIMA; SPLINEOBJECT_TYPE_BSPLINE; SPLINEOBJECT_TYPE_BEZIER
+Close Spline | SPLINEOBJECT_CLOSED | BOOL |  |  |  | 
+Interpolation | SPLINEOBJECT_INTERPOLATION | LONG |  |  |  | SPLINEOBJECT_INTERPOLATION_NONE; SPLINEOBJECT_INTERPOLATION_NATURAL; SPLINEOBJECT_INTERPOLATION_UNIFORM; SPLINEOBJECT_INTERPOLATION_ADAPTIVE; SPLINEOBJECT_INTERPOLATION_SUBDIV
+Points | SPLINEOBJECT_SUB | LONG | 0 | 5000 |  | 
+Angle | SPLINEOBJECT_ANGLE | REAL | 0.0 | 90.0 |  | 
+Max Length | SPLINEOBJECT_MAXIMUMLENGTH | REAL | 0.01 |  |  | 

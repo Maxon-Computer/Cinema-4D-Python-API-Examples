@@ -1,0 +1,154 @@
+@prefix c4d: <https://developers.maxon.net/skos/c4d/py/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+c4d:relativePath a rdf:Property ;
+	 rdfs:label "Relative SDK path"@en ;
+	 rdfs:comment "The concepts of this vocabulary correspond to directories in the SDK, and the :relativePath property is used to describe the directory path of a concept relative to the root of the SDK."@en ;
+	 rdfs:domain skos:Concept ;
+	 rdfs:range xsd:string .
+
+c4d:scheme a skos:ConceptScheme ;
+	 c4d:relativePath "." ;
+	 dcterms:title "Cinema 4D Python SDK Vocabulary"@en ;
+	 dcterms:description "A sparse vocabulary for organizing the Cinema 4D Python SDK by DCC workflow."@en ;
+	 skos:prefLabel "Cinema 4D Python SDK Vocabulary"@en ;
+	 skos:hasTopConcept c4d:agents, c4d:animation, c4d:data, c4d:gui, c4d:io, c4d:modeling, c4d:plugins, c4d:rendering, c4d:scene, c4d:misc ;
+	 skos:editorialNote "Descriptors correspond to directories in the SDK and must be abstract concepts. Non-descriptors describe concrete concepts or types in the SDK. All :relativePath values are relative to the SDK root."@en .
+
+c4d:agents a skos:Concept ;
+	 c4d:relativePath ".agents/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation ".agents" ;
+	 skos:prefLabel "agent metadata"@en ;
+	 skos:altLabel "agent guidance"@en, "node space metadata"@en, "plugin scaffolds"@en ;
+	 skos:scopeNote "Contains metadata and instructions for agents that carry out tasks with the Cinema 4D Python SDK."@en ;
+	 skos:related c4d:nodes .
+
+c4d:misc a skos:Concept ;
+	 c4d:relativePath "examples/misc/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "misc" ;
+	 skos:prefLabel "misc"@en ;
+	 skos:altLabel "C4DNoise"@en, "development"@en, "GeRayCollider"@en, "math"@en, "Neighbor"@en, "runtime"@en, "spatial queries"@en, "threading"@en ;
+	 skos:scopeNote "Contains examples of miscellaneous tooling commonly used in scripts."@en ;
+	 skos:related c4d:data, c4d:modeling .
+
+c4d:animation a skos:Concept ;
+	 c4d:relativePath "examples/animation/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "animation" ;
+	 skos:prefLabel "animation"@en ;
+	 skos:altLabel "BaseTime"@en, "CKey"@en, "CTrack"@en, "CCurve"@en, "keyframes"@en, "motion"@en, "tracks"@en ;
+	 skos:scopeNote "Contains examples for animation, keyframes, motion, and tracks."@en ;
+	 skos:narrower c4d:simulation ;
+	 skos:related c4d:scene .
+
+c4d:data a skos:Concept ;
+	 c4d:relativePath "examples/data/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "data" ;
+	 skos:prefLabel "data"@en ;
+	 skos:altLabel "BaseContainer"@en, "containers"@en, "GeData"@en, "Matrix"@en, "values"@en, "Vector"@en ;
+	 skos:scopeNote "Contains examples for basic data types and containers."@en ;
+	 skos:related c4d:misc .
+
+c4d:gui a skos:Concept ;
+	 c4d:relativePath "examples/gui/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "gui" ;
+	 skos:prefLabel "gui"@en ;
+	 skos:altLabel "Description"@en, "dialogs"@en, "GeDialog"@en, "GeUserArea"@en, "user areas"@en, "user interface"@en ;
+	 skos:scopeNote "Contains examples for user interface elements, dialogs, and user areas."@en ;
+
+c4d:io a skos:Concept ;
+	 c4d:relativePath "examples/io/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "io" ;
+	 skos:prefLabel "io"@en ;
+	 skos:altLabel "assets"@en, "BaseBitmap"@en, "export"@en, "files"@en, "Filename"@en, "GeClipMap"@en, "images"@en, "import"@en ;
+	 skos:scopeNote "Contains examples for importing and exporting files, images, and assets."@en ;
+	 skos:related c4d:rendering .
+
+c4d:modeling a skos:Concept ;
+	 c4d:relativePath "examples/modeling/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "modeling" ;
+	 skos:prefLabel "modeling"@en ;
+	 skos:altLabel "3D modeling"@en, "meshes"@en, "PolygonObject"@en, "SplineObject"@en, "splines"@en, "UVs"@en, "UVWTag"@en ;
+	 skos:related c4d:simulation ;
+	 skos:scopeNote "Contains examples for modeling, meshes, splines, and UVs."@en ;
+
+c4d:nodes a skos:Concept ;
+	 c4d:relativePath "examples/nodes/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:notation "nodes" ;
+	 skos:prefLabel "nodes"@en ;
+	 skos:altLabel "GraphModelRef"@en, "GraphNode"@en, "node-based workflows"@en, "node graphs"@en, "NodeMaterial"@en, "XPresso"@en ;
+	 skos:broader c4d:scene ;
+	 skos:related c4d:rendering, c4d:scene ;
+	 skos:scopeNote "Contains examples for node-based workflows, node graphs, and node materials."@en ;
+
+c4d:plugins a skos:Concept ;
+	 c4d:relativePath "examples/plugins/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "plugins" ;
+	 skos:prefLabel "plugins"@en ;
+	 skos:altLabel "BitmapLoaderData"@en, "BitmapSaverData"@en, "CommandData"@en, "MessageData"@en, "NodeData"@en, "ObjectData"@en, 
+                   "PreferenceData"@en, "SceneLoaderData"@en, "SceneSaverData"@en, "ShaderData"@en, "SculptBrushToolData"@en, "TagData"@en, 
+                   "ToolData"@en, "plugins"@en, "bitmap loader plugin"@en, "command plugin"@en, "message plugin"@en, "node plugin"@en, "object plugin"@en, 
+                   "preference plugin"@en, "scene loader plugin"@en, "scene saver plugin"@en, "shader plugin"@en, "sculpt brush tool plugin"@en, "tag plugin"@en, 
+                   "tool plugin"@en ;
+	 skos:scopeNote "Contains examples for creating plugins, commands, tools, and extensions."@en ;
+
+c4d:rendering a skos:Concept ;
+	 c4d:relativePath "examples/rendering/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "rendering" ;
+	 skos:prefLabel "rendering"@en ;
+	 skos:altLabel "BaseMaterial"@en, "BaseShader"@en, "materials"@en, "RenderData"@en, "RenderDocument"@en, "BatchRender"@en, "render settings"@en, "shaders"@en, "textures"@en ;
+	 skos:related c4d:nodes ;
+	 skos:scopeNote "Contains examples for rendering, materials, shaders, textures, and render settings."@en ;
+
+c4d:scene a skos:Concept ;
+	 c4d:relativePath "examples/scene/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:topConceptOf c4d:scheme ;
+	 skos:notation "scene" ;
+	 skos:prefLabel "scene"@en ;
+	 skos:altLabel "BaseDocument"@en, "BaseObject"@en, "BaseTag"@en, "BaseTake"@en, "documents"@en, "layers"@en, "LayerObject"@en, "objects"@en, "tags"@en, "takes"@en ;
+	 skos:narrower c4d:nodes, c4d:scripting-elements ;
+	 skos:related c4d:animation, c4d:nodes ;
+	 skos:scopeNote "Contains examples for scene files, documents, objects, tags, and takes."@en ;
+
+c4d:scripting-elements a skos:Concept ;
+	 c4d:relativePath "examples/scene/scripting-elements/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:notation "scripting-elements" ;
+	 skos:prefLabel "scripting elements"@en ;
+	 skos:altLabel "Python Effector"@en, "Python Field"@en, "Python Generator"@en, "Python Tag"@en, "scripting objects"@en ;
+	 skos:broader c4d:scene ;
+	 skos:related c4d:animation, c4d:simulation ;
+	 skos:scopeNote "Contains examples for scripting objects such as Python Effectors, Fields, Generators, and Tags."@en ;
+
+c4d:simulation a skos:Concept ;
+	 c4d:relativePath "examples/animation/simulation/" ;
+	 skos:inScheme c4d:scheme ;
+	 skos:notation "simulation" ;
+	 skos:prefLabel "simulation"@en ;
+	 skos:altLabel "dynamics"@en, "FieldList"@en, "fields"@en, "MoData"@en, "particles"@en ;
+	 skos:broader c4d:animation ;
+	 skos:related c4d:modeling, c4d:scripting-elements ;
+	 skos:scopeNote "Contains examples for simulation, dynamics, particles, and fields."@en .

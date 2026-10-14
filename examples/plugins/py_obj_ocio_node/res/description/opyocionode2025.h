@@ -1,0 +1,9 @@
+#ifndef OPYOCIONODE2025_H__
+#define OPYOCIONODE2025_H__
+
+enum
+{
+  OCIO_NODE_2025_COLOR = 1000,
+};
+
+#endif // OPYOCIONODE2025_H__
